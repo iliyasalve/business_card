@@ -1,19 +1,20 @@
-// Проверка сохраненной темы при загрузке страницы
-let isDarkTheme = localStorage.getItem('theme') === 'dark'; // По умолчанию светлая тема
+
+let isDarkTheme = localStorage.getItem('theme') === 'dark'; 
 
 function toggleTheme() {
-    isDarkTheme = !isDarkTheme; // Переключаем тему
-    console.log("Текущая тема:", isDarkTheme ? "темная" : "светлая"); // Лог текущей темы
+    isDarkTheme = !isDarkTheme; 
+    console.log("Текущая тема:", isDarkTheme ? "темная" : "светлая");
     updateTheme();
 }
 
-// Функция для обновления темы
+
 function updateTheme() {
     const body = document.body;
     const themeSections = document.querySelectorAll('.theme-section');
     const cardBodies = document.querySelectorAll('.card-body');
-    const projectLinks = document.querySelectorAll('.theme-section a'); // Ссылки проектов
-    const headings = document.querySelectorAll('.theme-section h3'); // Заголовки в секциях
+    const projectLinks = document.querySelectorAll('.theme-section a'); 
+    const headings = document.querySelectorAll('.theme-section h3'); 
+    const modalContent = document.querySelector('.modal-content');
 
     if (isDarkTheme) {
         body.classList.add('bg-dark', 'text-white');
@@ -28,15 +29,19 @@ function updateTheme() {
         });
 
         projectLinks.forEach(link => {
-            link.classList.add('text-white'); // Применяем стиль для ссылок
+            link.classList.add('text-white'); 
         });
 
         headings.forEach(heading => {
-            heading.classList.remove('text-body'); // Убираем стандартный цвет
-            heading.classList.add('text-light'); // Добавляем светлый цвет
+            heading.classList.remove('text-body'); 
+            heading.classList.add('text-light'); 
         });
 
-        localStorage.setItem('theme', 'dark'); // Сохраняем выбор темы
+        body.classList.add('bg-dark', 'text-white');
+        body.classList.remove('bg-light', 'text-dark');
+        modalContent.classList.add('dark-theme'); 
+
+        localStorage.setItem('theme', 'dark'); 
     } else {
         body.classList.add('bg-light', 'text-dark');
         body.classList.remove('bg-dark', 'text-white');
@@ -50,15 +55,19 @@ function updateTheme() {
         });
 
         projectLinks.forEach(link => {
-            link.classList.remove('text-white'); // Убираем стиль для ссылок
+            link.classList.remove('text-white'); 
         });
 
         headings.forEach(heading => {
-            heading.classList.remove('text-light'); // Убираем светлый цвет
-            heading.classList.add('text-body'); // Возвращаем стандартный цвет
+            heading.classList.remove('text-light'); 
+            heading.classList.add('text-body'); 
         });
 
-        localStorage.setItem('theme', 'light'); // Сохраняем выбор темы
+        body.classList.add('bg-light', 'text-dark');
+        body.classList.remove('bg-dark', 'text-white');
+        modalContent.classList.remove('dark-theme');
+
+        localStorage.setItem('theme', 'light'); 
     }
 }
 

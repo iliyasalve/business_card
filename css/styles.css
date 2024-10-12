@@ -1,93 +1,99 @@
-/* styles.css */
+
 
 body {
     font-family: Arial, sans-serif;
-    transition: background-color 0.5s, color 0.5s; /* Плавный переход */
+    transition: background-color 0.5s, color 0.5s;
 }
 
-/* Темная тема */
+
 body.dark-mode {
-    background-color: #2c2c2c; /* Темный фон */
-    color: white; /* Светлый текст */
+    background-color: #2c2c2c;
+    color: white; 
 }
 
 .navbar {
-    background-color: #4b0082; /* Темно-фиолетовый цвет */
+    background-color: #4b0082; 
 }
 
 footer {
-    background-color: #4b0082; /* Темно-фиолетовый цвет */
-    color: white; /* Цвет текста в футере */
-    padding: 10px 0; /* Отступы в футере */
+    background-color: #4b0082; 
+    color: white; 
+    padding: 10px 0; 
 }
 
 footer a {
-    color: #A57CB2; /* Цвет текста ссылки (белый) */
+    color: #A57CB2; 
 }
 
 footer a:hover {
-    color: #d4d4d4; /* Цвет текста при наведении */
+    color: #d4d4d4; 
 }
-/* Светлая тема */
+
 body.light-mode {
-    background-color: white; /* Светлый фон */
-    color: black; /* Темный текст */
+    background-color: white; 
+    color: black; 
 }
 
 
 .bg-dark {
-    background-color: #121212; /* Цвет фона для темной темы */
+    background-color: #121212; 
 }
 
 .text-white {
-    color: #ffffff; /* Цвет текста для темной темы */
+    color: #ffffff;
 }
 
 .bg-light {
-    background-color: #ffffff; /* Цвет фона для светлой темы */
+    background-color: #ffffff; 
 }
 
 .text-dark {
-    color: #000000; /* Цвет текста для светлой темы */
+    color: #000000; 
 }
 
 
 .card-body-dark {
-    background-color: #444; /* Темный фон */
-    color: white; /* Цвет текста */
+    background-color: #444; 
+    color: white; 
 }
 
 
 .card {
     display: flex;
-    flex-direction: column; /* Размещаем содержимое вертикально */
-    height: 300px; /* Фиксированная высота для больших экранов */
+    flex-direction: column; 
+    height: 300px; 
 }
 
 .card-body {
-    flex: 1; /* Позволяет телу карточки занимать всё доступное пространство */
-    overflow: hidden; /* Препятствует вылезанию текста */
-    text-overflow: ellipsis; /* Добавляет многоточие для длинного текста */
-    white-space: normal; /* Позволяет тексту переноситься */
+    flex: 1; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: normal; 
 }
 
-/* Медиазапрос для мобильных устройств */
+/* Requête média pour les appareils mobiles */
 @media (max-width: 768px) {
     .card {
-        height: auto; /* Отменяем фиксированную высоту на мобильных устройствах */
+        height: auto; 
     }
 }
 
 
-#cookie-banner {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    text-align: center;
+/* Thème sombre pour la fenêtre modale */
+.modal-content.dark-theme {
+    background-color: #343a40; 
+    color: #ffffff; 
+}
+
+.modal-content.dark-theme .btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff;
+}
+
+.modal-content.dark-theme a {
+    color: #ffffff; 
+}
+
+.modal-content.dark-theme .close {
+    color: #ffffff; 
 }
