@@ -94,17 +94,40 @@
 
     <footer class="text-center mt-5" id="footer-text">
         <div class="footer-content">
-            <p>Email: <a href="mailto:iliyasalve@gmail.com">iliyasalve@gmail.com</a> | Téléphone: +33 7 53 66 24 00 | LinkedIn: <a href="https://fr.linkedin.com/in/iliya-glazunov">Iliya Glazunov</a> | GitHub: <a href="https://github.com/iliyasalve">iliyasalve</a></p>
+            <p>Email: <a href="mailto:iliyasalve@gmail.com">iliyasalve@gmail.com</a> | Téléphone: +33 7 53 66 24 00 | LinkedIn: <a href="https://fr.linkedin.com/in/iliya-glazunov">Iliya Glazunov</a></p>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Iliya Glazunov. Tous droits réservés.</p>
         </div>
     </footer>
 
+    <div id="cookieModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nous apprécions votre vie privée</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Nous n'utilisons pas de cookies, nous ne collectons pas de données personnelles et nous ne suivons pas les actions des utilisateurs.</p>
+                    <p>Notre site utilise le stockage de session (sessionStorage) pour conserver des informations sur l'affichage de la fenêtre modale d'avertissement sur les cookies. Cela permet d'éviter d'afficher à nouveau le message pendant la session actuelle. Veuillez noter que nous n'utilisons pas le stockage de session pour collecter des données personnelles ou suivre vos actions.</p>
+                    <p>Si vous avez des questions sur la façon dont nous traitons les données, veuillez nous contacter par <a href="mailto:iliyasalve@gmail.com">e-mail</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="acceptCookies">J'ai compris</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script src="js/theme.js"></script>   
+    <script src="js/theme.js"></script>
+    <script src="js/cookieModal.js"></script>
+    <script src="js/init.js"></script> 
 </body>
 </html>

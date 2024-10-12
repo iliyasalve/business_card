@@ -62,9 +62,3 @@ function updateTheme() {
     }
 }
 
-// Применение сохраненной темы при загрузке страницы
-window.onload = () => {
-    isDarkTheme = localStorage.getItem('theme') === 'dark'; // Проверяем сохраненное значение
-    updateTheme(); // Применяем тему
-    console.log("Тема при загрузке:", isDarkTheme ? "темная" : "светлая"); // Лог при загрузке
-};
