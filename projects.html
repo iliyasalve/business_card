@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Projets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light text-dark">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">Mon CV</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="experience.html" id="nav-experience">Expériences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="competencies.html" id="nav-competencies">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html" id="nav-education">Éducation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html" id="nav-projects">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hobbies.html" id="nav-hobbies">Loisirs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="toggleTheme()">Changer le thème</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        </header>
+
+    <main class="container flex-grow-1 mt-5">
+        <h2 id="projects-title" class="text-center mb-4">Projets</h2>
+        <p id="description" class="text-center mb-4">Découvrez mes projets qui illustrent mes compétences en développement Python, ainsi que ma passion pour la création d'applications utiles et engageantes. Que ce soit des jeux interactifs ou des bots Telegram, chaque projet a été conçu pour offrir une expérience utilisateur agréable tout en répondant à des besoins spécifiques.</p>
+        <div class="row align-items-center">
+            <section id="projects" class="theme-section bg-light p-4">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 id="project-1-title"><a href="https://github.com/iliyasalve/Cats_Dogs_Image_Classification" class="card-title">Cats and Dogs Image Classification</a></h3>
+                                <p id="project-1-desc" class="card-text">Ce projet consiste à entraîner un réseau neuronal convolutif (CNN) pour classifier des images de chats et de chiens. Le modèle est capable de reconnaître les caractéristiques des images pour prédire si l'image représente un chat ou un chien. J'ai utilisé des bibliothèques comme TensorFlow et Keras pour construire et entraîner le modèle, et j'ai prétraité les données pour améliorer la précision.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card" >
+                            <div class="card-body">
+                                <h3 id="project-2-title"><a href="https://github.com/iliyasalve/Weather_Telegram_Bot" class="card-title">Weather Telegram Bot</a></h3>
+                                <p id="project-2-desc" class="card-text">Bot Telegram, qui permet aux utilisateurs d’obtenir des informations météorologiques en temps réel pour n'importe quelle ville. Après avoir choisi une ville, l'utilisateur reçoit des détails sur la météo actuelle, y compris la température, la température ressentie, ainsi que les températures minimales et maximales pour la journée. De plus, le bot fournit des informations sur la pression atmosphérique, l'humidité, la vitesse du vent, la visibilité et l'heure du lever du soleil. Toutes les données sont affichées dans la langue de l'utilisateur.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card" >
+                            <div class="card-body">
+                                <h3 id="project-3-title"><a href="https://github.com/iliyasalve/MultiTool_Telegram_Bot" class="card-title">MultiTool Telegram Bot</a></h3>
+                                <p id="project-3-desc" class="card-text">Bot Telegram, conçu pour simplifier la vie des utilisateurs. Grâce à ce bot, il est possible de générer des mots de passe complexes de n'importe quelle longueur, de raccourcir des liens vers diverses ressources et de lancer des dés, ce qui peut être utile pour prendre des décisions ou jouer avec des amis. Le bot permet également de générer et de déchiffrer des QR codes. Ainsi, il offre une multitude de fonctionnalités pratiques dans une interface conviviale.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card" >
+                            <div class="card-body">
+                                <h3 id="project-4-title"><a href="https://github.com/iliyasalve/Clicker_Game" class="card-title">Clicker Game</a></h3>
+                                <p id="project-4-desc" class="card-text">Jeu de clicker dont le but est de marquer le plus de points possible. Les joueurs ont la possibilité d'utiliser les points accumulés pour acheter des multiplicateurs, leur permettant ainsi d'augmenter leur score de manière significative. Il est également possible de fermer le jeu et d'y revenir plus tard, tout en sauvegardant la progression pour ne rien perdre. De plus, les résultats peuvent être réinitialisés à tout moment, tout en conservant le meilleur score de tous les temps, offrant ainsi une expérience de jeu flexible et addictive.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card" >
+                            <div class="card-body">
+                                <h3 id="project-5-title"><a href="https://github.com/iliyasalve/Snake_Game" class="card-title">Snake Game</a></h3>
+                                <p id="project-5-desc" class="card-text">Jeu du Serpent dont le but est de marquer le plus de points possible. Les joueurs bénéficient d'un grand champ de manœuvres, ce qui rend le jeu dynamique et engageant. Des obstacles sont présents pour ajouter un défi et éviter que le jeu ne paraisse trop simple. Le score actuel et le nombre de tentatives sont affichés en temps réel, permettant aux joueurs de suivre leurs performances. De plus, le jeu enregistre le meilleur score ainsi que le nombre total de tentatives, offrant ainsi une expérience compétitive et motivante.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card" >
+                            <div class="card-body">
+                                <h3 id="project-6-title"><a href="https://github.com/iliyasalve/Tetris_Game" class="card-title">Tetris Game</a></h3>
+                                <p id="project-6-desc" class="card-text">Jeu du Tetris dont le but est de marquer le plus de points possible. Les joueurs disposent d'un contrôle intuitif à l'aide des touches du clavier : les flèches gauche et droite permettent de déplacer la figure horizontalement, la flèche du bas accélère sa chute, et la flèche du haut change la position de la figure. Le score actuel est affiché en temps réel, tandis que le meilleur score est enregistré pour stimuler la compétition. Profitez de ce classique intemporel tout en essayant de battre vos propres records !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    
+    <footer class="text-center mt-5" id="footer-text">
+        <div class="footer-content">
+            <p>Email: <a href="mailto:iliyasalve@gmail.com">iliyasalve@gmail.com</a> | Téléphone: +33 7 53 66 24 00 | LinkedIn: <a href="https://fr.linkedin.com/in/iliya-glazunov">Iliya Glazunov</a></p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Iliya Glazunov. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="js/theme.js"></script>   
+</body>
+</html>

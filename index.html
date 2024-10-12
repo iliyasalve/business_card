@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Mon CV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light text-dark">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">Mon CV</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="experience.html" id="nav-experience">Expériences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="competencies.html" id="nav-competencies">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html" id="nav-education">Éducation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html" id="nav-projects">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hobbies.html" id="nav-hobbies">Loisirs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="toggleTheme()">Changer le thème</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        </header>
+
+    <!--{% include header.html %}-->
+
+    <main class="container flex-grow-1 mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="img/photo.jpg" alt="My_img" class="img-fluid rounded-circle">
+            </div>
+            <div class="col-md-8">
+                <h1 id="greeting">Bonjour, je suis Iliya Glazunov</h1>
+                <br/>
+                <p id="intro">
+                    Je suis un développeur Python passionné à la recherche de ma première opportunité professionnelle. Avec plus de 5 ans d'expérience non commerciale, j'ai acquis des compétences solides dans le développement d'applications web et la création de bots Telegram. Je suis également familiarisé avec la blockchain et le traitement du langage naturel.
+                </p>
+                <p id="hobbies">
+                    Mon objectif est de créer des solutions conviviales et efficaces pour aider les utilisateurs à atteindre leurs objectifs. Je m'engage à continuer d'apprendre et à me développer pour rester à jour sur les dernières technologies et tendances du secteur.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!--{% include footer.html %}-->
+
+    
+    <footer class="text-center mt-5" id="footer-text">
+        <div class="footer-content">
+            <p>Email: <a href="mailto:iliyasalve@gmail.com">iliyasalve@gmail.com</a> | Téléphone: +33 7 53 66 24 00 | LinkedIn: <a href="https://fr.linkedin.com/in/iliya-glazunov">Iliya Glazunov</a></p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Iliya Glazunov. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/theme.js"></script>   <!-- Подключение файла с функцией смены темы -->
+
+</body>
+</html>
