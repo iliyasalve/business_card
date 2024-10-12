@@ -3,7 +3,6 @@ let isDarkTheme = localStorage.getItem('theme') === 'dark';
 
 function toggleTheme() {
     isDarkTheme = !isDarkTheme; 
-    console.log("Текущая тема:", isDarkTheme ? "темная" : "светлая");
     updateTheme();
 }
 
