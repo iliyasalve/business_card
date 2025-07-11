@@ -20,6 +20,7 @@ const HobbiesPage = () => {
   }>;
 
   const meta = t('meta', { returnObjects: true }) as MetaData;
+  const basePath = '/business_card';
 
 
   return (
@@ -28,7 +29,7 @@ const HobbiesPage = () => {
         title={meta.title}
         description={meta.description}
         keywords={meta.keywords}
-        image={meta.image}
+        image={`${basePath}${meta.image}`}
         pageSlug="skills"
       />
       <Head>

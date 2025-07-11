@@ -25,13 +25,15 @@ const EducationPage = () => {
 
   const meta = t('meta', { returnObjects: true }) as MetaData;
 
+  const basePath = '/business_card';
+
   return (
     <>
       <Seo
         title={meta.title}
         description={meta.description}
         keywords={meta.keywords}
-        image={meta.image}
+        image={`${basePath}${meta.image}`}
         pageSlug="education"
       />
       <Head>

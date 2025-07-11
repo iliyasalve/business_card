@@ -1,17 +1,15 @@
 {
-  "name": "my-portfolio",
+  "name": "business_card_repo",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://iliyasalve.github.io/business_card",
+  "homepage": "https://iliyasalve.github.io/business_card/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
-    "postexport": "next-sitemap",
+    "postexport": "mkdir out\\business_card && move out\\*.* out\\business_card\\ && move out\\_next out\\business_card\\ && move out\\images out\\business_card\\ && echo. > out\\business_card\\.nojekyll && next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "build:export": "next build && next export",
-    "deploy": "npm run build:export && gh-pages -d out"
+    "deploy": "npm run build && npm run postexport && gh-pages -d out/business_card -t true"
   },
   "dependencies": {
     "autoprefixer": "^10.4.17",

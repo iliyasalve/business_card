@@ -19,6 +19,7 @@ const Home: React.FC<HomeProps> = () => {
   const { t } = useTranslation();
 
   const meta = t('home.meta', { returnObjects: true }) as MetaData;
+  const basePath = '/business_card';
 
   // Get the description and split it into paragraphs
   const description = t('home.description');
@@ -32,7 +33,7 @@ const Home: React.FC<HomeProps> = () => {
         title={meta.title}
         description={meta.description}
         keywords={meta.keywords}
-        image={meta.image}
+        image={`${basePath}${meta.image}`}
       />
       <Head>
         <title>{t('header.title')}</title>
@@ -42,7 +43,7 @@ const Home: React.FC<HomeProps> = () => {
         {/* Image */}
         <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 mb-6 sm:mb-0">
           <img
-            src={t('home.image')} // Path to the image
+            src={`${basePath}${t('home.image')}`} // Path to the image
             alt="My photo"
             className="w-full h-auto object-cover rounded-full"
           />

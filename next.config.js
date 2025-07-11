@@ -1,12 +1,26 @@
 // next.config.js
 
+// next.config.js
+/** @type {import('next').NextConfig} 
+const nextConfig = {
+  output: 'export',
+  reactStrictMode: true,
+  images: { unoptimized: true },
+  basePath: '/business_card',
+  assetPrefix: '/business_card/',
+};
+
+module.exports = nextConfig;*/
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Для GitHub Pages
+  output: 'export',  // Для экспорта статического контента
   reactStrictMode: true,
   images: {
-    unoptimized: true, // Чтобы работало на GitHub Pages
+    unoptimized: true,  // Отключаем оптимизацию изображений
   },
+  basePath: '/business_card',  // Путь на GitHub Pages
+  assetPrefix: '/business_card/',  // Абсолютные пути с префиксом
 };
 
 module.exports = nextConfig;

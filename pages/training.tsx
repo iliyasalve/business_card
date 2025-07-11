@@ -13,6 +13,7 @@ interface MetaData {
 
 const TrainingPage = () => {
   const { t } = useTranslation('training');
+  const basePath = '/business_card';
 
   const trainings = t('trainings', { returnObjects: true }) as Array<{
     title: string;
@@ -31,7 +32,7 @@ const TrainingPage = () => {
         title={meta.title}
         description={meta.description}
         keywords={meta.keywords}
-        image={meta.image}
+        image={`${basePath}${meta.image}`}
         pageSlug="training"
       />
       <Head>
