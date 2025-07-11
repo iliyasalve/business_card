@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://iliyasalve.github.io/business_card/sitemap.xml
