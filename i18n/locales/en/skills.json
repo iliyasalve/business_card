@@ -1,0 +1,77 @@
+{
+  "title": "Skills",
+  "titleHard": "Hard Skills",
+  "titleSoft": "Soft Skills",
+  "introHard": "The hard skills listed here were developed through years of training and practice. My expertise covers a variety of programming languages, frameworks, and tools used in software development and data analysis. I actively apply my knowledge to create innovative solutions, ensuring efficiency and reliability of projects, while achieving high results.",
+  "introSoft": "Soft skills play a crucial role in my professional competence, enabling me to interact effectively with colleagues and adapt to changing conditions. I know how to organize my work, show initiative, and collaborate in teams. These qualities help me find optimal solutions in complex situations and contribute to team success.",
+  "hardSkills": [
+    {
+        "name": "Python",
+        "description": "Over 5 years of experience developing scripts and web applications using Python. This includes working with libraries for data analysis, machine learning, and artificial intelligence: Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch. Experienced in applying these tools for big data analysis and AI model development.",
+        "example": "In projects, I used Pandas and NumPy for data processing, and created machine learning models with Scikit-learn and TensorFlow for data classification and forecasting."
+    },
+    {
+        "name": "Django and PostgreSQL",
+        "description": "Developed web applications using Django, integrated with PostgreSQL for user data management and complex queries. Configured server-side for optimal data processing.",
+        "example": "I developed a responsive website for Eurasie en Analyse with user registration and feedback capability."
+    },
+    {
+        "name": "Data Science",
+        "description": "Applied Data Science tools for data analysis and visualization with Matplotlib and Seaborn, as well as creating machine learning models. Used Jupyter Notebooks to create interactive reports and conduct experiments.",
+        "example": "Developed data analyses and visualizations based on real data using Seaborn to identify hidden trends."
+    },
+    {
+        "name": "Machine Learning & Computer Vision",
+        "description": "Experience working with AI and computer vision, including creating neural networks and training models using TensorFlow, PyTorch, and image processing with OpenCV.",
+        "example": "Developed an image analysis system using OpenCV to improve data visualization and automatic object classification."
+    },
+    {
+        "name": "Git, Postman, Virtualenv, VS Code, Sublime Text",
+        "description": "Used these tools for project management, coding, and testing, ensuring secure and comfortable development.",
+        "example": "I use Git for version control to track changes and coordinate team work. Postman was helpful for testing APIs in projects."
+    },
+    {
+        "name": "Blockchain & Natural Language Processing (NLP)",
+        "description": "Experience working with blockchain technologies and natural language processing. Applied NLP models for text analysis and created blockchain-based solutions for secure data exchange.",
+        "example": "In the Paris-Saclay project, I implemented data routing based on a P2P protocol using blockchain to enhance security."
+    }
+    ],
+  "softSkills": [
+    {
+        "name": "Organization and Work Discipline",
+        "description": "Able to structure tasks, manage my time efficiently, and monitor the execution of each work step, while maintaining high-quality standards.",
+        "example": "During the development of the Eurasie en Analyse website, I led the project from design to deployment, organizing the work carefully to avoid missing any details."
+    },
+    {
+        "name": "Curiosity and Initiative",
+        "description": "I strive to learn new technologies and methods to find the best solutions for challenges. I show initiative by proposing and implementing improvements in projects.",
+        "example": "While working on the Paris-Saclay University project, I proposed and created a data routing map between users, optimizing information exchange directly without the need for server storage."
+    },
+    {
+        "name": "Adaptability to Changes",
+        "description": "Able to quickly adapt to new requirements and changes in the project. I easily learn new tools and approaches to improve efficiency.",
+        "example": "In the Eurasie en Analyse project, I migrated to using PostgreSQL to optimize database performance, which improved the application’s speed."
+    },
+    {
+        "name": "Responsiveness to Challenges",
+        "description": "I respond quickly to new challenges and find solutions to complex problems in a timely manner.",
+        "example": "At Paris-Saclay University, I quickly fixed a critical data processing error, minimizing the risk of data loss."
+    },
+    {
+        "name": "Teamwork and Collaboration",
+        "description": "I work effectively in teams, maintaining open communication and achieving common goals.",
+        "example": "In the Eurasie en Analyse project, I collaborated closely with content editors to ensure smooth website operation and timely deployment of new features."
+    },
+    {
+        "name": "Problem Solving",
+        "description": "I can analyze and solve complex problems using data and modern technologies.",
+        "example": "I optimized data analysis algorithms using Data Science tools like Pandas, resulting in faster data processing and better decision making."
+    }
+    ],
+    "meta": {
+        "title": "Skills – Iliya Glazunov",
+        "description": "Discover Iliya Glazunov's hard and soft skills, including expertise in Python, Django, Data Science, Machine Learning, Blockchain, and strong professional qualities such as teamwork, adaptability, and problem solving.",
+        "keywords": "skills, hard skills, soft skills, Python, Django, machine learning, blockchain, data science, teamwork, problem solving, Iliya Glazunov",
+        "image": "/images/photo.jpg"
+    }
+}

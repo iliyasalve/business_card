@@ -1,0 +1,52 @@
+{
+  "title": "Mes projets",
+  "intro": "Découvrez mes projets qui illustrent mes compétences en développement Python, ainsi que ma passion pour la création d'applications utiles et engageantes. Que ce soit des jeux interactifs ou des bots Telegram, chaque projet a été conçu pour offrir une expérience utilisateur agréable tout en répondant à des besoins spécifiques.",
+  "projects": [
+    {
+      "title": "Modèle de Classification des Réclamations pour TikTok",
+      "description": "Afin de développer un modèle prédictif pour TikTok, ce projet vise à déterminer si une vidéo contient une affirmation ou exprime une opinion. L'objectif principal du projet est de réduire le nombre de rapports des utilisateurs nécessitant une modération manuelle et d'améliorer l'efficacité du traitement.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Étude de Cas Cyclistic",
+      "description": "Ce projet analyse l'utilisation des vélos Cyclistic par les membres annuels et les utilisateurs occasionnels. L'objectif est de fournir des recommandations marketing pour convertir les utilisateurs occasionnels en membres annuels et améliorer la satisfaction des utilisateurs.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Détection de Spam avec NLTK",
+      "description": "Pour créer un détecteur de spam efficace pour les messages, ce projet utilise des techniques de traitement du langage naturel (NLP) avec la bibliothèque NLTK. Il inclut le prétraitement des données, l'extraction de caractéristiques et l'entraînement d'un modèle Naïve Bayes.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Classification d'images de Chats et de Chiens",
+      "description": "Ce projet consiste à entraîner un réseau neuronal convolutif (CNN) pour classifier des images de chats et de chiens. Le modèle est capable de reconnaître les caractéristiques des images pour prédire si l'image représente un chat ou un chien.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Bot Telegram Météo",
+      "description": "Bot Telegram qui permet aux utilisateurs d'obtenir des informations météorologiques en temps réel pour n'importe quelle ville. Après avoir choisi une ville, l'utilisateur reçoit des détails sur la météo actuelle, y compris la température, la température ressentie, ainsi que les températures minimales et maximales pour la journée.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Bot Telegram MultiTool",
+      "description": "Bot Telegram conçu pour simplifier la vie des utilisateurs. Avec ce bot, les utilisateurs peuvent générer des mots de passe complexes de n'importe quelle longueur, raccourcir des liens vers diverses ressources et lancer des dés.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Clicker Game",
+      "description": "Jeu de clicker où le but est de marquer le plus de points possible. Les joueurs peuvent utiliser les points accumulés pour acheter des multiplicateurs, ce qui booste considérablement leur score.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Jeu du Serpent",
+      "description": "Jeu du Serpent où le but est de marquer le plus de points possible. Les joueurs bénéficient d'un grand champ de manœuvres, ce qui rend le jeu dynamique et engageant.",
+      "link": "https://iliyasalve.github.io/business_card"
+    }
+  ],
+    "meta": {
+      "title": "Projets – Iliya Glazunov",
+      "description": "Découvrez les projets d'Iliya Glazunov mettant en avant son expertise en développement Python, incluant des jeux interactifs, des bots Telegram et des modèles d'apprentissage automatique, tous conçus pour offrir des solutions pratiques et engageantes.",
+      "keywords": "projets, développement Python, bots Telegram, apprentissage automatique, jeux, NLP, Iliya Glazunov, développement logiciel",
+      "image": "/images/photo.jpg"
+    }
+}

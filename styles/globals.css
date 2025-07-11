@@ -1,0 +1,36 @@
+/* styles/globals.css */
+
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font and body settings */
+body {
+  @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Light and dark theme logic via class (used by Tailwind's dark mode) */
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+/* Custom transitions */
+.transition-theme {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Outer container for the badge */
+.credly-badge-wrapper {
+  background-color: white;
+  width: 150px; 
+  height: 240px; 
+}
+

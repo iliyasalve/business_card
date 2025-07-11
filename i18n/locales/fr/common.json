@@ -1,0 +1,39 @@
+{
+  "home": {
+    "meta": {
+      "title": "Bonjour, je suis Iliya Glazunov",
+      "description": "Je suis un développeur Python passionné à la recherche de ma première opportunité professionnelle. Avec plus de 5 ans d'expérience non commerciale, j'ai acquis de solides compétences en développement d'applications web et en création de bots Telegram. Je maîtrise également la blockchain et le traitement du langage naturel.",
+      "keywords": "portfolio, frontend, Python, bots Telegram, NLP, blockchain, développeur, carte de visite",
+      "image": "/images/photo.jpg"
+    },
+    "title": "Bonjour, je suis Iliya Glazunov",
+    "description": "Je suis un développeur Python passionné à la recherche de ma première opportunité professionnelle. Avec plus de 5 ans d'expérience non commerciale, j'ai acquis des compétences solides dans le développement d'applications web et la création de bots Telegram. Je suis également familiarisé avec la blockchain et le traitement du langage naturel.\n\nMon objectif est de créer des solutions conviviales et efficaces pour aider les utilisateurs à atteindre leurs objectifs. Je m'engage à continuer d'apprendre et à me développer pour rester à jour sur les dernières technologies et tendances du secteur.",
+    "image": "/images/photo.jpg"
+  },
+  "header": {
+    "title": "Mon Portfolio",
+    "experience": "Expérience",
+    "skills": "Compétences",
+    "education": "Éducation",
+    "training": "Formation",
+    "projects": "Projets",
+    "hobbies": "Loisirs"
+  },
+  "footer": {
+    "email": "iliyasalve@gmail.com",
+    "phone": "+33 7 53 66 24 00",
+    "linkedin": "https://fr.linkedin.com/in/iliya-glazunov",
+    "emailLabel": "Email",
+    "phoneLabel": "Téléphone",
+    "linkedinLabel": "LinkedIn",
+    "linkedinName": "Iliya Glazunov",
+    "githubLabel": "GitHub",
+    "github": "https://github.com/iliyasalve",
+    "githubName": "iliyasalve",
+    "copyright": "© {{year}} Iliya Glazunov. Tous droits réservés."
+  },
+  "privacy": {
+    "message": "Ce site ne collecte aucune donnée personnelle. Cependant, GitHub Pages peut utiliser des cookies ou collecter certaines informations. Pour plus de détails, visitez leur site officiel.",
+    "accept": "OK"
+  }
+}

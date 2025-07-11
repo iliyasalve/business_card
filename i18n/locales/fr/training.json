@@ -1,0 +1,60 @@
+{
+  "title": "Formations complémentaires",
+  "intro": "Afin de rester à la pointe des évolutions technologiques, j'ai suivi des formations spécialisées qui renforcent mes compétences dans des domaines comme le marketing digital, la gestion de projets, et l'analyse de données. Ces programmes m'ont permis d'approfondir mes connaissances et d'apporter des solutions innovantes aux défis techniques.",
+  "trainings": [
+    {
+      "title": "Generative AI for Software Developers Specialization",
+      "institution": "IBM sur Coursera",
+      "location": "En ligne",
+      "period": "07/2025",
+      "badgeId": "eb664a77-dc7b-43f3-85aa-7d879961a6b9",
+      "description": "Cette spécialisation m'a permis de plonger dans l'univers de l'IA générative appliquée au développement de logiciels. J'ai appris à intégrer des outils et des modèles d'IA dans les processus de développement pour créer des applications plus intelligentes et performantes. Ce programme m'a aussi permis d'explorer des cas d'utilisation réels de l'IA générative dans le développement de logiciels, ce qui me permet d'apporter des solutions innovantes et d'optimiser les processus de développement."
+    },
+    {
+      "title": "Generative AI for Data Analysts Specialization",
+      "institution": "IBM sur Coursera",
+      "location": "En ligne",
+      "period": "07/2025",
+      "badgeId": "75f3e405-e1fe-4ca7-b3c3-c663c25360c6",
+      "description": "Ce programme m'a permis de découvrir l'impact de l'IA générative dans le domaine de l'analyse de données. J'ai appris à utiliser des modèles génératifs pour améliorer l'efficacité des analyses de données et générer des insights à partir de données complexes. Cette formation m'a aussi donné une compréhension de l'intégration de l'IA dans les processus d'analyse pour automatiser certaines tâches et maximiser la valeur des données."
+    },
+    {
+      "title": "IBM Product Manager Professional Certificate",
+      "institution": "IBM sur Coursera",
+      "location": "En ligne",
+      "period": "06/2025 – 07/2025",
+      "badgeId": "07dc0fc0-9eeb-4ec7-9097-d3b61a11e0c4",
+      "description": "Ce programme m'a permis de mieux comprendre la gestion de produits et son lien avec le développement logiciel. J'ai appris à définir des priorités produits, à collaborer efficacement avec les équipes produit et à intégrer les exigences commerciales dans les décisions techniques. Cette formation m'a aidé à mieux naviguer entre la gestion produit et le développement technique, renforçant ainsi ma capacité à participer à des projets complexes."
+    },
+    {
+      "title": "Google Advanced Data Analytics Certificate",
+      "institution": "Google sur Coursera",
+      "location": "En ligne",
+      "period": "12/2024 – 01/2025",
+      "badgeId": "e5e58555-0079-4ff0-8d6e-519f655578a4",
+      "description": "J'ai suivi le programme avancé de Google en Data Analytics sur Coursera, qui m'a permis de renforcer mes compétences en analyse de données à un niveau plus élevé. Cette formation m'a appris à utiliser des outils analytiques avancés pour résoudre des problèmes complexes, à maîtriser les techniques de visualisation des données et à appliquer des méthodes statistiques pour interpréter des ensembles de données importants. Grâce à ce certificat, je suis mieux préparé à effectuer des analyses approfondies et à fournir des recommandations stratégiques basées sur les données."
+    },
+    {
+      "title": "Data Analytics",
+      "institution": "Google sur Coursera",
+      "location": "En ligne",
+      "period": "11/2024 – 12/2024",
+      "badgeId": "22db3e6a-8454-4b48-b168-9ca96546bb7c",
+      "description": "J'ai complété le programme Google Data Analytics sur Coursera, qui m'a fourni une solide base dans l'analyse des données. Ce cours m'a aidé à maîtriser les compétences nécessaires pour analyser des données complexes, interpréter les résultats, et prendre des décisions basées sur les données. Grâce à cette formation, je suis capable de transformer des données brutes en informations précieuses pour guider les stratégies de marketing et améliorer les opérations commerciales."
+    },
+    {
+      "title": "Les principes fondamentaux du marketing numérique",
+      "institution": "Google Ateliers Numériques",
+      "location": "En ligne",
+      "period": "10/2022",
+      "badgeId": "",
+      "description": "En octobre 2022, j'ai suivi une formation sur les fondamentaux du marketing numérique avec Google Ateliers Numériques. Ce cours m'a permis de comprendre les principes clés du marketing digital, y compris la planification stratégique, la gestion des campagnes publicitaires et l'analyse des données pour mesurer les performances. J'ai appris à utiliser divers outils et plateformes pour optimiser la présence en ligne et attirer une audience ciblée, un complément précieux à mes compétences techniques."
+    }
+  ],
+  "meta": {
+    "title": "Formations supplémentaires – Iliya Glazunov",
+    "description": "Découvrez les formations spécialisées d'Iliya Glazunov en intelligence artificielle générative, analyse de données, gestion de produit et marketing digital qui renforcent ses compétences techniques et professionnelles.",
+    "keywords": "formations supplémentaires, intelligence artificielle générative, analyse de données, gestion de produit, marketing digital, Coursera, IBM, Google, Iliya Glazunov",
+    "image": "/images/photo.jpg"
+  }
+}

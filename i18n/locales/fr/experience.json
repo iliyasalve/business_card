@@ -1,0 +1,48 @@
+{
+  "title": "Expériences professionnelles",
+  "intro": "Mes expériences professionnelles m'ont permis d'explorer les différentes facettes du développement Python. J'ai eu l'occasion de participer à des projets variés, où j'ai non seulement développé des compétences techniques solides, mais aussi appris l'importance de l'écoute et de la collaboration. Mon approche orientée utilisateur me pousse à toujours chercher des moyens d'améliorer les produits que je développe, en veillant à ce qu'ils soient à la fois fonctionnels et agréables à utiliser.",
+  "jobs": [
+    {
+      "position": "Développeur Full Stack (Volontaire)",
+      "company": "Eurasie en Analyse",
+      "dates": "04/2024 – présent, eurasieanalyse.fr",
+      "description": [
+        "Création d'un site web pour la publication d'articles et la collecte de feedback, en tant que projet bénévole, contribuant à l'initiative de partager des connaissances sur les questions d'Eurasie.",
+        "Développement complet de l'application, incluant le backend avec Django et une base de données PostgreSQL, tout en utilisant des technologies frontend comme HTML5, CSS, Bootstrap, JavaScript, et HTMX pour garantir une interface utilisateur moderne et réactive.",
+        "Les fonctionnalités clés incluent l'inscription des utilisateurs, la possibilité de commenter les articles, des notifications personnalisées, des profils d'utilisateurs, un formulaire de contact, et l'affichage dynamique du contenu basé sur les interactions des utilisateurs.",
+        "Déploiement et maintenance du site en ligne, assurant sa haute disponibilité et ses performances optimales grâce à une surveillance continue, des mises à jour régulières et des optimisations.",
+        "Des retours positifs sur l'expérience utilisateur et l'esthétique du site, soulignant l'intuitivité de la navigation, la réactivité du design et l'attractivité visuelle, ce qui a renforcé l'impact et la portée de la plateforme auprès de l'audience."
+      ]
+    },
+    {
+      "position": "Développeur Python",
+      "company": "Université Paris-Saclay",
+      "dates": "Juillet 2022 – Octobre 2022, Orsay, France",
+      "description": [
+        "Correction d'une erreur critique affectant la validité des transactions entre utilisateurs, permettant de rétablir le bon fonctionnement de l'application et d'assurer une expérience fluide et fiable.",
+        "Réécriture partielle du projet pour optimiser les performances, réduisant le temps de chargement de 25 % et augmentant la réactivité globale, ce qui a amélioré la satisfaction des utilisateurs.",
+        "Implémentation d'une solution de routage peer-to-peer, éliminant le besoin de stockage serveur, ce qui a permis d'optimiser la gestion des données et de renforcer la sécurité des transactions.",
+        "Amélioration de l'interface utilisateur grâce à l'intégration de NetworkX pour visualiser les transactions peer-to-peer, rendant l'application plus intuitive et facilitant la compréhension des connexions entre les utilisateurs.",
+        "Rédaction d'une documentation détaillée et collaboration étroite avec l'équipe pour intégrer de nouvelles fonctionnalités, assurant une transition harmonieuse et une adoption fluide par les utilisateurs finaux."
+      ]
+    },
+    {
+      "position": "Développeur Web",
+      "company": "Université normale du Sichuan",
+      "dates": "04/2019 – 07/2019, Chengdu, Sichuan, Chine",
+      "description": [
+        "Conception d'une interface utilisateur intuitive et responsive, garantissant une expérience de navigation fluide et agréable sur tous les appareils, que ce soit des ordinateurs, tablettes ou smartphones, avec une attention particulière à l'ergonomie et à la réactivité du design.",
+        "Développement complet de l'application, combinant un backend robuste construit avec Java EE, une base de données performante MySQL, et un frontend interactif utilisant HTML5, CSS3, Bootstrap, jQuery, et AJAX pour permettre une expérience utilisateur fluide et dynamique.",
+        "Mise en œuvre d'une page d'inscription avancée, avec vérification des données en temps réel, offrant à l'utilisateur une expérience fluide et sécurisée, tout en prévenant les erreurs et garantissant l'intégrité des informations soumises.",
+        "Création d'une fonctionnalité de recherche dynamique avec tri instantané, permettant un accès rapide et intuitif aux données, facilitant ainsi la navigation au sein de l'application et améliorant l'efficacité de l'expérience utilisateur.",
+        "Organisation efficace du code pour éviter les répétitions, facilitant la maintenabilité et l'évolution future de l'application, réduisant la dette technique, et assurant un développement durable et optimisé."
+      ]
+    }
+  ],
+  "meta": {
+    "title": "Expérience Professionnelle – Iliya Glazunov",
+    "description": "Découvrez le parcours professionnel d'Iliya Glazunov en tant que développeur Python, incluant des projets bénévoles full stack, des postes en développement Python et une expérience en développement web dans divers environnements.",
+    "keywords": "expérience professionnelle, développeur Python, full stack, Django, PostgreSQL, frontend, backend, développement web, Iliya Glazunov",
+    "image": "/images/photo.jpg"
+  }
+}

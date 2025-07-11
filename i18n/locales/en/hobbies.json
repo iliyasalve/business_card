@@ -1,0 +1,32 @@
+{
+  "title": "Hobbies and Passions",
+  "intro": "I share my passions that help me develop my creativity, discipline, and adaptability. They enrich not only my personal life but also contribute to my professional growth in the field of IT.",
+  "hobbies": [
+    {
+      "title": "Working with New Tools and Frameworks",
+      "description": "I am interested in working with new tools and frameworks in programming. Currently, I am studying Django and frameworks to create bots for messaging. This helps me stay up-to-date with modern trends and improve my skills while inspiring me to apply new approaches in development."
+    },
+    {
+      "title": "Traveling",
+      "description": "I have visited countries such as Spain, Germany, Italy, Georgia, Ukraine, and China. These travels have broadened my horizons and promoted the development of my adaptability and problem-solving skills. Each trip allowed me to explore new cultures and technologies, inspiring new ideas at work and helping me better understand users."
+    },
+    {
+      "title": "Music",
+      "description": "In my childhood, I was passionate about music, playing guitar and piano, and particularly enjoyed playing bass in an orchestra. We participated in various competitions and often took first place. This experience developed my creativity and attention to detail, which helps me think in an original way and approach problems creatively."
+    },
+    {
+      "title": "Sports",
+      "description": "I regularly go to the Basic Fit gym and am interested in power walking. These activities strengthen my discipline and health, teach me to set goals and achieve them, while also developing teamwork skills, which is particularly important in project work."
+    },
+    {
+      "title": "Photography",
+      "description": "I am interested in photography, which allows me to develop my creativity and notice the details in the world around me. Although I am not a professional, this hobby inspires me to find unique angles and capture the atmosphere of various events."
+    }
+  ],
+  "meta": {
+    "title": "Hobbies and Passions – Iliya Glazunov",
+    "description": "Discover Iliya Glazunov's hobbies and passions that fuel creativity, discipline, and adaptability, enriching both personal life and professional growth in IT.",
+    "keywords": "hobbies, passions, creativity, adaptability, discipline, personal growth, professional development, Iliya Glazunov, IT",
+    "image": "/images/photo.jpg"
+  }
+}

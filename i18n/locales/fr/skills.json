@@ -1,0 +1,77 @@
+{
+  "title": "Compétences",
+  "titleHard": "Savoir-faire",
+  "titleSoft": "Savoir-être",
+  "introHard": "Les savoir-faire présentés ont été développés au cours de nombreuses années de formation et de pratique. Mon expertise couvre une variété de langages de programmation, de frameworks et d'outils utilisés dans le développement de logiciels et l'analyse de données. J'applique activement mes connaissances pour créer des solutions innovantes, garantissant l'efficacité et la fiabilité des projets.",
+  "introSoft": "Les savoir-être jouent un rôle crucial dans ma compétence professionnelle, me permettant d'interagir efficacement avec mes collègues et de m'adapter aux conditions changeantes. Je sais organiser mon travail, faire preuve d'initiative et collaborer efficacement en équipe.",
+  "hardSkills": [
+    {
+        "name": "Python",
+        "description": "Plus de 5 ans d'expérience dans le développement de scripts et d'applications web utilisant Python. Cela inclut le travail avec des bibliothèques pour l'analyse de données, l'apprentissage automatique et l'intelligence artificielle : Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch. Expérience dans l'application de ces outils pour l'analyse de grandes données et le développement de modèles d'IA.",
+        "example": "Dans des projets, j'ai utilisé Pandas et NumPy pour le traitement des données, et j'ai créé des modèles d'apprentissage automatique avec Scikit-learn et TensorFlow pour la classification des données et des prévisions."
+    },
+    {
+        "name": "Django et PostgreSQL",
+        "description": "Développement d'applications web avec Django, intégration avec PostgreSQL pour la gestion des données utilisateurs et la création de requêtes complexes. Configuration de la partie serveur pour un traitement optimal des données.",
+        "example": "J'ai développé un site web réactif pour Eurasie en Analyse avec enregistrement des utilisateurs et possibilité de retour d'information."
+    },
+    {
+        "name": "Data Science",
+        "description": "Application d'outils de Data Science pour l'analyse et la visualisation des données avec Matplotlib et Seaborn, ainsi que la création de modèles d'apprentissage automatique. J'ai utilisé Jupyter Notebooks pour créer des rapports interactifs et mener des expériences.",
+        "example": "Développement d'analyses de données et visualisation basées sur des données réelles à l'aide de Seaborn pour identifier des tendances cachées."
+    },
+    {
+        "name": "Machine Learning & Computer Vision",
+        "description": "Expérience dans le travail avec l'intelligence artificielle et la vision par ordinateur, y compris la création de réseaux neuronaux et l'entraînement de modèles à l'aide de TensorFlow, PyTorch, et le traitement d'images avec OpenCV.",
+        "example": "J'ai développé un système d'analyse d'images utilisant OpenCV pour améliorer la visualisation des données et la classification automatique des objets."
+    },
+    {
+        "name": "Git, Postman, Virtualenv, VS Code, Sublime Text",
+        "description": "Utilisation de ces outils pour la gestion de projets, l'écriture et le test de code, ainsi que pour garantir la sécurité et le confort du développement.",
+        "example": "J'utilise Git pour la gestion des versions des projets, ce qui permet de suivre les changements et de coordonner le travail en équipe. Postman a été utile pour tester les API dans des projets."
+    },
+    {
+        "name": "Blockchain & Natural Language Processing (NLP)",
+        "description": "Expérience dans le travail avec des technologies de blockchain et le traitement du langage naturel. Application de modèles NLP pour l'analyse de texte et création de solutions basées sur la blockchain pour un échange de données sécurisé.",
+        "example": "Dans le projet Paris-Saclay, j'ai mis en œuvre le routage des données basé sur un protocole P2P avec l'utilisation de la blockchain pour améliorer la sécurité."
+    }
+    ],
+  "softSkills": [
+    {
+        "name": "Organisation et rigueur dans le travail",
+        "description": "Capable de structurer des tâches, de gérer efficacement mon temps et de suivre l'exécution de chaque étape du travail, tout en maintenant des normes de qualité élevées.",
+        "example": "Lors du développement du site Eurasie en Analyse, j'ai dirigé le projet de la conception à la mise en service, en organisant le travail de manière à ne pas perdre de détails."
+    },
+    {
+        "name": "Curiosité et prise d'initiatives",
+        "description": "Je m'efforce d'apprendre de nouvelles technologies et méthodes pour trouver les meilleures solutions aux défis. Je fais preuve d'initiative en proposant et en réalisant des améliorations dans les projets.",
+        "example": "Pendant mon travail sur le projet à l'Université Paris-Saclay, j'ai proposé et réalisé une carte de routage des données entre les utilisateurs, ce qui a permis d'optimiser l'échange d'informations directement, sans nécessité de stockage sur le serveur."
+    },
+    {
+        "name": "Adaptabilité aux changements",
+        "description": "Capable de m'adapter rapidement aux nouvelles exigences et changements dans le projet. J'apprends facilement de nouveaux outils et approches pour améliorer l'efficacité.",
+        "example": "Dans le cadre du projet Eurasie en Analyse, j'ai migré vers l'utilisation de PostgreSQL pour optimiser le fonctionnement de la base de données, ce qui a amélioré la performance de l'application."
+    },
+    {
+        "name": "Réactivité face aux défis",
+        "description": "Je réagis rapidement aux nouveaux défis et trouve des solutions à des problèmes complexes dans les meilleurs délais.",
+        "example": "À l'Université Paris-Saclay, j'ai corrigé rapidement une erreur critique dans le traitement des données, minimisant ainsi les risques de perte d'informations."
+    },
+    {
+        "name": "Travail d'équipe et collaboration",
+        "description": "Je suis capable de travailler efficacement en équipe, en maintenant une communication ouverte et en atteignant des objectifs communs.",
+        "example": "Dans le projet Eurasie en Analyse, j'ai collaboré étroitement avec les éditeurs de contenu pour garantir le bon fonctionnement du site et le déploiement opportun de nouvelles fonctionnalités."
+    },
+    {
+        "name": "Résolution de problèmes",
+        "description": "Je sais analyser et résoudre des problèmes complexes en utilisant des données et des technologies modernes.",
+        "example": "J'ai optimisé les algorithmes d'analyse de données à l'aide d'outils de Data Science, tels que Pandas, ce qui a conduit à un traitement plus rapide des données et à une prise de décision plus éclairée."
+    }
+    ],
+    "meta": {
+        "title": "Compétences – Iliya Glazunov",
+        "description": "Découvrez les compétences techniques et humaines d'Iliya Glazunov, incluant une expertise en Python, Django, Data Science, apprentissage automatique, blockchain, ainsi que des qualités professionnelles fortes comme le travail d'équipe, l'adaptabilité et la résolution de problèmes.",
+        "keywords": "compétences, compétences techniques, compétences humaines, Python, Django, apprentissage automatique, blockchain, data science, travail d'équipe, résolution de problèmes, Iliya Glazunov",
+        "image": "/images/photo.jpg"
+    }
+}

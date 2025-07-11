@@ -1,0 +1,60 @@
+{
+  "title": "Additional Training",
+  "intro": "To stay at the forefront of technological developments, I have taken specialized training courses that enhance my skills in areas such as digital marketing, project management, and data analytics. These programs have allowed me to deepen my knowledge and bring innovative solutions to technical challenges.",
+  "trainings": [
+    {
+      "title": "Generative AI for Software Developers Specialization",
+      "institution": "IBM on Coursera",
+      "location": "Online",
+      "period": "07/2025",
+      "badgeId": "eb664a77-dc7b-43f3-85aa-7d879961a6b9",
+      "description": "This specialization allowed me to dive into the world of generative AI applied to software development. I learned to integrate AI tools and models into the development process to create smarter and more efficient applications. This program also enabled me to explore real-world use cases of generative AI in software development, allowing me to provide innovative solutions and optimize development processes."
+    },
+    {
+      "title": "Generative AI for Data Analysts Specialization",
+      "institution": "IBM on Coursera",
+      "location": "Online",
+      "period": "07/2025",
+      "badgeId": "75f3e405-e1fe-4ca7-b3c3-c663c25360c6",
+      "description": "This program allowed me to discover the impact of generative AI in the field of data analytics. I learned to use generative models to improve the efficiency of data analysis and generate insights from complex data. It also gave me an understanding of integrating AI into analysis processes to automate certain tasks and maximize the value of data."
+    },
+    {
+      "title": "IBM Product Manager Professional Certificate",
+      "institution": "IBM on Coursera",
+      "location": "Online",
+      "period": "06/2025 – 07/2025",
+      "badgeId": "07dc0fc0-9eeb-4ec7-9097-d3b61a11e0c4",
+      "description": "This program helped me better understand product management and its relationship to software development. I learned how to define product priorities, collaborate effectively with product teams, and incorporate business requirements into technical decisions. This training helped me better navigate between product management and technical development, thereby strengthening my ability to participate in complex projects."
+    },
+    {
+      "title": "Google Advanced Data Analytics Certificate",
+      "institution": "Google on Coursera",
+      "location": "Online",
+      "period": "12/2024 – 01/2025",
+      "badgeId": "e5e58555-0079-4ff0-8d6e-519f655578a4",
+      "description": "I completed Google’s Advanced Data Analytics program on Coursera, which allowed me to enhance my data analytics skills at a higher level. This training taught me to use advanced analytical tools to solve complex problems, master data visualization techniques, and apply statistical methods to interpret large datasets. This certificate has better prepared me to perform in-depth analysis and provide data-driven strategic recommendations."
+    },
+    {
+      "title": "Data Analytics",
+      "institution": "Google on Coursera",
+      "location": "Online",
+      "period": "11/2024 – 12/2024",
+      "badgeId": "22db3e6a-8454-4b48-b168-9ca96546bb7c",
+      "description": "I completed the Google Data Analytics program on Coursera, which provided me with a solid foundation in data analysis. This course helped me master the skills needed to analyze complex data, interpret results, and make data-driven decisions. Thanks to this training, I am able to turn raw data into valuable insights to guide marketing strategies and improve business operations."
+    },
+    {
+      "title": "Fundamentals of Digital Marketing",
+      "institution": "Google Digital Garage",
+      "location": "Online",
+      "period": "10/2022",
+      "badgeId": "",
+      "description": "In October 2022, I completed a course on the fundamentals of digital marketing with Google Digital Garage. This course helped me understand the key principles of digital marketing, including strategic planning, campaign management, and performance analysis. I learned to use various tools and platforms to optimize online presence and attract a targeted audience, a valuable complement to my technical skills."
+    }
+  ],
+  "meta": {
+    "title": "Additional Training – Iliya Glazunov",
+    "description": "Explore Iliya Glazunov’s specialized training courses in generative AI, data analytics, product management, and digital marketing that enhance his technical and professional skills.",
+    "keywords": "additional training, generative AI, data analytics, product management, digital marketing, Coursera, IBM, Google, Iliya Glazunov",
+    "image": "/images/photo.jpg"
+  }
+}

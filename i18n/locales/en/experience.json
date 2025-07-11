@@ -1,0 +1,48 @@
+{
+  "title": "Work Experience",
+  "intro": "My professional experiences have allowed me to explore different facets of Python development. I've had the opportunity to participate in various projects, where I not only developed strong technical skills but also learned the importance of listening and collaboration. My user-oriented approach pushes me to always look for ways to improve the products I develop, ensuring they are both functional and enjoyable to use.",
+  "jobs": [
+    {
+      "position": "Full Stack Developer (Volunteer)",
+      "company": "Eurasie en Analyse",
+      "dates": "04/2024 – present, eurasieanalyse.fr",
+      "description": [
+        "Created a website for publishing articles and collecting feedback as a volunteer project contributing to the initiative to share knowledge about Eurasian issues.",
+        "Full application development including backend with Django and PostgreSQL database, frontend technologies like HTML5, CSS, Bootstrap, JavaScript, and HTMX for a modern, responsive UI.",
+        "Key features include user registration, commenting on articles, personalized notifications, user profiles, contact form, and dynamic content display based on user interactions.",
+        "Deployment and maintenance ensuring high availability and optimal performance through continuous monitoring, regular updates, and optimizations.",
+        "Positive feedback on user experience and aesthetics, highlighting intuitive navigation, responsive design, and visual appeal, enhancing platform impact and reach."
+      ]
+    },
+    {
+      "position": "Python Developer",
+      "company": "Université Paris-Saclay",
+      "dates": "July 2022 – October 2022, Orsay, France",
+      "description": [
+        "Fixed a critical bug affecting transaction validity between users, restoring smooth and reliable app operation.",
+        "Partial rewrite of the project optimizing performance, reducing loading time by 25% and increasing responsiveness, improving user satisfaction.",
+        "Implemented peer-to-peer routing solution, eliminating server storage needs, optimizing data handling and improving transaction security.",
+        "Enhanced UI with NetworkX integration for visualizing peer-to-peer transactions, making the app more intuitive and easier to understand connections.",
+        "Wrote detailed documentation and collaborated closely with the team to add new features ensuring smooth transition and adoption by end users."
+      ]
+    },
+    {
+      "position": "Web Developer",
+      "company": "Sichuan Normal University",
+      "dates": "04/2019 – 07/2019, Chengdu, Sichuan, China",
+      "description": [
+        "Designed intuitive and responsive UI ensuring smooth and pleasant navigation on all devices including desktops, tablets, and smartphones, focusing on ergonomics and responsive design.",
+        "Full app development combining robust Java EE backend, performant MySQL database, and interactive frontend using HTML5, CSS3, Bootstrap, jQuery, and AJAX for smooth dynamic user experience.",
+        "Implemented advanced registration page with real-time data validation offering a smooth and secure experience, preventing errors and ensuring data integrity.",
+        "Created dynamic search functionality with instant sorting for quick and intuitive data access, improving navigation efficiency.",
+        "Organized code effectively to avoid repetition, facilitating maintainability and future evolution, reducing technical debt, and ensuring sustainable optimized development."
+      ]
+    }
+  ],
+  "meta": {
+    "title": "Work Experience – Iliya Glazunov",
+    "description": "Explore Iliya Glazunov's professional journey as a Python developer, including volunteer full stack projects, Python development roles, and web development experience across diverse environments.",
+    "keywords": "work experience, Python developer, full stack, Django, PostgreSQL, frontend, backend, web development, Iliya Glazunov",
+    "image": "/images/photo.jpg"
+  }
+}

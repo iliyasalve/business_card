@@ -1,0 +1,32 @@
+{
+  "title": "Loisirs et passions",
+  "intro": "Je partage mes passions qui m'aident à développer ma créativité, ma discipline et mon adaptabilité. Elles enrichissent non seulement ma vie personnelle, mais contribuent également à ma croissance professionnelle dans le domaine de l'informatique.",
+  "hobbies": [
+    {
+      "title": "Travail avec de nouveaux outils et frameworks",
+      "description": "Je m'intéresse au travail avec de nouveaux outils et frameworks en programmation. Actuellement, j'étudie Django et des frameworks pour créer des bots pour les messageries. Cela m'aide à rester au courant des tendances modernes et à améliorer mes compétences, tout en m'inspirant à appliquer de nouvelles approches dans le développement."
+    },
+    {
+      "title": "Voyages",
+      "description": "J'ai visité des pays comme l'Espagne, l'Allemagne, l'Italie, la Géorgie, l'Ukraine et la Chine. Ces voyages ont élargi mes horizons et favorisé le développement de mes compétences en adaptation et en résolution de problèmes. Chaque voyage m'a permis d'explorer de nouvelles cultures et technologies, m'inspirant à de nouvelles idées au travail et m'aidant à mieux comprendre les utilisateurs."
+    },
+    {
+      "title": "Musique",
+      "description": "Dans mon enfance, j'étais passionné de musique, jouant de la guitare et du piano, et c'est particulièrement en jouant de la basse dans un orchestre que j'ai pris le plus de plaisir. Nous avons participé à divers concours et avons souvent remporté la première place. Cette expérience a développé ma créativité et mon attention aux détails, ce qui m'aide à penser de manière originale et à aborder les problèmes de façon créative."
+    },
+    {
+      "title": "Sport",
+      "description": "Je fréquente régulièrement la salle de sport Basic Fit et m'intéresse à la marche sportive. Ces activités renforcent ma discipline et ma santé, m'apprennent à définir des objectifs et à les atteindre, tout en développant l'esprit d'équipe, ce qui est particulièrement important dans le travail de projet."
+    },
+    {
+      "title": "Photographie",
+      "description": "Je m'intéresse à la photographie, ce qui me permet de développer ma créativité et de remarquer les détails dans le monde qui m'entoure. Bien que je ne sois pas professionnel, ce hobby m'inspire à trouver des angles uniques et à capturer l'atmosphère de divers événements."
+    }
+  ],
+  "meta": {
+    "title": "Loisirs et Passions – Iliya Glazunov",
+    "description": "Découvrez les loisirs et passions d'Iliya Glazunov qui stimulent la créativité, la discipline et l'adaptabilité, enrichissant à la fois la vie personnelle et la croissance professionnelle dans l'informatique.",
+    "keywords": "loisirs, passions, créativité, adaptabilité, discipline, développement personnel, développement professionnel, Iliya Glazunov, informatique",
+    "image": "/images/photo.jpg"
+  }
+}

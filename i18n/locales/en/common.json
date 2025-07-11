@@ -1,0 +1,39 @@
+{
+  "home": {
+    "meta": {
+      "title": "Hello, I'm Iliya Glazunov",
+      "description": "I am a passionate Python developer seeking my first professional opportunity. With over 5 years of non-commercial experience, I have gained strong skills in web application development and creating Telegram bots. I am also familiar with blockchain and natural language processing.",
+      "keywords": "portfolio, frontend, Python, Telegram bots, NLP, blockchain, developer, business card",
+      "image": "/images/photo.jpg"
+    },
+    "title": "Hello, I'm Iliya Glazunov",
+    "description": "I am a passionate Python developer seeking my first professional opportunity. With over 5 years of non-commercial experience, I have gained strong skills in web application development and creating Telegram bots. I am also familiar with blockchain and natural language processing.\n\nMy goal is to create user-friendly and effective solutions to help users achieve their goals. I am committed to continuing to learn and develop to stay up-to-date with the latest technologies and industry trends.",
+    "image": "/images/photo.jpg"
+  },
+  "header": {
+    "title": "My Portfolio",
+    "experience": "Experience",
+    "skills": "Skills",
+    "education": "Education",
+    "training": "Training",
+    "projects": "Projects",
+    "hobbies": "Hobbies"
+  },
+  "footer": {
+    "email": "iliyasalve@gmail.com",
+    "phone": "+33 7 53 66 24 00",
+    "linkedin": "https://fr.linkedin.com/in/iliya-glazunov",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "linkedinLabel": "LinkedIn",
+    "linkedinName": "Iliya Glazunov",
+    "githubLabel": "GitHub",
+    "github": "https://github.com/iliyasalve",
+    "githubName": "iliyasalve",
+    "copyright": "© {{year}} Iliya Glazunov. All rights reserved."
+  },
+  "privacy": {
+    "message": "This site does not collect any personal data. However, GitHub Pages may use cookies or collect some information. For more details, visit their official site.",
+    "accept": "OK"
+  }
+}

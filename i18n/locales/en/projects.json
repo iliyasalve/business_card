@@ -1,0 +1,52 @@
+{
+  "title": "Projects",
+  "intro": "Discover my projects that showcase my Python development skills, as well as my passion for creating useful and engaging applications. Whether it's interactive games or Telegram bots, each project was designed to offer a pleasant user experience while addressing specific needs.",
+  "projects": [
+    {
+      "title": "TikTok Complaint Classification Model",
+      "description": "To develop a predictive model for TikTok, this project aims to determine whether a video contains a statement or expresses an opinion. The primary goal of the project is to reduce the number of user reports that require manual moderation and improve processing efficiency.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Cyclistic Case Study",
+      "description": "This project analyzes the use of Cyclistic bikes by annual members and casual users. The goal is to provide marketing recommendations to convert casual users into annual members and improve user satisfaction.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Spam Detection with NLTK",
+      "description": "To create an effective spam detector for messages, this project uses natural language processing (NLP) techniques with the NLTK library. It includes data preprocessing, feature extraction, and training a Naïve Bayes model.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Cats and Dogs Image Classification",
+      "description": "This project involves training a convolutional neural network (CNN) to classify images of cats and dogs. The model is able to recognize image features to predict whether the image represents a cat or a dog.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Weather Telegram Bot",
+      "description": "Telegram bot that allows users to get real-time weather information for any city. After selecting a city, the user receives details about the current weather, including temperature, feels-like temperature, and the minimum and maximum temperatures for the day.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "MultiTool Telegram Bot",
+      "description": "A Telegram bot designed to simplify users' lives. With this bot, users can generate complex passwords of any length, shorten links to various resources, and roll dice.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Clicker Game",
+      "description": "A clicker game where the goal is to score as many points as possible. Players can use accumulated points to buy multipliers, significantly boosting their score.",
+      "link": "https://iliyasalve.github.io/business_card"
+    },
+    {
+      "title": "Snake Game",
+      "description": "Snake game where the goal is to score as many points as possible. Players have a large maneuvering area, making the game dynamic and engaging.",
+      "link": "https://iliyasalve.github.io/business_card"
+    }
+  ],
+  "meta": {
+    "title": "Projects – Iliya Glazunov",
+    "description": "Explore Iliya Glazunov’s projects showcasing expertise in Python development, including interactive games, Telegram bots, and machine learning models, all designed to deliver engaging and practical solutions.",
+    "keywords": "projects, Python development, Telegram bots, machine learning, games, NLP, Iliya Glazunov, software development",
+    "image": "/images/photo.jpg"
+  }
+}
