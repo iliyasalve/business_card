@@ -55,12 +55,12 @@
     {
       "title": "Clicker Game",
       "description": "Кликер, в котором цель — набрать как можно больше очков. Игроки могут использовать накопленные очки для покупки множителей, значительно увеличивающих их результат.",
-      "link": "https://github.com/iliyasalve/Tetris_Game"
+      "link": "https://github.com/iliyasalve/Clicker_Game"
     },
     {
       "title": "Игра в змейку",
       "description": "Игра в змейку, в которой цель — набрать как можно больше очков. Игроки имеют большой маневровый простор, что делает игру динамичной и увлекательной.",
-      "link": "https://github.com/iliyasalve/Clicker_Game"
+      "link": "https://github.com/iliyasalve/Snake_Game"
     }
   ],
     "meta": {

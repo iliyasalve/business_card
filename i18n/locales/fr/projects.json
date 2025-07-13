@@ -55,12 +55,12 @@
     {
       "title": "Clicker Game",
       "description": "Jeu de clicker où le but est de marquer le plus de points possible. Les joueurs peuvent utiliser les points accumulés pour acheter des multiplicateurs, ce qui booste considérablement leur score.",
-      "link": "https://github.com/iliyasalve/Tetris_Game"
+      "link": "https://github.com/iliyasalve/Clicker_Game"
     },
     {
       "title": "Jeu du Serpent",
       "description": "Jeu du Serpent où le but est de marquer le plus de points possible. Les joueurs bénéficient d'un grand champ de manœuvres, ce qui rend le jeu dynamique et engageant.",
-      "link": "https://github.com/iliyasalve/Clicker_Game"
+      "link": "https://github.com/iliyasalve/Snake_Game"
     }
   ],
     "meta": {
