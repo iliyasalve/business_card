@@ -12,10 +12,10 @@
   },
   "header": {
     "title": "Mon Portfolio",
-    "experience": "Expérience",
+    "experience": "Expériences",
     "skills": "Compétences",
     "education": "Éducation",
-    "training": "Formation",
+    "training": "Formations",
     "projects": "Projets",
     "hobbies": "Loisirs"
   },
