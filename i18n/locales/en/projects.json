@@ -3,44 +3,64 @@
   "intro": "Discover my projects that showcase my Python development skills, as well as my passion for creating useful and engaging applications. Whether it's interactive games or Telegram bots, each project was designed to offer a pleasant user experience while addressing specific needs.",
   "projects": [
     {
+      "title": "Employee Retention Prediction Model for Salifort Motors",
+      "description": "A machine learning project developed for Salifort Motors to predict employee turnover and identify factors influencing retention. Using a tree-based model and the PACE methodology, the project achieved 96.2% accuracy and provided actionable insights to reduce attrition and improve workplace sustainability.",
+      "link": "https://github.com/iliyasalve/salifort_motors_hr_analytics"
+    },
+    {
+      "title": "Daifugo Card Game",
+      "description": "A digital version of the traditional Japanese card game Daifugo, developed with Godot Engine 4.4. The game supports 2–4 players (1 human + AI), two difficulty levels, and multilingual UI (English, French, Russian). It features special rules like Revolution and 8-Cut, as well as a scoring system with role-based ranks such as Daifugo and Daihinmin.",
+      "link": "https://github.com/iliyasalve/daifugo-godot"
+    },
+    {
+      "title": "PentaWord Telegram Bot",
+      "description": "A multilingual word-guessing game bot for Telegram, supporting English, Russian, and French. Players try to guess words based on emoji hints (🟩, 🟨, ⬜) within a limited number of attempts. The bot features three difficulty levels, language selection, and provides a fun and challenging experience inspired by Wordle.",
+      "link": "https://github.com/iliyasalve/pentaword_telegram_bot"
+    },
+    {
       "title": "TikTok Complaint Classification Model",
       "description": "To develop a predictive model for TikTok, this project aims to determine whether a video contains a statement or expresses an opinion. The primary goal of the project is to reduce the number of user reports that require manual moderation and improve processing efficiency.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/tiktok_claim_classification_model"
     },
     {
       "title": "Cyclistic Case Study",
       "description": "This project analyzes the use of Cyclistic bikes by annual members and casual users. The goal is to provide marketing recommendations to convert casual users into annual members and improve user satisfaction.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/cyclistic_case_study"
     },
     {
       "title": "Spam Detection with NLTK",
       "description": "To create an effective spam detector for messages, this project uses natural language processing (NLP) techniques with the NLTK library. It includes data preprocessing, feature extraction, and training a Naïve Bayes model.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/NLTK_Spam_Detection"
     },
     {
       "title": "Cats and Dogs Image Classification",
       "description": "This project involves training a convolutional neural network (CNN) to classify images of cats and dogs. The model is able to recognize image features to predict whether the image represents a cat or a dog.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/Cats_Dogs_Image_Classification"
     },
     {
       "title": "Weather Telegram Bot",
       "description": "Telegram bot that allows users to get real-time weather information for any city. After selecting a city, the user receives details about the current weather, including temperature, feels-like temperature, and the minimum and maximum temperatures for the day.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/Weather_Telegram_Bot"
     },
     {
       "title": "MultiTool Telegram Bot",
       "description": "A Telegram bot designed to simplify users' lives. With this bot, users can generate complex passwords of any length, shorten links to various resources, and roll dice.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/MultiTool_Telegram_Bot"
+    },
+    {
+      "title": "Tetris Game",
+      "description": "A classic Tetris game built with Pygame, where the goal is to score as many points as possible. Players can control the pieces using the keyboard: move left/right, rotate, and accelerate the fall. The game displays the current score and saves the best score locally.",
+      "link": "https://github.com/iliyasalve/Tetris_Game"
     },
     {
       "title": "Clicker Game",
       "description": "A clicker game where the goal is to score as many points as possible. Players can use accumulated points to buy multipliers, significantly boosting their score.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/Clicker_Game"
     },
     {
       "title": "Snake Game",
       "description": "Snake game where the goal is to score as many points as possible. Players have a large maneuvering area, making the game dynamic and engaging.",
-      "link": "https://iliyasalve.github.io/business_card"
+      "link": "https://github.com/iliyasalve/Snake_Game"
     }
   ],
   "meta": {
