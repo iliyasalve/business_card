@@ -2,7 +2,7 @@
   "name": "business_card_repo",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://iliyasalve.github.io/business_card/",
+  "homepage": "https://iliyaglazunov.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

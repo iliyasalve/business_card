@@ -13,7 +13,7 @@ interface MetaData {
 
 const TrainingPage = () => {
   const { t } = useTranslation('training');
-  const basePath = '/business_card';
+  //const basePath = '/business_card';
 
   const trainings = t('trainings', { returnObjects: true }) as Array<{
     title: string;
@@ -32,7 +32,7 @@ const TrainingPage = () => {
         title={meta.title}
         description={meta.description}
         keywords={meta.keywords}
-        image={`${basePath}${meta.image}`}
+        image={meta.image}
         pageSlug="training"
       />
       <Head>
@@ -78,7 +78,7 @@ const TrainingPage = () => {
                   />
                 </div>
               ) : (
-                // Для Skillshop
+                // Skillshop
                 <div className="credly-badge-wrapper centered-badge mt-4 md:mt-0 md:ml-4">
                   <a
                     href="https://skillshop.exceedlms.com/student/award/X1iEkpRQh1kmvaDrRFnCMq71"
@@ -87,8 +87,8 @@ const TrainingPage = () => {
                     title="Google Skillshop Certification"
                   >
                     <img
-                      src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/certifications/badges/130513/large/badge.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&Signature=kXYL2EhPUngjQ8HvleJn%2Bot76A8%3D&Expires=1752474807"
-                      alt="Skillshop Badge"
+                      src="/images/google_badge.png"
+                      alt="Google Skillshop Badge"
                       style={{ width: '120px', height: 'auto' }}
                     />
                   </a>

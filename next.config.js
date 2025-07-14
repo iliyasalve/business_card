@@ -19,8 +19,8 @@ const nextConfig = {
   images: {
     unoptimized: true,  // Отключаем оптимизацию изображений
   },
-  basePath: '/business_card',  // Путь на GitHub Pages
-  assetPrefix: '/business_card/',  // Абсолютные пути с префиксом
+  //basePath: '/business_card',  // Путь на GitHub Pages
+  //assetPrefix: '/business_card/',  // Абсолютные пути с префиксом
 };
 
 module.exports = nextConfig;

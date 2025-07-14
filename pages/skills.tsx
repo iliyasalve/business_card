@@ -27,7 +27,7 @@ const SkillsPage = () => {
   }>;
 
   const meta = t('meta', { returnObjects: true }) as MetaData;
-  const basePath = '/business_card';
+  //const basePath = '/business_card';
 
 
   return (
@@ -36,7 +36,7 @@ const SkillsPage = () => {
         title={meta.title}
         description={meta.description}
         keywords={meta.keywords}
-        image={`${basePath}${meta.image}`}
+        image={meta.image}
         pageSlug="skills"
       />
       <Head>

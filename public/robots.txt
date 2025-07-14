@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://iliyasalve.github.io/business_card
+Host: https://iliyaglazunov.com
 
 # Sitemaps
-Sitemap: https://iliyasalve.github.io/business_card/sitemap.xml
+Sitemap: https://iliyaglazunov.com/sitemap.xml
