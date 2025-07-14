@@ -34,3 +34,9 @@ a {
   height: 240px; 
 }
 
+
+.centered-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

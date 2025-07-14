@@ -66,8 +66,9 @@ const TrainingPage = () => {
               </div>
 
               {/* Badge */}
-              {training.badgeId && (
+              {training.badgeId ? (
                 <div className="credly-badge-wrapper mt-4 md:mt-0 md:ml-4">
+                  {/* Для Credly */}
                   <div
                     className="credly-badge-container"
                     data-iframe-width="150"
@@ -76,7 +77,24 @@ const TrainingPage = () => {
                     data-share-badge-host="https://www.credly.com"
                   />
                 </div>
+              ) : (
+                // Для Skillshop
+                <div className="credly-badge-wrapper centered-badge mt-4 md:mt-0 md:ml-4">
+                  <a
+                    href="https://skillshop.exceedlms.com/student/award/X1iEkpRQh1kmvaDrRFnCMq71"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Google Skillshop Certification"
+                  >
+                    <img
+                      src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/certifications/badges/130513/large/badge.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&Signature=kXYL2EhPUngjQ8HvleJn%2Bot76A8%3D&Expires=1752474807"
+                      alt="Skillshop Badge"
+                      style={{ width: '120px', height: 'auto' }}
+                    />
+                  </a>
+                </div>
               )}
+
             </div>
           </div>
         ))}
