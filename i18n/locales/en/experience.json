@@ -3,11 +3,11 @@
   "intro": "My professional experiences have allowed me to explore different facets of Python development. I've had the opportunity to participate in various projects, where I not only developed strong technical skills but also learned the importance of listening and collaboration. My user-oriented approach pushes me to always look for ways to improve the products I develop, ensuring they are both functional and enjoyable to use.",
   "jobs": [
     {
-      "position": "Full Stack Developer (Volunteer)",
+      "position": "Full Stack Developer",
       "company": "Eurasie en Analyse",
       "dates": "04/2024 – present, eurasieanalyse.fr",
       "description": [
-        "Created a website for publishing articles and collecting feedback as a volunteer project contributing to the initiative to share knowledge about Eurasian issues.",
+        "Created a website for publishing articles and collecting feedback contributing to the initiative to share knowledge about Eurasian issues.",
         "Full application development including backend with Django and PostgreSQL database, frontend technologies like HTML5, CSS, Bootstrap, JavaScript, and HTMX for a modern, responsive UI.",
         "Key features include user registration, commenting on articles, personalized notifications, user profiles, contact form, and dynamic content display based on user interactions.",
         "Deployment and maintenance ensuring high availability and optimal performance through continuous monitoring, regular updates, and optimizations.",
