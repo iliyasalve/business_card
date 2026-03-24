@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postexport": "mkdir out\\business_card && move out\\*.* out\\business_card\\ && move out\\_next out\\business_card\\ && move out\\images out\\business_card\\ && echo. > out\\business_card\\.nojekyll && next-sitemap",
+    "postexport": "mkdir -p out_temp/business_card && mv out/* out_temp/business_card/ && rm -rf out && mv out_temp out && touch out/business_card/.nojekyll && next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "deploy": "npm run build && npm run postexport && gh-pages -d out/business_card -t true"
