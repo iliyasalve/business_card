@@ -1,17 +1,19 @@
 {
   "home": {
     "meta": {
-      "title": "Hello, I'm Iliya Glazunov",
+      "title": "Iliya Glazunov | Developer, Data & AI Specialist",
       "description": "I am a passionate Python developer seeking my first professional opportunity. With over 5 years of non-commercial experience, I have gained strong skills in web application development and creating Telegram bots. I am also familiar with blockchain and natural language processing.",
       "keywords": "portfolio, frontend, Python, Telegram bots, NLP, blockchain, developer, business card",
       "image": "/images/photo.jpg"
     },
     "title": "Hello, I'm Iliya Glazunov",
     "description": "I am a passionate Python developer seeking my first professional opportunity. With over 5 years of non-commercial experience, I have gained strong skills in web application development and creating Telegram bots. I am also familiar with blockchain and natural language processing.\n\nMy goal is to create user-friendly and effective solutions to help users achieve their goals. I am committed to continuing to learn and develop to stay up-to-date with the latest technologies and industry trends.",
-    "image": "/images/photo.jpg"
+    "image": "/images/photo.jpg",
+    "explore": "Explore My Experience",
+    "viewProjects": "View Projects"
   },
   "header": {
-    "title": "My Portfolio",
+    "title": "Iliya Glazunov",
     "experience": "Experience",
     "skills": "Skills",
     "education": "Education",

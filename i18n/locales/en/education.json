@@ -1,6 +1,7 @@
 {
   "title": "Degrees and Education",
   "intro": "My studies have built a strong foundation in computer science, covering a wide range of fields such as artificial intelligence, cryptography, and web application development. The academic projects I completed allowed me to apply this knowledge in real-world contexts. Here you'll find a detailed presentation of my degrees, institutions, and acquired skills.",
+  "keyProjects": "Key Projects",
   "degrees": [
     {
       "title": "Master in Computer Science",

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import '../i18n/config';
 import i18n from '../i18n/config';
@@ -10,6 +11,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [isReady, setIsReady] = useState(false); // track client hydration
 
   useEffect(() => {
+    // Suppress non-fatal React Fiber / Permission denied errors from browser extensions or third-party scripts
+    const handleError = (e: ErrorEvent | PromiseRejectionEvent) => {
+      const message = 'reason' in e ? e.reason?.message : e.message;
+      if (
+        message?.includes('__reactFiber') || 
+        message?.includes('Permission denied to access property')
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    window.addEventListener('error', handleError);
+    window.addEventListener('unhandledrejection', handleError);
+
     // Load theme from localStorage
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     if (savedTheme) {
@@ -21,11 +37,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     const savedLng = localStorage.getItem('i18nextLng');
     if (savedLng && i18n.language !== savedLng) {
       i18n.changeLanguage(savedLng).then(() => {
-        setIsReady(true); // mark ready only after language changed
+        setIsReady(true);
       });
     } else {
-      setIsReady(true); // no language change needed, mark ready immediately
+      setIsReady(true);
     }
+
+    return () => {
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleError);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -35,9 +56,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
+  const router = useRouter();
+  const isPrivacyRoute = router.pathname.startsWith('/privacy');
+
   if (!isReady) {
     // Avoid rendering UI until language (and theme) synced
     return null; // or a spinner/loading indicator if хочешь
+  }
+
+  if (isPrivacyRoute) {
+    return <Component {...pageProps} />;
   }
 
   return (

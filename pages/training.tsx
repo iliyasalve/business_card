@@ -1,105 +1,105 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
+import { motion, Variants } from 'framer-motion';
+import { Award } from 'lucide-react';
 import Seo from '../components/Seo';
 
-interface MetaData {
-  title: string;
-  description: string;
-  keywords: string;
-  image: string;
-  url: string;
-}
+const fadeInUp: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
+const cardClass = "bg-white dark:bg-gray-800/80 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] border border-gray-100 dark:border-gray-700/50 hover:border-blue-500/30 transition-all";
 
 const TrainingPage = () => {
   const { t } = useTranslation('training');
-  //const basePath = '/business_card';
 
-  const trainings = t('trainings', { returnObjects: true }) as Array<{
-    title: string;
-    institution: string;
-    location: string;
-    period: string;
-    badgeId: string;
-    description: string;
-  }>;
+  const meta = t('meta', { returnObjects: true }) as any;
+  const trainings = t('trainings', { returnObjects: true }) as any[];
 
-  const meta = t('meta', { returnObjects: true }) as MetaData;
+  useEffect(() => {
+    // Force Credly to re-evaluate on client-side route mount
+    const script = document.createElement('script');
+    script.src = "https://cdn.credly.com/assets/utilities/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <>
       <Seo
-        title={meta.title}
-        description={meta.description}
-        keywords={meta.keywords}
-        image={meta.image}
+        title={meta?.title || t('title')}
+        description={meta?.description || ''}
+        keywords={meta?.keywords || ''}
+        image={meta?.image || ''}
         pageSlug="training"
       />
       <Head>
         <title>{t('title')}</title>
-        {/* Insert script for displaying icons */}
-        <script
-          type="text/javascript"
-          async
-          src="https://cdn.credly.com/assets/utilities/embed.js"
-        />
       </Head>
 
-      <div className="container mx-auto px-6 py-8">
-        <h1 className="text-3xl font-bold mb-6">{t('title')}</h1>
-        <p className="mb-8">{t('intro')}</p>
-
-      <section>
-        {trainings.map((training, i) => (
-          <div key={i} className="mb-4 pb-6">
-            <div className="border-b border-gray-300 mb-6" />
-
-            {/* Container for the icon and text */}
-            <div className="flex flex-col items-center md:flex-row md:items-center">
-              {/* Text part */}
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="text-2xl font-semibold">{training.title}</h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {training.institution} — {training.location} ({training.period})
-                </p>
-                <p className="mt-2">{training.description}</p>
+      <div className="flex flex-col space-y-16 py-10 max-w-5xl mx-auto px-4 w-full">
+        
+        {/* HEADER SECTION WITH IMAGE BACKGROUND */}
+        <section className="relative w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-2xl">
+          <img src="/images/training_illustration.webp" alt="Training Header" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gray-900/60 dark:bg-gray-900/70 flex flex-col justify-end p-6 md:p-12">
+            <div>
+              <div className="flex flex-row items-center space-x-3 mb-4">
+                <Award className="w-8 sm:w-10 h-8 sm:h-10 text-blue-400 shrink-0" />
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight break-words">{t('title')}</h1>
               </div>
-
-              {/* Badge */}
-              {training.badgeId ? (
-                <div className="credly-badge-wrapper mt-4 md:mt-0 md:ml-4">
-                  {/* Для Credly */}
-                  <div
-                    className="credly-badge-container"
-                    data-iframe-width="150"
-                    data-iframe-height="270"
-                    data-share-badge-id={training.badgeId}
-                    data-share-badge-host="https://www.credly.com"
-                  />
-                </div>
-              ) : (
-                // Skillshop
-                <div className="credly-badge-wrapper centered-badge mt-4 md:mt-0 md:ml-4">
-                  <a
-                    href="https://skillshop.exceedlms.com/student/award/X1iEkpRQh1kmvaDrRFnCMq71"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Google Skillshop Certification"
-                  >
-                    <img
-                      src="/images/google_badge.png"
-                      alt="Google Skillshop Badge"
-                      style={{ width: '120px', height: 'auto' }}
-                    />
-                  </a>
-                </div>
-              )}
-
+              <p className="hidden md:block text-lg md:text-xl text-gray-200 max-w-3xl leading-relaxed">{t('intro')}</p>
             </div>
           </div>
-        ))}
-      </section>
+        </section>
 
+        {/* Mobile Description */}
+        <p className="block md:hidden text-lg text-gray-700 dark:text-gray-300 leading-relaxed px-2 -mt-8">{t('intro')}</p>
+
+        {/* TRAINING GRID */}
+        <section>
+            <div className="space-y-6">
+            {Array.isArray(trainings) && trainings.map((training, idx) => (
+                <div key={idx} className={`${cardClass} flex flex-col sm:flex-row gap-6 items-center sm:items-start`}>
+                
+                {/* Badge (Rendered first so it appears above text on mobile) */}
+                {training.badgeId ? (
+                    <div className="shrink-0 inline-flex items-center justify-center bg-white rounded-xl mb-4 sm:mb-0 border border-gray-200 dark:border-gray-700 overflow-hidden h-[220px] w-[150px]">
+                    <div
+                        className="credly-badge-container scale-[0.85] origin-top sm:scale-100 sm:origin-center mt-2"
+                        data-iframe-width="150"
+                        data-iframe-height="250"
+                        data-share-badge-id={training.badgeId}
+                        data-share-badge-host="https://www.credly.com"
+                    />
+                    </div>
+                ) : (
+                    <div className="shrink-0 inline-flex items-center justify-center p-3 bg-white rounded-xl mb-4 sm:mb-0 border border-gray-200 dark:border-gray-700 overflow-hidden h-[220px] w-[150px]">
+                    <a href="https://skillshop.exceedlms.com/student/award/X1iEkpRQh1kmvaDrRFnCMq71" target="_blank" rel="noopener noreferrer">
+                        <img src="/images/google_badge.png" alt="Google Skillshop Badge" className="w-[120px] h-auto" />
+                    </a>
+                    </div>
+                )}
+                
+                <div className="flex-1 text-center sm:text-left">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{training.title}</h3>
+                    <div className="text-gray-600 dark:text-gray-400 font-medium text-lg">
+                    {training.institution} — {training.location} 
+                    <span className="inline-block bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full sm:ml-2 text-sm text-gray-800 dark:text-gray-200 whitespace-nowrap mt-2 sm:mt-0">{training.period}</span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mt-4 leading-relaxed text-base">{training.description}</p>
+                </div>
+                </div>
+            ))}
+            </div>
+        </section>
       </div>
     </>
   );
