@@ -171,7 +171,7 @@ const Home = () => {
                     <div className="w-4 h-4 rounded-full bg-primary border-4 border-background z-10"></div>
                     <div className={`w-0.5 h-full bg-surface-variant ${idx === jobs.length - 1 ? 'invisible' : ''}`}></div>
                   </div>
-                  <div className="pb-12 border-b border-surface-variant flex-grow">
+                  <div className={`${idx === jobs.length - 1 ? 'pb-0' : 'pb-12'} flex-grow`}>
                     <h4 className="font-display text-headline-md mb-1">{job.position}</h4>
                     <div className="text-primary font-medium mb-4">{job.company} <span className="md:hidden text-xs text-on-surface-variant ml-2">({job.dates})</span></div>
                     <ul className="text-on-surface-variant max-w-3xl list-disc pl-5 space-y-2 leading-relaxed font-body-md text-sm sm:text-base">
