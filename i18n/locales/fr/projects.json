@@ -1,72 +1,40 @@
 {
-  "title": "Mes projets",
-  "intro": "Découvrez mes projets qui illustrent mes compétences en développement Python, ainsi que ma passion pour la création d'applications utiles et engageantes. Que ce soit des jeux interactifs ou des bots Telegram, chaque projet a été conçu pour offrir une expérience utilisateur agréable tout en répondant à des besoins spécifiques.",
-  "projects": [
-    {
-      "title": "Modèle de Prédiction de Fidélisation des Employés pour Salifort Motors",
-      "description": "Un projet d'apprentissage automatique développé pour Salifort Motors afin de prédire le départ des employés et identifier les facteurs influençant la fidélisation. Grâce à un modèle basé sur les arbres et la méthode PACE, le projet a atteint une précision de 96,2 % et a fourni des recommandations concrètes pour améliorer la rétention du personnel.",
-      "link": "https://github.com/iliyasalve/salifort_motors_hr_analytics"
-    },
-    {
-      "title": "Jeu de Cartes Daifugo",
-      "description": "Une version numérique du jeu de cartes japonais traditionnel Daifugo, développée avec Godot Engine 4.4. Le jeu prend en charge de 2 à 4 joueurs (1 humain + IA), deux niveaux de difficulté et une interface multilingue (anglais, français, russe). Il intègre des règles spéciales comme la Révolution et le 8-Cut, ainsi qu’un système de score basé sur les rôles.",
-      "link": "https://github.com/iliyasalve/daifugo-godot"
-    },
-    {
-      "title": "Bot Telegram PentaWord",
-      "description": "Un bot de jeu de mots multilingue pour Telegram, prenant en charge l'anglais, le russe et le français. Les joueurs doivent deviner un mot à l’aide d’indices emoji (🟩, 🟨, ⬜) en un nombre limité de tentatives. Le bot propose trois niveaux de difficulté, un choix de langue et une expérience de jeu inspirée de Wordle.",
-      "link": "https://github.com/iliyasalve/pentaword_telegram_bot"
-    },
-    {
-      "title": "Modèle de Classification des Réclamations pour TikTok",
-      "description": "Afin de développer un modèle prédictif pour TikTok, ce projet vise à déterminer si une vidéo contient une affirmation ou exprime une opinion. L'objectif principal du projet est de réduire le nombre de rapports des utilisateurs nécessitant une modération manuelle et d'améliorer l'efficacité du traitement.",
-      "link": "https://github.com/iliyasalve/tiktok_claim_classification_model"
-    },
-    {
-      "title": "Étude de Cas Cyclistic",
-      "description": "Ce projet analyse l'utilisation des vélos Cyclistic par les membres annuels et les utilisateurs occasionnels. L'objectif est de fournir des recommandations marketing pour convertir les utilisateurs occasionnels en membres annuels et améliorer la satisfaction des utilisateurs.",
-      "link": "https://github.com/iliyasalve/cyclistic_case_study"
-    },
-    {
-      "title": "Détection de Spam avec NLTK",
-      "description": "Pour créer un détecteur de spam efficace pour les messages, ce projet utilise des techniques de traitement du langage naturel (NLP) avec la bibliothèque NLTK. Il inclut le prétraitement des données, l'extraction de caractéristiques et l'entraînement d'un modèle Naïve Bayes.",
-      "link": "https://github.com/iliyasalve/NLTK_Spam_Detection"
-    },
-    {
-      "title": "Classification d'images de Chats et de Chiens",
-      "description": "Ce projet consiste à entraîner un réseau neuronal convolutif (CNN) pour classifier des images de chats et de chiens. Le modèle est capable de reconnaître les caractéristiques des images pour prédire si l'image représente un chat ou un chien.",
-      "link": "https://github.com/iliyasalve/Cats_Dogs_Image_Classification"
-    },
-    {
-      "title": "Bot Telegram Météo",
-      "description": "Bot Telegram qui permet aux utilisateurs d'obtenir des informations météorologiques en temps réel pour n'importe quelle ville. Après avoir choisi une ville, l'utilisateur reçoit des détails sur la météo actuelle, y compris la température, la température ressentie, ainsi que les températures minimales et maximales pour la journée.",
-      "link": "https://github.com/iliyasalve/Weather_Telegram_Bot"
-    },
-    {
-      "title": "Bot Telegram MultiTool",
-      "description": "Bot Telegram conçu pour simplifier la vie des utilisateurs. Avec ce bot, les utilisateurs peuvent générer des mots de passe complexes de n'importe quelle longueur, raccourcir des liens vers diverses ressources et lancer des dés.",
-      "link": "https://github.com/iliyasalve/MultiTool_Telegram_Bot"
-    },
-    {
-      "title": "Jeu de Tetris",
-      "description": "Un jeu de Tetris classique développé avec Pygame, dont l’objectif est de marquer un maximum de points. Les joueurs contrôlent les pièces avec le clavier : déplacement latéral, rotation, accélération de la chute. Le score actuel s'affiche et le meilleur score est sauvegardé localement.",
-      "link": "https://github.com/iliyasalve/Tetris_Game"
-    },
-    {
-      "title": "Clicker Game",
-      "description": "Jeu de clicker où le but est de marquer le plus de points possible. Les joueurs peuvent utiliser les points accumulés pour acheter des multiplicateurs, ce qui booste considérablement leur score.",
-      "link": "https://github.com/iliyasalve/Clicker_Game"
-    },
-    {
-      "title": "Jeu du Serpent",
-      "description": "Jeu du Serpent où le but est de marquer le plus de points possible. Les joueurs bénéficient d'un grand champ de manœuvres, ce qui rend le jeu dynamique et engageant.",
-      "link": "https://github.com/iliyasalve/Snake_Game"
-    }
-  ],
-    "meta": {
-      "title": "Projets – Iliya Glazunov",
-      "description": "Découvrez les projets d'Iliya Glazunov mettant en avant son expertise en développement Python, incluant des jeux interactifs, des bots Telegram et des modèles d'apprentissage automatique, tous conçus pour offrir des solutions pratiques et engageantes.",
-      "keywords": "projets, développement Python, bots Telegram, apprentissage automatique, jeux, NLP, Iliya Glazunov, développement logiciel",
-      "image": "/images/photo.jpg"
-    }
+  "title": "Mes Projets",
+  "intro": "Découvrez mes projets clés, illustrant l'application pratique des algorithmes de colonies de fourmis, de la blockchain, du machine learning et du développement web multilingue en Python et JavaScript.",
+  "eurasie": {
+    "title": "Eurasie en Analyse",
+    "description": "Plateforme web d'analyse géopolitique et économique de la région eurasienne, développée en Django et PostgreSQL. Comprend une interface multilingue, un espace d'administration pour les articles et un système de contact.",
+    "link": "https://eurasieanalyse.fr"
+  },
+  "aco": {
+    "title": "ACO Routing Exploration",
+    "description": "Simulation interactive JS/Python de l'algorithme d'optimisation des colonies de fourmis (ACO) pour le routage dynamique dans les réseaux. Illustre l'influence des phéromones en temps réel.",
+    "link": "https://github.com/iliyasalve/aco-routing"
+  },
+  "blockchain": {
+    "title": "Mini-Blockchain Implementation",
+    "description": "Prototype de blockchain en Python/Flask. Implémente le hachage SHA-256, les arbres de Merkle pour valider les transactions, le consensus de Preuve de Travail (PoW) et des API REST.",
+    "link": "https://github.com/iliyasalve/Mini-Blockchain"
+  },
+  "ml": {
+    "title": "Data Science & Machine Learning",
+    "description": "Ensemble de modèles de prédiction de machine learning. Comprend la classification de vidéos TikTok (allégation vs opinion) et la prévision de la rétention des employés pour Salifort Motors avec 96,2% de précision.",
+    "link": "https://github.com/iliyasalve/salifort_motors_hr_analytics"
+  },
+  "pentaword": {
+    "title": "PentaWord Telegram Bot",
+    "description": "Bot Telegram de jeu linguistique inspiré de Wordle. Développé en aiogram/asyncio, prend en charge 3 langues (FR, EN, RU), 3 niveaux de difficulté et des indices visuels interactifs.",
+    "link": "https://github.com/iliyasalve/pentaword_telegram_bot"
+  },
+  "chicken": {
+    "title": "Chicken Strike (Jeu HTML5)",
+    "description": "Jeu clicker d'arcade pour navigateur, développé en HTML5 Canvas et JavaScript pur, avec des animations fluides et un design adaptatif.",
+    "link": "https://github.com/iliyasalve/Clicker_Game"
+  },
+  "meta": {
+    "title": "Projets – Iliya Glazunov",
+    "description": "Découvrez le portfolio d'Iliya Glazunov, démontrant son savoir-faire en Python, simulations dynamiques et modélisation de données.",
+    "keywords": "projets, Python, bots Telegram, machine learning, applications web, Iliya Glazunov",
+    "image": "/images/photo.jpg"
+  }
 }

@@ -14,12 +14,20 @@
   },
   "header": {
     "title": "Илия Глазунов",
+    "about": "О себе",
     "experience": "Опыт",
     "skills": "Навыки",
     "education": "Образование",
     "training": "Курсы",
     "projects": "Проекты",
     "hobbies": "Хобби"
+  },
+  "skills": {
+    "backendTitle": "Бэкенд-разработка",
+    "aiTitle": "Data Science и ИИ",
+    "gamesTitle": "Игровая индустрия",
+    "frontendTitle": "Фронтенд и интерфейсы",
+    "toolsTitle": "Инфраструктура и QA"
   },
   "footer": {
     "email": "iliyasalve@gmail.com",

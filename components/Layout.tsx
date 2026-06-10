@@ -1,5 +1,4 @@
-import React, { ReactNode, useState } from 'react';
-import ThemeToggle from './ThemeToggle';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
@@ -19,178 +18,292 @@ const languages = [
 
 const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   const router = useRouter();
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation('common');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Function to change the language
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
 
-  // State to control whether the mobile menu is open or closed
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navLinks = [
+    { href: '#home', labelKey: 'header.home', fallback: 'Home' },
+    { href: '#about', labelKey: 'header.about', fallback: 'About' },
+    { href: '#skills', labelKey: 'header.skills', fallback: 'Skills' },
+    { href: '#experience', labelKey: 'header.experience', fallback: 'Experience' },
+    { href: '#projects', labelKey: 'header.projects', fallback: 'Projects' },
+    { href: '#education', labelKey: 'header.education', fallback: 'Education' },
+    { href: '#contact', labelKey: 'header.contact', fallback: 'Contact' },
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    // Smooth scroll implementation to avoid router latency in Safari
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    const scrollHandlers: (() => void)[] = [];
+
+    anchors.forEach((anchor) => {
+      const targetId = anchor.getAttribute('href');
+      if (!targetId) return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      const clickHandler = (e: Event) => {
+        e.preventDefault();
+        e.stopPropagation(); // Stop Next.js from intercepting the click and introducing route lag
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      };
+      anchor.addEventListener('click', clickHandler);
+    });
+
+    // Scroll spy IntersectionObserver modifying DOM directly to bypass React re-render lag
+    const sections = document.querySelectorAll('section[id]');
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      const desktopLinks = document.querySelectorAll('nav div.hidden.md\\:flex a[href^="#"]');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.getAttribute('id');
+          if (!activeId) return;
+
+          // Desktop link highlights
+          desktopLinks.forEach(link => {
+            const href = link.getAttribute('href')?.slice(1);
+            if (href === activeId) {
+              link.className = "text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-medium transition-all";
+            } else {
+              link.className = "text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium";
+            }
+          });
+
+          // Mobile link highlights
+          mobileLinks.forEach(link => {
+            const href = link.getAttribute('href')?.slice(1);
+            if (href === activeId) {
+              link.className = "mobile-nav-link py-3 border-b border-on-surface/5 text-primary dark:text-primary-fixed-dim font-medium transition-all";
+            } else {
+              link.className = "mobile-nav-link py-3 border-b border-on-surface/5 text-on-surface-variant hover:text-primary transition-colors font-medium";
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      sections.forEach(section => observer.unobserve(section));
+      anchors.forEach((anchor) => {
+        // Clean up listeners
+        anchor.replaceWith(anchor.cloneNode(true));
+      });
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <header className="border-b border-gray-300 dark:border-gray-700 px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Left side: site title and experience link */}
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="text-xl font-semibold hover:underline">
-              {t('header.title')}
-            </Link>
-            {/* Navigation links: hidden on mobile, visible on md and up */}
-            <Link href="/experience" className="hidden md:inline-block px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
-              {t('header.experience')}
-            </Link>
-            <Link href="/skills" className="hidden md:inline-block px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
-                {t('header.skills')}
-            </Link>
-            <Link href="/education" className="hidden md:inline-block px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
-              {t('header.education')}
-            </Link>
-            <Link href="/training" className="hidden md:inline-block px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
-              {t('header.training')}
-            </Link>
-            <Link href="/projects" className="hidden md:inline-block px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
-              {t('header.projects')}
-            </Link>
-            <Link href="/hobbies" className="hidden md:inline-block px-2 py-1 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition-colors">
-              {t('header.hobbies')}
-            </Link>
+    <div className="min-h-screen flex flex-col bg-background text-on-background">
+      {/* TopNavBar matching template exactly */}
+      <nav className={`fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10 transition-shadow duration-300 ${scrolled ? 'shadow-xl' : 'shadow-sm'}`}>
+        <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-20">
+          <div className="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+            IG
+          </div>
+          
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => {
+              return (
+                <a
+                  key={link.href}
+                  className="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium"
+                  href={link.href}
+                >
+                  {t(link.labelKey, link.fallback)}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Right side: language buttons and theme toggle, hidden on mobile */}
-          <nav className="hidden md:flex items-center space-x-4">
+          <div className="flex items-center gap-6">
+            {/* Language switch */}
+            <div className="hidden md:flex items-center gap-4 text-sm font-medium">
+              {languages.map(({ code, label }) => (
+                <button
+                  key={code}
+                  onClick={() => changeLanguage(code)}
+                  className={`transition-all ${
+                    i18n.language === code
+                      ? 'bg-primary text-on-primary px-3 py-1.5 rounded-lg active:scale-95'
+                      : 'text-on-surface-variant hover:text-primary'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Dark Mode toggle */}
+            <button
+              onClick={toggleTheme}
+              id="theme-toggle-desktop"
+              className="hidden md:block text-on-surface-variant hover:text-primary transition-colors"
+            >
+              <span className="material-symbols-outlined text-2xl">
+                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+              </span>
+            </button>
+
+            {/* Mobile menu trigger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              id="mobile-menu-btn"
+              className="md:hidden text-on-surface-variant hover:text-primary transition-colors"
+            >
+              <span className="material-symbols-outlined text-3xl">menu</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Backdrop */}
+      {mobileMenuOpen && (
+        <div 
+          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 z-50 bg-background/60 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+        ></div>
+      )}
+
+      {/* Mobile Menu Panel matching template exactly */}
+      <div 
+        className={`fixed right-0 top-0 bottom-0 w-[300px] z-50 bg-surface dark:bg-surface backdrop-blur-xl border-l border-on-surface/10 flex flex-col justify-between p-6 transition-transform duration-300 transform md:hidden ${
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div>
+          {/* Header */}
+          <div className="flex justify-between items-center h-20 border-b border-on-surface/10 mb-6">
+            <div className="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim">IG</div>
+            <button 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-on-surface-variant hover:text-primary transition-colors"
+            >
+              <span className="material-symbols-outlined text-3xl">close</span>
+            </button>
+          </div>
+          {/* Navigation Links */}
+          <div className="flex flex-col text-base font-medium">
+            {navLinks.map((link) => {
+              return (
+                <a
+                  key={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="mobile-nav-link py-3 border-b border-on-surface/5 text-on-surface-variant hover:text-primary transition-colors font-medium"
+                  href={link.href}
+                >
+                  {t(link.labelKey, link.fallback)}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+        {/* Bottom Controls */}
+        <div className="flex flex-col gap-6 pt-6 border-t border-on-surface/10 mt-auto">
+          <div className="flex flex-wrap gap-2 text-sm font-medium">
             {languages.map(({ code, label }) => (
               <button
                 key={code}
                 onClick={() => changeLanguage(code)}
-                className={`px-2 py-1 rounded ${
+                className={`px-3 py-1.5 rounded-lg transition-colors ${
                   i18n.language === code
-                    ? 'bg-blue-600 text-white'
-                    : 'hover:bg-blue-200 dark:hover:bg-blue-700'
+                    ? 'bg-primary text-on-primary active:scale-95'
+                    : 'text-on-surface-variant bg-surface-variant/30 hover:text-primary'
                 }`}
               >
                 {label}
               </button>
             ))}
-
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          </nav>
-
-          {/* Hamburger button for mobile menu */}
-          <button
-            className="md:hidden p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+          </div>
+          <button 
+            onClick={toggleTheme}
+            className="w-12 h-12 rounded-xl bg-surface-variant/30 border border-outline/20 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all"
           >
-            {/* Hamburger icon or close icon depending on state */}
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {mobileMenuOpen ? (
-                // Close icon (X)
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                // Hamburger icon (three lines)
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            <span className="material-symbols-outlined text-2xl">
+              {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+            </span>
           </button>
         </div>
-
-        {/* Mobile dropdown menu, visible only if mobileMenuOpen is true */}
-        {mobileMenuOpen && (
-          <nav className="absolute left-0 right-0 top-[73px] bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-xl z-50 flex flex-col p-6 space-y-4 md:hidden">
-            <Link href="/experience" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>
-              {t('header.experience')}
-            </Link>
-            <Link href="/skills" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>
-                {t('header.skills')}
-            </Link>
-            <Link href="/education" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>
-              {t('header.education')}
-            </Link>
-            <Link href="/training" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>
-              {t('header.training')}
-            </Link>
-            <Link href="/projects" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>
-              {t('header.projects')}
-            </Link>
-            <Link href="/hobbies" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-2" onClick={() => setMobileMenuOpen(false)}>
-              {t('header.hobbies')}
-            </Link>
-
-            <div className="flex items-center justify-between pt-2">
-              <div className="flex space-x-2">
-                {languages.map(({ code, label }) => (
-                  <button
-                    key={code}
-                    onClick={() => {
-                      changeLanguage(code);
-                    }}
-                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                      i18n.language === code
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              <ThemeToggle
-                theme={theme}
-                toggleTheme={() => {
-                  toggleTheme();
-                }}
-              />
-            </div>
-          </nav>
-        )}
-      </header>
+      </div>
 
       {/* Main content area */}
-      <main className="flex-grow container mx-auto px-6 py-8">{children}</main>
+      <main className="flex-grow w-full">{children}</main>
 
-      {/* Footer */}
-      <footer className="px-6 py-8 border-t border-gray-300 dark:border-gray-700 text-center text-sm">
-        <ul className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 mb-4 text-gray-700 dark:text-gray-300">
-          <li>{t('footer.emailLabel')}: <a href={`mailto:${t('footer.email')}`} className="text-blue-600 dark:text-blue-400 hover:underline">{t('footer.email')}</a></li>
-          <li className="hidden sm:inline text-gray-300 dark:text-gray-600">|</li>
-          <li>{t('footer.phoneLabel')}: <a href={`tel:${t('footer.phone')}`} className="text-blue-600 dark:text-blue-400 hover:underline">{t('footer.phone')}</a></li>
-          <li className="hidden sm:inline text-gray-300 dark:text-gray-600">|</li>
-          <li>{t('footer.linkedinLabel')}: <a href={t('footer.linkedin')} className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('footer.linkedinName')}</a></li>
-          <li className="hidden sm:inline text-gray-300 dark:text-gray-600">|</li>
-          <li>{t('footer.githubLabel')}: <a href={t('footer.github')} className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('footer.githubName')}</a></li>
-        </ul>
-        <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+      {/* Footer matching template exactly */}
+      <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-section-gap-md px-margin-mobile md:px-gutter">
+          <div className="mb-8 md:mb-0">
+            <div className="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-2">
+              IG
+            </div>
+            <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-xs">
+              &copy; {new Date().getFullYear()} Iliya Glazunov. Crafted with precision.
+            </p>
+          </div>
+          <div className="flex gap-12">
+            <div className="flex flex-col gap-3">
+              <h5 className="font-label-sm uppercase text-primary font-bold">Connect</h5>
+              <a 
+                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
+                href={t('footer.github', 'https://github.com/iliyasalve')}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a 
+                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
+                href={t('footer.linkedin', 'https://fr.linkedin.com/in/iliya-glazunov')}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
+            <div className="flex flex-col gap-3">
+              <h5 className="font-label-sm uppercase text-primary font-bold">Network</h5>
+              <a 
+                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
+                href={`mailto:${t('footer.email', 'iliya.glazunov.fr@gmail.com')}`}
+              >
+                Email
+              </a>
+              <a 
+                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
+                href={`tel:${t('footer.phone', '+33777777777')}`}
+              >
+                Phone
+              </a>
+            </div>
+          </div>
+        </div>
       </footer>
-
-      {/* Floating Scroll to Top button */}
-      <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-          className="fixed bottom-12 md:bottom-8 right-6 md:right-8 z-50 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-transform hover:-translate-y-1 focus:outline-none"
-          aria-label="Scroll to top"
-      >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-          </svg>
-      </button>
 
       <PrivacyNotice />
     </div>

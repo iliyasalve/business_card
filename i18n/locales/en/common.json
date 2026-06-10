@@ -14,12 +14,20 @@
   },
   "header": {
     "title": "Iliya Glazunov",
+    "about": "About",
     "experience": "Experience",
     "skills": "Skills",
     "education": "Education",
     "training": "Training",
     "projects": "Projects",
     "hobbies": "Hobbies"
+  },
+  "skills": {
+    "backendTitle": "Backend Development",
+    "aiTitle": "Data Science & AI",
+    "gamesTitle": "Game Development",
+    "frontendTitle": "Frontend & Style",
+    "toolsTitle": "QA & Infrastructure"
   },
   "footer": {
     "email": "iliyasalve@gmail.com",
