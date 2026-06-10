@@ -42,7 +42,7 @@ const ProjectCarousel = () => {
       descKey: 'blockchain.description',
       techs: ['Python', 'Flask', 'Cryptography'],
       link: 'https://github.com/iliyasalve/Mini-Blockchain',
-      image: '/images/project_titan.png',
+      image: '/images/project_blockchain.png',
     },
     {
       id: 'ml',
@@ -52,6 +52,7 @@ const ProjectCarousel = () => {
       link: 'https://github.com/iliyasalve/salifort_motors_hr_analytics',
       image: '/images/project_nebula.png',
     },
+    /*
     {
       id: 'pentaword',
       titleKey: 'pentaword.title',
@@ -60,6 +61,7 @@ const ProjectCarousel = () => {
       link: 'https://github.com/iliyasalve/pentaword_telegram_bot',
       image: '/images/project_echo.png',
     },
+    */
     {
       id: 'chicken',
       titleKey: 'chicken.title',
@@ -200,14 +202,14 @@ const ProjectCarousel = () => {
               </div>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <div>
-                  <div className="flex gap-2 mb-4 flex-wrap">
+                  <div className="flex gap-2 mb-4 flex-wrap h-14 overflow-hidden content-start">
                     {project.techs.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm uppercase font-bold">
+                      <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm uppercase font-bold mb-1">
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <h3 className="font-display text-headline-md mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-headline-md mb-2 group-hover:text-primary transition-colors duration-300 min-h-[64px] flex items-center">
                     {t(project.titleKey)}
                   </h3>
                   <p className="text-on-surface-variant mb-6 text-sm leading-relaxed">
