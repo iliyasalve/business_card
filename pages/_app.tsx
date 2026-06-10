@@ -9,6 +9,7 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [isReady, setIsReady] = useState(false); // track client hydration
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en');
 
   useEffect(() => {
     // Suppress non-fatal React Fiber / Permission denied errors from browser extensions or third-party scripts
@@ -36,15 +37,23 @@ function MyApp({ Component, pageProps }: AppProps) {
     const savedLng = localStorage.getItem('i18nextLng');
     if (savedLng && i18n.language !== savedLng) {
       i18n.changeLanguage(savedLng).then(() => {
+        setCurrentLanguage(savedLng);
         setIsReady(true);
       });
     } else {
       setIsReady(true);
     }
 
+    // Subscribe to language updates to force re-render
+    const handleLanguageChange = (lng: string) => {
+      setCurrentLanguage(lng);
+    };
+    i18n.on('languageChanged', handleLanguageChange);
+
     return () => {
       window.removeEventListener('error', handleError);
       window.removeEventListener('unhandledrejection', handleError);
+      i18n.off('languageChanged', handleLanguageChange);
     };
   }, []);
 
@@ -64,12 +73,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   if (isPrivacyRoute) {
-    return <Component {...pageProps} />;
+    return <Component {...pageProps} key={currentLanguage} />;
   }
 
   return (
     <Layout theme={theme} toggleTheme={toggleTheme}>
-      <Component {...pageProps} />
+      <Component {...pageProps} key={currentLanguage} />
     </Layout>
   );
 }

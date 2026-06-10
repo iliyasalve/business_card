@@ -72,6 +72,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     });
 
     // Scroll spy IntersectionObserver modifying state to bypass React re-render lag
+    let isChangingLang = false;
     const sections = document.querySelectorAll('section[id]');
     const observerOptions = {
       root: null,
@@ -80,6 +81,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     };
 
     const observer = new IntersectionObserver((entries) => {
+      if (isChangingLang) return; // Ignore observer triggers during language reflows
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const activeId = entry.target.getAttribute('id');
@@ -94,25 +96,33 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
     // Handle language switch scroll shifts by re-aligning the active section
     const handleLangChange = () => {
-      const allSections = document.querySelectorAll('section[id]');
-      let closestSectionId = 'home';
-      let minDiff = Infinity;
-      
-      allSections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const diff = Math.abs(rect.top);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestSectionId = section.getAttribute('id') || 'home';
-        }
-      });
+      isChangingLang = true;
 
       // Small delay to let Next/i18n update DOM layout dimensions
       setTimeout(() => {
+        const allSections = document.querySelectorAll('section[id]');
+        let closestSectionId = 'home';
+        let minDiff = Infinity;
+        
+        allSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          const diff = Math.abs(rect.top);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestSectionId = section.getAttribute('id') || 'home';
+          }
+        });
+
+        setActiveSection(closestSectionId);
+
         const target = document.getElementById(closestSectionId);
         if (target) {
           target.scrollIntoView({ behavior: 'auto' });
         }
+        // Release lock after layout settled
+        setTimeout(() => {
+          isChangingLang = false;
+        }, 100);
       }, 100);
     };
 
