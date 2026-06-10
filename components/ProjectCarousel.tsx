@@ -144,7 +144,7 @@ const ProjectCarousel = () => {
   const offset = isDesktop ? -currentIndex * (cardWidth + gapSize) : 0;
 
   return (
-    <div className="relative w-full overflow-hidden pt-4 -mt-4">
+    <div className="relative w-full pt-4 -mt-4">
       {/* Header controls matching template */}
       <div className="flex justify-between items-end mb-16">
         <div>
@@ -183,7 +183,7 @@ const ProjectCarousel = () => {
       </div>
 
       {/* Slide Track matching template behavior */}
-      <div className="relative w-full">
+      <div className="relative md:overflow-hidden md:-mx-6 md:px-6 md:py-6 md:-my-6">
         <div 
           ref={trackRef}
           id="project-track"
@@ -197,9 +197,9 @@ const ProjectCarousel = () => {
             <div 
               key={`${project.id}-${idx}`}
               ref={idx === 0 ? firstCardRef : undefined}
-              className="group relative overflow-hidden rounded-3xl glass-card w-full md:w-[calc((100%-4rem)/3)] shrink-0 flex flex-col"
+              className="group relative rounded-3xl glass-card project-card w-full md:w-[calc((100%-4rem)/3)] shrink-0 flex flex-col"
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden rounded-t-[23px]">
                 <img 
                   alt={t(project.titleKey)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
