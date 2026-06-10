@@ -11,9 +11,9 @@ interface LayoutProps {
 }
 
 const languages = [
-  { code: 'en', label: 'English' },
-  { code: 'ru', label: 'Русский' },
-  { code: 'fr', label: 'Français' },
+  { code: 'en', label: 'English', short: 'EN' },
+  { code: 'ru', label: 'Русский', short: 'RU' },
+  { code: 'fr', label: 'Français', short: 'FR' },
 ];
 
 const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
@@ -56,16 +56,17 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     anchors.forEach((anchor) => {
       const targetId = anchor.getAttribute('href');
       if (!targetId) return;
-      const target = document.querySelector(targetId);
-      if (!target) return;
 
       const clickHandler = (e: Event) => {
         e.preventDefault();
         e.stopPropagation(); // Stop Next.js from intercepting the click and introducing route lag
-        setActiveSection(targetId.slice(1));
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
+        const target = document.querySelector(targetId);
+        if (target) {
+          setActiveSection(targetId.slice(1));
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
       };
       anchor.addEventListener('click', clickHandler);
       clickHandlers.push({ anchor, handler: clickHandler });
@@ -136,18 +137,22 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         anchor.removeEventListener('click', handler);
       });
     };
-  }, []);
+  }, [i18n.language]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-background">
       {/* TopNavBar matching template exactly */}
       <nav className={`fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10 transition-shadow duration-300 ${scrolled ? 'shadow-xl' : 'shadow-sm'}`}>
         <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-20">
-          <div className="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
-            IG
+          <div className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0">
+            <span className="opacity-40 font-light">{'{'}</span>
+            <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
+            <span className="opacity-30 mx-1">:</span>
+            <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
+            <span className="opacity-40 font-light">{'}'}</span>
           </div>
           
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
@@ -155,8 +160,8 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                   key={link.href}
                   className={
                     isActive
-                      ? "text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-medium transition-all"
-                      : "text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium"
+                      ? "text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-medium transition-all text-sm lg:text-base"
+                      : "text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium text-sm lg:text-base"
                   }
                   href={link.href}
                 >
@@ -166,20 +171,20 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             })}
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 lg:gap-6 shrink-0">
             {/* Language switch */}
-            <div className="hidden md:flex items-center gap-4 text-sm font-medium">
-              {languages.map(({ code, label }) => (
+            <div className="hidden md:flex items-center gap-2 lg:gap-3 text-xs lg:text-sm font-medium">
+              {languages.map(({ code, short }) => (
                 <button
                   key={code}
                   onClick={() => changeLanguage(code)}
-                  className={`transition-all ${
+                  className={`transition-all px-2 py-1 rounded-md ${
                     i18n.language === code
-                      ? 'bg-primary text-on-primary px-3 py-1.5 rounded-lg active:scale-95'
+                      ? 'bg-primary text-on-primary active:scale-95'
                       : 'text-on-surface-variant hover:text-primary'
                   }`}
                 >
-                  {label}
+                  {short}
                 </button>
               ))}
             </div>
@@ -188,9 +193,9 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             <button
               onClick={toggleTheme}
               id="theme-toggle-desktop"
-              className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/30"
+              className="hidden md:flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/30"
             >
-              <span className="material-symbols-outlined text-2xl">
+              <span className="material-symbols-outlined text-xl lg:text-2xl">
                 {theme === 'dark' ? 'light_mode' : 'dark_mode'}
               </span>
             </button>
@@ -224,7 +229,13 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         <div>
           {/* Header */}
           <div className="flex justify-between items-center h-20 border-b border-on-surface/10 mb-6">
-            <div className="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim">IG</div>
+            <div className="font-display text-headline-md font-bold tracking-tight flex items-center">
+              <span className="opacity-40 font-light">{'{'}</span>
+              <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
+              <span className="opacity-30 mx-1">:</span>
+              <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
+              <span className="opacity-40 font-light">{'}'}</span>
+            </div>
             <button 
               onClick={() => setMobileMenuOpen(false)}
               className="text-on-surface-variant hover:text-primary transition-colors"
@@ -288,8 +299,12 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-section-gap-md px-margin-mobile md:px-gutter">
           <div className="mb-8 md:mb-0">
-            <div className="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim mb-2">
-              IG
+            <div className="font-display text-headline-md font-bold tracking-tight flex items-center mb-2">
+              <span className="opacity-40 font-light">{'{'}</span>
+              <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
+              <span className="opacity-30 mx-1">:</span>
+              <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
+              <span className="opacity-40 font-light">{'}'}</span>
             </div>
             <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-xs">
               &copy; {new Date().getFullYear()} Iliya Glazunov. Crafted with precision.
