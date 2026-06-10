@@ -297,8 +297,8 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
       {/* Footer matching template exactly */}
       <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
-        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-section-gap-md px-margin-mobile md:px-gutter">
-          <div className="mb-8 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-12 px-margin-mobile md:px-gutter">
+          <div className="mb-8 md:mb-0 w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 text-left">
             <div className="font-display text-headline-md font-bold tracking-tight flex items-center mb-2">
               <span className="opacity-40 font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
@@ -306,43 +306,55 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
               <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
               <span className="opacity-40 font-light">{'}'}</span>
             </div>
-            <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-xs">
-              &copy; {new Date().getFullYear()} Iliya Glazunov. Crafted with precision.
+            <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-md text-left">
+              {t('footer.copyright', { year: new Date().getFullYear() })}
             </p>
           </div>
-          <div className="flex gap-12">
+          <div className="flex justify-between w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 md:justify-start md:gap-12 lg:gap-24 shrink-0">
             <div className="flex flex-col gap-3">
-              <h5 className="font-label-sm uppercase text-primary font-bold">Connect</h5>
+              <h5 className="font-label-sm uppercase text-primary font-bold">{t('footer.connectLabel', 'Connect')}</h5>
               <a 
-                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
+                className="flex items-center gap-2 text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-left"
                 href={t('footer.github', 'https://github.com/iliyasalve')}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub
+                <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.197 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </div>
+                {t('footer.githubLabel', 'GitHub')}
               </a>
               <a 
-                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
+                className="flex items-center gap-2 text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-left"
                 href={t('footer.linkedin', 'https://fr.linkedin.com/in/iliya-glazunov')}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn
+                <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </div>
+                {t('footer.linkedinLabel', 'LinkedIn')}
               </a>
             </div>
             <div className="flex flex-col gap-3">
-              <h5 className="font-label-sm uppercase text-primary font-bold">Network</h5>
+              <h5 className="font-label-sm uppercase text-primary font-bold">{t('footer.networkLabel', 'Network')}</h5>
               <a 
-                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
-                href={`mailto:${t('footer.email', 'iliya.glazunov.fr@gmail.com')}`}
+                className="flex items-center gap-2 text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-left"
+                href={`mailto:${t('footer.email', 'iliyasalve@gmail.com')}`}
               >
-                Email
+                <span className="material-symbols-outlined text-lg w-5 h-5 flex items-center justify-center shrink-0">mail</span>
+                {t('footer.emailLabel', 'Email')}
               </a>
               <a 
-                className="text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors"
-                href={`tel:${t('footer.phone', '+33777777777')}`}
+                className="flex items-center gap-2 text-on-secondary-container dark:text-on-secondary-container/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-left"
+                href={`tel:${t('footer.phone', '+33753662400')}`}
               >
-                Phone
+                <span className="material-symbols-outlined text-lg w-5 h-5 flex items-center justify-center shrink-0">call</span>
+                {t('footer.phoneLabel', 'Phone')}
               </a>
             </div>
           </div>

@@ -42,6 +42,8 @@
     "githubLabel": "GitHub",
     "github": "https://github.com/iliyasalve",
     "githubName": "iliyasalve",
+    "connectLabel": "Связь",
+    "networkLabel": "Сеть",
     "copyright": "© {{year}} Илия Глазунов. Все права защищены."
   },
   "privacy": {

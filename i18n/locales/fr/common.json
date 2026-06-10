@@ -42,6 +42,8 @@
     "githubLabel": "GitHub",
     "github": "https://github.com/iliyasalve",
     "githubName": "iliyasalve",
+    "connectLabel": "Réseau",
+    "networkLabel": "Contact",
     "copyright": "© {{year}} Iliya Glazunov. Tous droits réservés."
   },
   "privacy": {
