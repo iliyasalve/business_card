@@ -133,7 +133,7 @@ const ProjectCarousel = () => {
   const offset = isDesktop ? -currentIndex * (cardWidth + gapSize) : 0;
 
   return (
-    <div className="relative w-full overflow-visible md:overflow-hidden pt-4 -mt-4">
+    <div className="relative w-full overflow-hidden pt-4 -mt-4">
       {/* Header controls matching template */}
       <div className="flex justify-between items-end mb-16">
         <div>

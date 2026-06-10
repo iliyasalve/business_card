@@ -109,9 +109,36 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
     sections.forEach(section => observer.observe(section));
 
+    // Handle language switch scroll shifts by re-aligning the active section
+    const handleLangChange = () => {
+      const allSections = document.querySelectorAll('section[id]');
+      let closestSectionId = 'home';
+      let minDiff = Infinity;
+      
+      allSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const diff = Math.abs(rect.top);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestSectionId = section.getAttribute('id') || 'home';
+        }
+      });
+
+      // Small delay to let Next/i18n update DOM layout dimensions
+      setTimeout(() => {
+        const target = document.getElementById(closestSectionId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'auto' });
+        }
+      }, 100);
+    };
+
+    i18n.on('languageChanged', handleLangChange);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       sections.forEach(section => observer.unobserve(section));
+      i18n.off('languageChanged', handleLangChange);
       anchors.forEach((anchor) => {
         // Clean up listeners
         anchor.replaceWith(anchor.cloneNode(true));
@@ -164,7 +191,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             <button
               onClick={toggleTheme}
               id="theme-toggle-desktop"
-              className="hidden md:block text-on-surface-variant hover:text-primary transition-colors"
+              className="hidden md:flex items-center justify-center w-10 h-10 rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/30"
             >
               <span className="material-symbols-outlined text-2xl">
                 {theme === 'dark' ? 'light_mode' : 'dark_mode'}
