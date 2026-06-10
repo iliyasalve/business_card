@@ -240,7 +240,7 @@ const Home = () => {
                         <p className="text-on-surface-variant text-label-sm mb-1">{train.institution} · {train.period}</p>
                         {train.badgeId && (
                           <a 
-                            href={`https://www.credly.com/earner/earned/badge/${train.badgeId}`} 
+                            href={`https://www.credly.com/badges/${train.badgeId}`} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-primary dark:text-primary-fixed-dim font-bold text-sm inline-flex items-center gap-1 group"
