@@ -7,7 +7,7 @@ import i18n from '../i18n/config';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [isReady, setIsReady] = useState(false); // track client hydration
 
   useEffect(() => {
@@ -26,12 +26,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     window.addEventListener('error', handleError);
     window.addEventListener('unhandledrejection', handleError);
 
-    // Load theme from localStorage
+    // Load theme from localStorage, default to dark
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    }
+    const initialTheme = savedTheme || 'dark';
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
 
     // Load language from localStorage and apply to i18n
     const savedLng = localStorage.getItem('i18nextLng');
