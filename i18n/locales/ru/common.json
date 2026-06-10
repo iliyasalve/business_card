@@ -14,13 +14,15 @@
   },
   "header": {
     "title": "Илия Глазунов",
+    "home": "Главная",
     "about": "О себе",
     "experience": "Опыт",
     "skills": "Навыки",
     "education": "Образование",
     "training": "Курсы",
     "projects": "Проекты",
-    "hobbies": "Хобби"
+    "hobbies": "Хобби",
+    "contact": "Контакты"
   },
   "skills": {
     "backendTitle": "Бэкенд-разработка",

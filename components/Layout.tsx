@@ -22,6 +22,8 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const [activeSection, setActiveSection] = useState('home');
+
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
@@ -49,7 +51,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
     // Smooth scroll implementation to avoid router latency in Safari
     const anchors = document.querySelectorAll('a[href^="#"]');
-    const scrollHandlers: (() => void)[] = [];
+    const clickHandlers: { anchor: Element, handler: (e: Event) => void }[] = [];
 
     anchors.forEach((anchor) => {
       const targetId = anchor.getAttribute('href');
@@ -60,14 +62,16 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       const clickHandler = (e: Event) => {
         e.preventDefault();
         e.stopPropagation(); // Stop Next.js from intercepting the click and introducing route lag
+        setActiveSection(targetId.slice(1));
         target.scrollIntoView({
           behavior: 'smooth'
         });
       };
       anchor.addEventListener('click', clickHandler);
+      clickHandlers.push({ anchor, handler: clickHandler });
     });
 
-    // Scroll spy IntersectionObserver modifying DOM directly to bypass React re-render lag
+    // Scroll spy IntersectionObserver modifying state to bypass React re-render lag
     const sections = document.querySelectorAll('section[id]');
     const observerOptions = {
       root: null,
@@ -76,33 +80,12 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     };
 
     const observer = new IntersectionObserver((entries) => {
-      const desktopLinks = document.querySelectorAll('nav div.hidden.md\\:flex a[href^="#"]');
-      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const activeId = entry.target.getAttribute('id');
-          if (!activeId) return;
-
-          // Desktop link highlights
-          desktopLinks.forEach(link => {
-            const href = link.getAttribute('href')?.slice(1);
-            if (href === activeId) {
-              link.className = "text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-medium transition-all";
-            } else {
-              link.className = "text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium";
-            }
-          });
-
-          // Mobile link highlights
-          mobileLinks.forEach(link => {
-            const href = link.getAttribute('href')?.slice(1);
-            if (href === activeId) {
-              link.className = "mobile-nav-link py-3 border-b border-on-surface/5 text-primary dark:text-primary-fixed-dim font-medium transition-all";
-            } else {
-              link.className = "mobile-nav-link py-3 border-b border-on-surface/5 text-on-surface-variant hover:text-primary transition-colors font-medium";
-            }
-          });
+          if (activeId) {
+            setActiveSection(activeId);
+          }
         }
       });
     }, observerOptions);
@@ -139,9 +122,8 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       window.removeEventListener('scroll', handleScroll);
       sections.forEach(section => observer.unobserve(section));
       i18n.off('languageChanged', handleLangChange);
-      anchors.forEach((anchor) => {
-        // Clean up listeners
-        anchor.replaceWith(anchor.cloneNode(true));
+      clickHandlers.forEach(({ anchor, handler }) => {
+        anchor.removeEventListener('click', handler);
       });
     };
   }, []);
@@ -157,10 +139,15 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
               return (
                 <a
                   key={link.href}
-                  className="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium"
+                  className={
+                    isActive
+                      ? "text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-medium transition-all"
+                      : "text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium"
+                  }
                   href={link.href}
                 >
                   {t(link.labelKey, link.fallback)}
@@ -238,11 +225,16 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           {/* Navigation Links */}
           <div className="flex flex-col text-base font-medium">
             {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
               return (
                 <a
                   key={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="mobile-nav-link py-3 border-b border-on-surface/5 text-on-surface-variant hover:text-primary transition-colors font-medium"
+                  className={
+                    isActive
+                      ? "mobile-nav-link py-3 border-b border-on-surface/5 text-primary dark:text-primary-fixed-dim font-medium transition-all"
+                      : "mobile-nav-link py-3 border-b border-on-surface/5 text-on-surface-variant hover:text-primary transition-colors font-medium"
+                  }
                   href={link.href}
                 >
                   {t(link.labelKey, link.fallback)}

@@ -14,13 +14,15 @@
   },
   "header": {
     "title": "Iliya Glazunov",
+    "home": "Accueil",
     "about": "À propos",
     "experience": "Expériences",
     "skills": "Compétences",
     "education": "Éducation",
     "training": "Formations",
     "projects": "Projets",
-    "hobbies": "Loisirs"
+    "hobbies": "Loisirs",
+    "contact": "Contact"
   },
   "skills": {
     "backendTitle": "Développement Backend",
