@@ -161,7 +161,9 @@ const Home = () => {
         <section className="py-section-gap-lg" id="experience">
           <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
             <h2 className="font-display text-headline-lg mb-16">{tExp('title', 'The Journey.')}</h2>
-            <div className="space-y-12">
+            <div className="space-y-12 relative">
+              {/* Continuous vertical timeline line */}
+              <div className="absolute left-[8px] md:left-[168px] top-2 bottom-0 w-0.5 bg-surface-variant"></div>
               {jobs.map((job, idx) => (
                 <div key={idx} className="flex gap-8 group">
                   <div className="hidden md:block w-32 pt-2 text-on-surface-variant font-label-sm text-right shrink-0">
@@ -169,7 +171,6 @@ const Home = () => {
                   </div>
                   <div className="relative flex flex-col items-center">
                     <div className="w-4 h-4 rounded-full bg-primary border-4 border-background z-10"></div>
-                    <div className={`w-0.5 h-full bg-surface-variant ${idx === jobs.length - 1 ? 'invisible' : ''}`}></div>
                   </div>
                   <div className={`${idx === jobs.length - 1 ? 'pb-0' : 'pb-12'} flex-grow`}>
                     <h4 className="font-display text-headline-md mb-1">{job.position}</h4>
