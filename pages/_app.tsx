@@ -38,15 +38,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (savedLng && i18n.language !== savedLng) {
       i18n.changeLanguage(savedLng).then(() => {
         setCurrentLanguage(savedLng);
+        document.documentElement.setAttribute('lang', savedLng);
         setIsReady(true);
       });
     } else {
+      document.documentElement.setAttribute('lang', i18n.language || 'en');
       setIsReady(true);
     }
 
     // Subscribe to language updates to force re-render
     const handleLanguageChange = (lng: string) => {
       setCurrentLanguage(lng);
+      document.documentElement.setAttribute('lang', lng);
     };
     i18n.on('languageChanged', handleLanguageChange);
 

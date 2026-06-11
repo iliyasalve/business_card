@@ -70,6 +70,7 @@
   },
   "privacy": {
     "message": "Ce site ne collecte aucune donnée personnelle. Cependant, GitHub Pages peut utiliser des cookies ou collecter certaines informations. Pour plus de détails, visitez leur site officiel.",
+    "linkText": "politique de confidentialité de GitHub",
     "accept": "OK"
   }
 }

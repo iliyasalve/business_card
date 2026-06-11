@@ -34,7 +34,7 @@ const PrivacyNotice: React.FC = () => {
           rel="noopener noreferrer"
           className="underline font-semibold hover:text-privacy-textDark dark:hover:text-privacy-textLight"
         >
-          GitHub Privacy Policy
+          {t('privacy.linkText', 'GitHub Privacy Policy')}
         </a>
         .
       </p>
