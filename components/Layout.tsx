@@ -200,7 +200,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'}'}</span>
           </a>
           
-          <div className="hidden md:flex items-center gap-4 lg:gap-8">
+          <div className="hidden lg:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               const href = isHomePage ? link.href : `/${link.href}`;
@@ -222,7 +222,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
           <div className="flex items-center gap-3 lg:gap-6 shrink-0">
             {/* Language switch */}
-            <div className="hidden md:flex items-center gap-2 lg:gap-3 text-xs lg:text-sm font-medium">
+            <div className="hidden lg:flex items-center gap-2 lg:gap-3 text-xs lg:text-sm font-medium">
               {languages.map(({ code, short }) => (
                 <button
                   key={code}
@@ -242,7 +242,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             <button
               onClick={toggleTheme}
               id="theme-toggle-desktop"
-              className="hidden md:flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/30"
+              className="hidden lg:flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/30"
             >
               <span className="material-symbols-outlined text-xl lg:text-2xl">
                 {theme === 'dark' ? 'light_mode' : 'dark_mode'}
@@ -253,7 +253,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               id="mobile-menu-btn"
-              className="md:hidden text-on-surface-variant hover:text-primary transition-colors"
+              className="lg:hidden text-on-surface-variant hover:text-primary transition-colors"
             >
               <span className="material-symbols-outlined text-3xl">menu</span>
             </button>
@@ -265,13 +265,13 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       {mobileMenuOpen && (
         <div 
           onClick={() => setMobileMenuOpen(false)}
-          className="fixed inset-0 z-50 bg-background/60 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+          className="fixed inset-0 z-50 bg-background/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
         ></div>
       )}
 
       {/* Mobile Menu Panel matching template exactly */}
       <div 
-        className={`fixed right-0 top-0 bottom-0 w-[300px] z-50 bg-surface/60 dark:bg-surface/60 backdrop-blur-xl border-l border-on-surface/10 flex flex-col justify-between p-6 transition-transform duration-300 transform md:hidden ${
+        className={`fixed right-0 top-0 bottom-0 w-[300px] z-50 bg-surface/60 dark:bg-surface/60 backdrop-blur-xl border-l border-on-surface/10 flex flex-col justify-between p-6 transition-transform duration-300 transform lg:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
