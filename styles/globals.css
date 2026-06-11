@@ -138,3 +138,16 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+/* 404 custom styles */
+.error-number-bg {
+  background: linear-gradient(180deg, rgba(var(--primary), 0.15) 0%, rgba(var(--primary), 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: blur(2px);
+  user-select: none;
+}
+
+.text-glow-subtle {
+  text-shadow: 0 0 30px rgba(var(--primary), 0.2);
+}

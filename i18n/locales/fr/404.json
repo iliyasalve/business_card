@@ -1,8 +1,10 @@
 {
-  "title": "404 – Page non trouvée",
-  "description": "Désolé, la page que vous recherchez n'existe pas.",
+  "title": "404 - Page Non Trouvée | Portfolio de Iliya Glazunov",
+  "description": "Oups ! Cette page semble avoir dérivé dans une autre dimension. Même les meilleures architectures ont des liens manquants dans leur déploiement.",
   "keywords": "404, page non trouvée, Iliya Glazunov",
-  "heading": "Oups ! Page introuvable.",
-  "text": "La page que vous cherchez a peut-être été supprimée ou est temporairement indisponible.",
-  "backToHome": "Retour à la page d’accueil"
+  "heading": "Perdu dans l'architecture.",
+  "text": "Oups ! Cette page semble avoir dérivé dans une autre dimension. Même les meilleures architectures ont des liens manquants dans leur déploiement.",
+  "terminalErr": "ERR_RESOURCE_NOT_FOUND_AT_ORIGIN",
+  "backToHome": "Retour à l'accueil",
+  "viewProjects": "Voir les projets"
 }
