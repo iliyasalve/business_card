@@ -144,13 +144,13 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       {/* TopNavBar matching template exactly */}
       <nav className={`fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10 transition-shadow duration-300 ${scrolled ? 'shadow-xl' : 'shadow-sm'}`}>
         <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-20">
-          <div className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0">
+          <a href="#home" className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0 cursor-pointer select-none no-underline hover:opacity-90 transition-opacity">
             <span className="opacity-40 font-light">{'{'}</span>
             <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
             <span className="opacity-30 mx-1">:</span>
             <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
             <span className="opacity-40 font-light">{'}'}</span>
-          </div>
+          </a>
           
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => {
@@ -229,13 +229,13 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         <div>
           {/* Header */}
           <div className="flex justify-between items-center h-20 border-b border-on-surface/10 mb-6">
-            <div className="font-display text-headline-md font-bold tracking-tight flex items-center">
+            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="font-display text-headline-md font-bold tracking-tight flex items-center cursor-pointer select-none no-underline hover:opacity-90 transition-opacity">
               <span className="opacity-40 font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
               <span className="opacity-30 mx-1">:</span>
               <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
               <span className="opacity-40 font-light">{'}'}</span>
-            </div>
+            </a>
             <button 
               onClick={() => setMobileMenuOpen(false)}
               className="text-on-surface-variant hover:text-primary transition-colors"
@@ -299,13 +299,13 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-12 px-margin-mobile md:px-gutter">
           <div className="mb-8 md:mb-0 w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 text-left">
-            <div className="font-display text-headline-md font-bold tracking-tight flex items-center mb-2">
+            <a href="#home" className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline hover:opacity-90 transition-opacity">
               <span className="opacity-40 font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
               <span className="opacity-30 mx-1">:</span>
               <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
               <span className="opacity-40 font-light">{'}'}</span>
-            </div>
+            </a>
             <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-md text-left">
               {t('footer.copyright', { year: new Date().getFullYear() })}
             </p>
