@@ -271,7 +271,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
       {/* Mobile Menu Panel matching template exactly */}
       <div 
-        className={`fixed right-0 top-0 bottom-0 w-[300px] z-50 bg-surface dark:bg-surface backdrop-blur-xl border-l border-on-surface/10 flex flex-col justify-between p-6 transition-transform duration-300 transform md:hidden ${
+        className={`fixed right-0 top-0 bottom-0 w-[300px] z-50 bg-surface/60 dark:bg-surface/60 backdrop-blur-xl border-l border-on-surface/10 flex flex-col justify-between p-6 transition-transform duration-300 transform md:hidden ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
