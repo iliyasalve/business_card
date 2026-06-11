@@ -162,7 +162,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-background">
       {/* TopNavBar matching template exactly */}
-      <nav className={`fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10 transition-shadow duration-300 ${scrolled ? 'shadow-xl' : 'shadow-sm'}`}>
+      <nav className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10">
         <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-20">
           <a href="#home" className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
             <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
