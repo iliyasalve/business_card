@@ -73,13 +73,14 @@ const Custom404 = () => {
             <div className="mt-12 flex flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">
               <Link
                 href="/#home"
-                className="flex-1 sm:flex-none px-8 md:px-10 py-4 bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg hover:shadow-primary/20 hover:opacity-100 transition-all active:scale-95 text-center"
+                className="flex-grow sm:flex-grow-0 px-8 md:px-10 py-4 bg-primary text-on-primary rounded-full font-bold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/20 hover:opacity-100 transition-all active:scale-95 text-center"
               >
                 {t('backToHome')}
+                <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
               </Link>
               <Link
                 href="/#projects"
-                className="flex-1 sm:flex-none px-8 md:px-10 py-4 border border-outline/30 text-on-surface rounded-xl font-bold hover:bg-surface-variant hover:text-primary hover:opacity-100 transition-all text-center"
+                className="flex-grow sm:flex-grow-0 px-8 md:px-10 py-4 border border-outline/30 text-on-surface rounded-full font-bold hover:bg-surface-variant hover:text-primary hover:opacity-100 transition-all text-center"
               >
                 {t('viewProjects')}
               </Link>
