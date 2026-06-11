@@ -38,6 +38,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image = '/image
       <meta name="twitter:image" content={fullImageUrl} />
 
       <link rel="icon" type="image/png" href="/images/icon.png" />
+      <link rel="icon" type="image/svg+xml" href="/images/icon.svg" />
     </Head>
   );
 };
