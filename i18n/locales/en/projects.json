@@ -1,6 +1,16 @@
 {
   "title": "My Projects",
   "intro": "Discover my key projects, demonstrating the practical application of ant colony optimization, blockchain mechanics, machine learning models, and multilingual Python/JavaScript web development.",
+  "links": {
+    "githubRepo": "GitHub Repository",
+    "liveWebsite": "Live Website",
+    "website": "Website",
+    "demo": "Demo",
+    "github": "GitHub",
+    "salifortmotorshr": "Salifort Motors HR",
+    "tiktokclassifier": "TikTok Classifier",
+    "playgame": "Play Game"
+  },
   "eurasie": {
     "title": "Eurasie en Analyse",
     "description": "Geopolitical and economic analysis web resource focused on the Eurasian region, developed with Django and PostgreSQL. Features a multilingual interface, admin posting panel, and feedback forms.",

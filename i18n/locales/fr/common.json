@@ -10,7 +10,29 @@
     "description": "Je suis un développeur Python passionné à la recherche de ma première opportunité professionnelle. Avec plus de 5 ans d'expérience non commerciale, j'ai acquis des compétences solides dans le développement d'applications web et la création de bots Telegram. Je suis également familiarisé avec la blockchain et le traitement du langage naturel.\n\nMon objectif est de créer des solutions conviviales et efficaces pour aider les utilisateurs à atteindre leurs objectifs. Je m'engage à continuer d'apprendre et à me développer pour rester à jour sur les dernières technologies et tendances du secteur.",
     "image": "/images/photo.jpg",
     "explore": "Explorer mon expérience",
-    "viewProjects": "Voir les projets"
+    "viewProjects": "Voir les projets",
+    "statusTag": "Disponible pour de nouvelles opportunités",
+    "subtitle": "Développeur Full-Stack / Mobile & Analyste de données passionné par le génie logiciel, la science des données et les solutions hautes performances."
+  },
+  "about": {
+    "headline": "Au-delà du code.",
+    "p1": "Je suis un ingénieur logiciel adaptable avec des bases solides en informatique et une passion pour l'analyse de données et le développement de logiciels.",
+    "p2": "Avec plusieurs années d'expérience pratique et bénévole dans la création de système allant des plateformes Django/PostgreSQL aux visualisateurs peer-to-peer et aux moteurs de jeu, je m'épanouis dans la résolution de défis multidisciplinaires.",
+    "stat1_val": "5+",
+    "stat1_lbl": "Ans d'expérience dev",
+    "stat2_val": "15+",
+    "stat2_lbl": "Projets réalisés"
+  },
+  "contact": {
+    "title": "Bâtissons l'avenir.",
+    "intro": "Actuellement ouvert aux missions de conseil et aux opportunités en ingénierie logicielle.",
+    "name": "Votre nom",
+    "namePlaceholder": "Jean Dupont",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "jean.dupont@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Parlez-moi de votre projet...",
+    "send": "Envoyer le message"
   },
   "header": {
     "title": "Iliya Glazunov",

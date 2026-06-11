@@ -232,7 +232,7 @@ const ProjectCarousel = () => {
                       href={link.url} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      title={link.label || (link.type === 'github' ? 'GitHub Repository' : 'Live Website')}
+                      title={link.label ? t(`links.${link.label.toLowerCase().replace(/\s+/g, "")}`, link.label) : (link.type === 'github' ? t('links.githubRepo', 'GitHub Repository') : t('links.liveWebsite', 'Live Website'))}
                       className="w-10 h-10 rounded-full border border-outline/30 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all text-on-surface hover:border-primary"
                     >
                       {link.type === 'github' ? (

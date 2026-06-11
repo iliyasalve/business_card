@@ -276,15 +276,15 @@ const Home = () => {
                     <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.name', 'Your Name')}</label>
                     <input
                       className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
-                      placeholder="John Doe"
+                      placeholder={tCommon('contact.namePlaceholder', 'John Doe')}
                       type="text"
                     />
                   </div>
                   <div>
-                    <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">Email Address</label>
+                    <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.emailLabel', 'Email Address')}</label>
                     <input
                       className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
-                      placeholder="john@example.com"
+                      placeholder={tCommon('contact.emailPlaceholder', 'john@example.com')}
                       type="email"
                     />
                   </div>
@@ -293,7 +293,7 @@ const Home = () => {
                   <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.message', 'Message')}</label>
                   <textarea
                     className="w-full flex-grow bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg resize-none placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface min-h-[140px]"
-                    placeholder="Tell me about your project..."
+                    placeholder={tCommon('contact.messagePlaceholder', 'Tell me about your project...')}
                   ></textarea>
                 </div>
                 <div className="md:col-span-2 mt-4">

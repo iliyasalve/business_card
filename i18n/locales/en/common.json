@@ -10,7 +10,29 @@
     "description": "I am a passionate Python developer seeking my first professional opportunity. With over 5 years of non-commercial experience, I have gained strong skills in web application development and creating Telegram bots. I am also familiar with blockchain and natural language processing.\n\nMy goal is to create user-friendly and effective solutions to help users achieve their goals. I am committed to continuing to learn and develop to stay up-to-date with the latest technologies and industry trends.",
     "image": "/images/photo.jpg",
     "explore": "Explore My Experience",
-    "viewProjects": "View Projects"
+    "viewProjects": "View Projects",
+    "statusTag": "Available for new opportunities",
+    "subtitle": "Full-Stack / Mobile Developer & Data Analyst passionate about software engineering, data science, and high-performance solutions."
+  },
+  "about": {
+    "headline": "Beyond the Code.",
+    "p1": "I am an adaptable software engineer with a strong foundation in computer science and a passion for data analysis and software development.",
+    "p2": "With multiple years of practical and volunteer experience building systems ranging from Django/PostgreSQL platforms to peer-to-peer visualizers and game engines, I thrive on solving multi-disciplinary challenges.",
+    "stat1_val": "5+",
+    "stat1_lbl": "Years Dev Experience",
+    "stat2_val": "15+",
+    "stat2_lbl": "Completed Projects"
+  },
+  "contact": {
+    "title": "Let's build the future.",
+    "intro": "Currently accepting selected consulting roles and software engineering opportunities.",
+    "name": "Your Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "john@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "send": "Send Message"
   },
   "header": {
     "title": "Iliya Glazunov",

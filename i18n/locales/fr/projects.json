@@ -1,6 +1,16 @@
 {
   "title": "Mes Projets",
   "intro": "Découvrez mes projets clés, illustrant l'application pratique des algorithmes de colonies de fourmis, de la blockchain, du machine learning et du développement web multilingue en Python et JavaScript.",
+  "links": {
+    "githubRepo": "Dépôt GitHub",
+    "liveWebsite": "Site en direct",
+    "website": "Site Web",
+    "demo": "Démo",
+    "github": "GitHub",
+    "salifortmotorshr": "Analyses RH Salifort Motors",
+    "tiktokclassifier": "Classificateur TikTok",
+    "playgame": "Jouer au jeu"
+  },
   "eurasie": {
     "title": "Eurasie en Analyse",
     "description": "Plateforme web d'analyse géopolitique et économique de la région eurasienne, développée en Django et PostgreSQL. Comprend une interface multilingue, un espace d'administration pour les articles et un système de contact.",
