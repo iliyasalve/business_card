@@ -23,6 +23,8 @@
   --glass-border: rgba(36, 24, 27, 0.08);
   --glass-bg-hover: rgba(244, 239, 241, 0.85);
   --glass-border-hover: rgba(179, 57, 93, 0.4);
+  --glass-shadow: 0 4px 12px rgba(36, 24, 27, 0.015);
+  --glass-shadow-hover: 0 10px 24px rgba(36, 24, 27, 0.04);
 }
 
 .dark {
@@ -43,6 +45,8 @@
   --glass-border: rgba(245, 241, 242, 0.08);
   --glass-bg-hover: rgba(26, 18, 21, 0.6);
   --glass-border-hover: rgba(179, 57, 93, 0.4);
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --glass-shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Font and body settings */
@@ -64,6 +68,7 @@ body {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -71,12 +76,12 @@ body {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .project-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(36, 24, 27, 0.03);
 }
 
 .text-gradient {
