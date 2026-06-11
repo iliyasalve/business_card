@@ -33,8 +33,8 @@ const Custom404 = () => {
         pageSlug="404"
       />
       
-      {/* 404 Main Canvas matching template heights and dimensions exactly */}
-      <div className="relative min-h-screen w-full flex flex-col items-center justify-center pt-20 px-margin-mobile bg-[#0F0A0C] text-[#F5F1F2] overflow-hidden">
+      {/* 404 Main Canvas responding to light/dark themes natively */}
+      <div className="relative min-h-screen w-full flex flex-col items-center justify-center pt-20 px-margin-mobile bg-background text-on-background overflow-hidden">
         {/* Glow Effects */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 blur-[120px] -z-10 rounded-full" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] -z-10 rounded-full" />
@@ -52,18 +52,18 @@ const Custom404 = () => {
 
           {/* Content Overlay */}
           <div className="flex flex-col items-center justify-center">
-            <h2 className="font-display text-headline-lg md:text-display text-[#F5F1F2] tracking-tight text-glow-subtle mb-6 leading-tight">
+            <h2 className="font-display text-headline-lg md:text-display text-on-surface tracking-tight text-glow-subtle mb-6 leading-tight">
               {t('heading')}
             </h2>
-            <p className="font-body-lg text-body-lg text-[#ddbfc3] mt-6 max-w-xl mx-auto leading-relaxed">
+            <p className="font-body-lg text-body-lg text-on-surface-variant mt-6 max-w-xl mx-auto leading-relaxed">
               {t('text')}
             </p>
 
             {/* Terminal Message */}
-            <div className="mt-10 p-4 px-6 rounded-lg bg-[#1A1215]/30 border border-white/5 backdrop-blur-sm max-w-md mx-auto hidden md:block">
+            <div className="mt-10 p-4 px-6 rounded-lg bg-surface-variant/30 border border-outline/10 backdrop-blur-sm max-w-md mx-auto hidden md:block">
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-primary text-[20px]">terminal</span>
-                <p className="font-code text-[13px] text-[#ddbfc3]/80 uppercase tracking-wider">
+                <p className="font-code text-[13px] text-on-surface-variant/80 uppercase tracking-wider">
                   {t('terminalErr')}
                 </p>
               </div>
@@ -73,13 +73,13 @@ const Custom404 = () => {
             <div className="mt-12 flex flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto">
               <Link
                 href="/#home"
-                className="flex-1 sm:flex-none px-8 md:px-10 py-4 bg-primary text-white rounded-full font-body-md text-body-md font-semibold hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20 text-center"
+                className="flex-1 sm:flex-none px-8 md:px-10 py-4 bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg hover:shadow-primary/20 hover:opacity-100 transition-all active:scale-95 text-center"
               >
                 {t('backToHome')}
               </Link>
               <Link
                 href="/#projects"
-                className="flex-1 sm:flex-none px-8 md:px-10 py-4 border border-[#F5F1F2]/10 text-[#F5F1F2] rounded-full font-body-md text-body-md font-semibold hover:bg-white/5 active:scale-95 transition-all text-center"
+                className="flex-1 sm:flex-none px-8 md:px-10 py-4 border border-outline/30 text-on-surface rounded-xl font-bold hover:bg-surface-variant hover:text-primary hover:opacity-100 transition-all text-center"
               >
                 {t('viewProjects')}
               </Link>
