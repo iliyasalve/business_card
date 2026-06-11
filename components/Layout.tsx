@@ -28,6 +28,17 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     i18n.changeLanguage(lng);
   };
 
+  const scrollToHome = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const target = document.querySelector('#home');
+    if (target) {
+      setActiveSection('home');
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const navLinks = [
     { href: '#home', labelKey: 'header.home', fallback: 'Home' },
     { href: '#about', labelKey: 'header.about', fallback: 'About' },
@@ -53,6 +64,9 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     const anchors = document.querySelectorAll('a[href^="#"]');
     const clickHandlers: { anchor: Element, handler: (e: Event) => void }[] = [];
 
+    let isScrollingClick = false;
+    let scrollTimeout: any = null;
+
     anchors.forEach((anchor) => {
       const targetId = anchor.getAttribute('href');
       if (!targetId) return;
@@ -62,10 +76,16 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         e.stopPropagation(); // Stop Next.js from intercepting the click and introducing route lag
         const target = document.querySelector(targetId);
         if (target) {
+          isScrollingClick = true;
           setActiveSection(targetId.slice(1));
           target.scrollIntoView({
             behavior: 'smooth'
           });
+
+          if (scrollTimeout) clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isScrollingClick = false;
+          }, 1000);
         }
       };
       anchor.addEventListener('click', clickHandler);
@@ -82,7 +102,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     };
 
     const observer = new IntersectionObserver((entries) => {
-      if (isChangingLang) return; // Ignore observer triggers during language reflows
+      if (isChangingLang || isScrollingClick) return; // Ignore observer triggers during language reflows or click scrolls
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const activeId = entry.target.getAttribute('id');
@@ -144,12 +164,12 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       {/* TopNavBar matching template exactly */}
       <nav className={`fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10 transition-shadow duration-300 ${scrolled ? 'shadow-xl' : 'shadow-sm'}`}>
         <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-20">
-          <a href="#home" className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0 cursor-pointer select-none no-underline hover:opacity-90 transition-opacity">
-            <span className="opacity-40 font-light">{'{'}</span>
+          <a href="#home" className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
+            <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
             <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
-            <span className="opacity-30 mx-1">:</span>
-            <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
-            <span className="opacity-40 font-light">{'}'}</span>
+            <span className="opacity-30 group-hover:opacity-70 transition-opacity mx-1">:</span>
+            <span className="text-on-surface/80 dark:text-on-surface/90 group-hover:text-on-surface dark:group-hover:text-white transition-all mx-1.5">dev</span>
+            <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'}'}</span>
           </a>
           
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
@@ -229,12 +249,12 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         <div>
           {/* Header */}
           <div className="flex justify-between items-center h-20 border-b border-on-surface/10 mb-6">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="font-display text-headline-md font-bold tracking-tight flex items-center cursor-pointer select-none no-underline hover:opacity-90 transition-opacity">
-              <span className="opacity-40 font-light">{'{'}</span>
+            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="font-display text-headline-md font-bold tracking-tight flex items-center cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
+              <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
-              <span className="opacity-30 mx-1">:</span>
-              <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
-              <span className="opacity-40 font-light">{'}'}</span>
+              <span className="opacity-30 group-hover:opacity-70 transition-opacity mx-1">:</span>
+              <span className="text-on-surface/80 dark:text-on-surface/90 group-hover:text-on-surface dark:group-hover:text-white transition-all mx-1.5">dev</span>
+              <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'}'}</span>
             </a>
             <button 
               onClick={() => setMobileMenuOpen(false)}
@@ -299,12 +319,12 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-12 px-margin-mobile md:px-gutter">
           <div className="mb-8 md:mb-0 w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 text-left">
-            <a href="#home" className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline hover:opacity-90 transition-opacity">
-              <span className="opacity-40 font-light">{'{'}</span>
+            <a href="#home" className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
+              <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
-              <span className="opacity-30 mx-1">:</span>
-              <span className="text-on-surface/80 dark:text-on-surface/90 font-medium mx-1.5">dev</span>
-              <span className="opacity-40 font-light">{'}'}</span>
+              <span className="opacity-30 group-hover:opacity-70 transition-opacity mx-1">:</span>
+              <span className="text-on-surface/80 dark:text-on-surface/90 group-hover:text-on-surface dark:group-hover:text-white transition-all mx-1.5">dev</span>
+              <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'}'}</span>
             </a>
             <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-md text-left">
               {t('footer.copyright', { year: new Date().getFullYear() })}
