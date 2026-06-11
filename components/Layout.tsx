@@ -66,12 +66,14 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
     let isScrollingClick = false;
     let scrollTimeout: any = null;
+    const isHomePage = router.pathname === '/';
 
     anchors.forEach((anchor) => {
       const targetId = anchor.getAttribute('href');
       if (!targetId) return;
 
       const clickHandler = (e: Event) => {
+        if (!isHomePage) return; // Allow normal navigation on subpages
         e.preventDefault();
         e.stopPropagation(); // Stop Next.js from intercepting the click and introducing route lag
         const target = document.querySelector(targetId);
@@ -159,12 +161,31 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     };
   }, [i18n.language]);
 
+  // Handle scrolling to anchor on initial load or cross-page navigation
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const timer = setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          setActiveSection(hash.slice(1));
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [router.asPath]);
+
+  const isHomePage = router.pathname === '/';
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-background">
       {/* TopNavBar matching template exactly */}
       <nav className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-on-surface/10">
         <div className="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-gutter h-20">
-          <a href="#home" className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
+          <a href={isHomePage ? "#home" : "/"} className="font-display text-headline-md font-bold tracking-tight flex items-center shrink-0 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
             <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
             <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
             <span className="opacity-30 group-hover:opacity-70 transition-opacity mx-1">:</span>
@@ -175,6 +196,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
+              const href = isHomePage ? link.href : `/${link.href}`;
               return (
                 <a
                   key={link.href}
@@ -183,7 +205,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                       ? "text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-medium transition-all text-sm lg:text-base"
                       : "text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-medium text-sm lg:text-base"
                   }
-                  href={link.href}
+                  href={href}
                 >
                   {t(link.labelKey, link.fallback)}
                 </a>
@@ -249,7 +271,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         <div>
           {/* Header */}
           <div className="flex justify-between items-center h-20 border-b border-on-surface/10 mb-6">
-            <a href="#home" onClick={() => setMobileMenuOpen(false)} className="font-display text-headline-md font-bold tracking-tight flex items-center cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
+            <a href={isHomePage ? "#home" : "/"} onClick={() => setMobileMenuOpen(false)} className="font-display text-headline-md font-bold tracking-tight flex items-center cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
               <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
               <span className="opacity-30 group-hover:opacity-70 transition-opacity mx-1">:</span>
@@ -267,6 +289,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           <div className="flex flex-col text-base font-medium">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
+              const href = isHomePage ? link.href : `/${link.href}`;
               return (
                 <a
                   key={link.href}
@@ -276,7 +299,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                       ? "mobile-nav-link py-3 border-b border-on-surface/5 text-primary dark:text-primary-fixed-dim font-medium transition-all"
                       : "mobile-nav-link py-3 border-b border-on-surface/5 text-on-surface-variant hover:text-primary transition-colors font-medium"
                   }
-                  href={link.href}
+                  href={href}
                 >
                   {t(link.labelKey, link.fallback)}
                 </a>
@@ -319,7 +342,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-12 px-margin-mobile md:px-gutter">
           <div className="mb-8 md:mb-0 w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 text-left">
-            <a href="#home" className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
+            <a href={isHomePage ? "#home" : "/"} className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
               <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
               <span className="text-primary dark:text-primary-fixed-dim mx-1.5">IG</span>
               <span className="opacity-30 group-hover:opacity-70 transition-opacity mx-1">:</span>
