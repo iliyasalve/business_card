@@ -234,7 +234,7 @@ const Home = () => {
               {/* Certifications */}
               <div>
                 <h2 className="font-display text-headline-lg mb-12">{tTrain('title', 'Certifications.')}</h2>
-                <div className="max-h-[1190px] overflow-y-auto no-scrollbar">
+                <div className="max-h-[1190px] overflow-y-auto no-scrollbar pt-2 px-1 -mt-2 -mx-1">
                   <div className="grid grid-cols-1 gap-4">
                     {trainings.map((train, idx) => (
                       <div key={idx} className="flex items-center gap-4 p-4 glass-card rounded-xl">
