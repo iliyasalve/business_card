@@ -109,6 +109,15 @@ body {
   background: rgb(var(--primary));
 }
 
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* Light and dark theme logic via class (used by Tailwind's dark mode) */
 html {
   scroll-behavior: smooth;

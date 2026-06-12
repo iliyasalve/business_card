@@ -208,7 +208,8 @@ const Home = () => {
                       className="p-6 rounded-2xl border border-surface-variant hover:border-primary/40 transition-colors"
                     >
                       <h4 className="font-display text-headline-md mb-1">{deg.title}</h4>
-                      <p className="text-primary font-medium mb-2">{deg.institution}</p>
+                      <p className="text-primary font-medium mb-1">{deg.institution}</p>
+                      <p className="text-on-surface-variant text-xs mb-3">{deg.location} · {deg.period}</p>
                       <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4">{deg.description}</p>
                       {deg.projects && (
                         <div className="mt-2 text-xs text-on-surface-variant">
@@ -228,31 +229,33 @@ const Home = () => {
               {/* Certifications */}
               <div>
                 <h2 className="font-display text-headline-lg mb-12">{tTrain('title', 'Certifications.')}</h2>
-                <div className="grid grid-cols-1 gap-4">
-                  {trainings.map((train, idx) => (
-                    <div key={idx} className="flex items-center gap-4 p-4 glass-card rounded-xl">
-                      <div className="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center shrink-0">
-                        <span className="material-symbols-outlined text-primary">
-                          {idx % 2 === 0 ? 'verified_user' : 'cloud_done'}
-                        </span>
+                <div className="max-h-[1190px] overflow-y-auto no-scrollbar">
+                  <div className="grid grid-cols-1 gap-4">
+                    {trainings.map((train, idx) => (
+                      <div key={idx} className="flex items-center gap-4 p-4 glass-card rounded-xl">
+                        <div className="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center shrink-0">
+                          <span className="material-symbols-outlined text-primary">
+                            {idx % 2 === 0 ? 'verified_user' : 'cloud_done'}
+                          </span>
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-on-surface">{train.title.replace(/\s*(Professional Certificate|Certificate)$/i, '')}</h5>
+                          <p className="text-on-surface-variant text-label-sm mb-1">{train.institution} · {train.period}</p>
+                          {train.badgeId && (
+                            <a 
+                              href={`https://www.credly.com/badges/${train.badgeId}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-primary dark:text-primary-fixed-dim font-bold text-sm inline-flex items-center gap-1 group"
+                            >
+                              <span className="group-hover:underline">{tTrain('verify', 'Verify Credential')}</span>
+                              <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div>
-                        <h5 className="font-bold text-on-surface">{train.title}</h5>
-                        <p className="text-on-surface-variant text-label-sm mb-1">{train.institution} · {train.period}</p>
-                        {train.badgeId && (
-                          <a 
-                            href={`https://www.credly.com/badges/${train.badgeId}`} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-primary dark:text-primary-fixed-dim font-bold text-sm inline-flex items-center gap-1 group"
-                          >
-                            <span className="group-hover:underline">{tTrain('verify', 'Verify Credential')}</span>
-                            <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5">arrow_forward</span>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
