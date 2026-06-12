@@ -270,7 +270,7 @@ const Home = () => {
         {/* Contact Section */}
         <section className="py-section-gap-lg bg-surface-container-low" id="contact">
           <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
-            <div className="max-w-4xl mx-auto glass-card rounded-[2rem] p-12 relative overflow-hidden">
+            <div className="max-w-4xl mx-auto glass-card rounded-[2rem] p-6 sm:p-10 md:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
               <div className="text-center mb-16">
                 <h2 className="font-display text-display mb-6 leading-tight">{tCommon('contact.title', "Let's build the future.")}</h2>
@@ -357,8 +357,8 @@ const Home = () => {
                 </div>
 
                 {/* hCaptcha widget */}
-                <div className="md:col-span-2 flex justify-center mt-2">
-                  <div className="h-captcha" data-captcha="true" data-theme="dark" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
+                <div className="md:col-span-2 flex justify-center items-center w-full mt-2 overflow-hidden">
+                  <div className="h-captcha mx-auto" data-captcha="true" data-theme="dark" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
                 </div>
 
                 <div className="md:col-span-2 mt-4">

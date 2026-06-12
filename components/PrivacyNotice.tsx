@@ -21,18 +21,17 @@ const PrivacyNotice: React.FC = () => {
 
   return (
     <div className="fixed bottom-0 left-0 w-full
-      bg-privacy-light dark:bg-privacy-dark
-      text-privacy-textLight dark:text-privacy-textDark
-      p-4 shadow-xl z-50 text-base animate-fade-in
-      flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 sm:space-x-4"
+      bg-surface-container text-on-surface border-t border-outline/20
+      p-4 md:p-6 shadow-2xl z-50 text-sm md:text-base animate-fade-in
+      flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6"
     >
-      <p className="flex-1 text-center sm:text-left">
+      <p className="flex-1 text-center sm:text-left leading-relaxed">
         {t('privacy.message')}{' '}
         <a
           href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline font-semibold hover:text-privacy-textDark dark:hover:text-privacy-textLight"
+          className="underline font-semibold hover:text-primary transition-colors"
         >
           {t('privacy.linkText', 'GitHub Privacy Policy')}
         </a>
@@ -40,17 +39,9 @@ const PrivacyNotice: React.FC = () => {
       </p>
       <button
         onClick={acceptPrivacy}
-        className="
-            bg-privacy DEFAULT
-            dark:bg-privacy-buttonDarkBg
-            text-privacy-textLight
-            dark:text-privacy-textDark
-            px-4 py-2 rounded
-            hover:bg-privacy-buttonDarkHover
-            transition
-        "
-        >
-        {t('privacy.accept')}
+        className="px-6 py-2.5 bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 text-sm shrink-0"
+      >
+        {t('privacy.accept', 'OK')}
       </button>
     </div>
   );
