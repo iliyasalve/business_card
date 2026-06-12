@@ -6,7 +6,9 @@ const BentoSkills = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* Mobile Development — col-span-2 */}
+
+      {/* ROW 1: Mobile (wide, col-span-2) + Back-End */}
+
       <div className="glass-card p-8 rounded-xl md:col-span-2">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">phone_iphone</span>
         <h3 className="font-display text-headline-md mb-4">
@@ -21,7 +23,6 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Back-End & APIs */}
       <div className="glass-card p-8 rounded-xl">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">dns</span>
         <h3 className="font-display text-headline-md mb-4">
@@ -36,7 +37,8 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Data & AI */}
+      {/* ROW 2: Data & AI + Frontend + Tools — три равных блока */}
+
       <div className="glass-card p-8 rounded-xl">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">psychology</span>
         <h3 className="font-display text-headline-md mb-4">
@@ -51,8 +53,7 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Frontend & Web — col-span-2 */}
-      <div className="glass-card p-8 rounded-xl md:col-span-2">
+      <div className="glass-card p-8 rounded-xl">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">palette</span>
         <h3 className="font-display text-headline-md mb-4">
           {t('skills.frontendTitle', 'Frontend & Web')}
@@ -66,7 +67,6 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Tools & Infrastructure */}
       <div className="glass-card p-8 rounded-xl">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">build</span>
         <h3 className="font-display text-headline-md mb-4">
@@ -80,6 +80,7 @@ const BentoSkills = () => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };
