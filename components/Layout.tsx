@@ -19,6 +19,7 @@ const languages = [
 const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   const router = useRouter();
   const { i18n, t } = useTranslation('common');
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -230,7 +231,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                   key={code}
                   onClick={() => changeLanguage(code)}
                   className={`transition-all px-2 py-1 rounded-md ${
-                    i18n.language === code
+                    currentLang === code
                       ? 'bg-primary text-on-primary active:scale-95'
                       : 'text-on-surface-variant hover:text-primary'
                   }`}
@@ -324,7 +325,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                 key={code}
                 onClick={() => changeLanguage(code)}
                 className={`px-3 py-1.5 rounded-lg transition-colors ${
-                  i18n.language === code
+                  currentLang === code
                     ? 'bg-primary text-on-primary active:scale-95'
                     : 'text-on-surface-variant bg-surface-variant/30 hover:text-primary'
                 }`}
