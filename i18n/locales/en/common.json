@@ -32,7 +32,11 @@
     "emailPlaceholder": "john@example.com",
     "message": "Message",
     "messagePlaceholder": "Tell me about your project...",
-    "send": "Send Message"
+    "send": "Send Message",
+    "successMessage": "Success! Your message has been sent.",
+    "captchaError": "Please fill out the captcha field.",
+    "errorMessage": "Something went wrong. Please try again.",
+    "sending": "Sending..."
   },
   "header": {
     "title": "Iliya Glazunov",

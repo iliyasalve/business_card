@@ -32,7 +32,11 @@
     "emailPlaceholder": "jean.dupont@example.com",
     "message": "Message",
     "messagePlaceholder": "Parlez-moi de votre projet...",
-    "send": "Envoyer le message"
+    "send": "Envoyer le message",
+    "successMessage": "Succès ! Votre message a été envoyé.",
+    "captchaError": "Veuillez remplir le champ captcha.",
+    "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
+    "sending": "Envoi en cours..."
   },
   "header": {
     "title": "Iliya Glazunov",
