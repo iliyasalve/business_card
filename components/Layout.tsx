@@ -51,6 +51,12 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   ];
 
   useEffect(() => {
+    let isScrollingClick = false;
+    let isChangingLang = false;
+    let scrollTimeout: any = null;
+    const isHomePage = router.pathname === '/';
+    const sections = document.querySelectorAll('section[id]');
+
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -63,17 +69,34 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       } else {
         setShowScrollTop(false);
       }
+
+      // Scroll Spy
+      if (isChangingLang || isScrollingClick) return;
+
+      const scrollPosition = window.scrollY + window.innerHeight * 0.45; // 45% of viewport height
+      let currentSection = 'home';
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        currentSection = 'contact';
+      } else {
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+          const sectionId = section.getAttribute('id');
+          if (scrollPosition >= sectionTop && sectionId) {
+            currentSection = sectionId;
+          }
+        });
+      }
+
+      setActiveSection(currentSection);
     };
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
     // Smooth scroll implementation to avoid router latency in Safari
     const anchors = document.querySelectorAll('a[href^="#"]');
     const clickHandlers: { anchor: Element, handler: (e: Event) => void }[] = [];
-
-    let isScrollingClick = false;
-    let scrollTimeout: any = null;
-    const isHomePage = router.pathname === '/';
 
     anchors.forEach((anchor) => {
       const targetId = anchor.getAttribute('href');
@@ -94,35 +117,14 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           if (scrollTimeout) clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isScrollingClick = false;
+            // Force update scroll spy after scroll ends to ensure correct highlight
+            handleScroll();
           }, 1000);
         }
       };
       anchor.addEventListener('click', clickHandler);
       clickHandlers.push({ anchor, handler: clickHandler });
     });
-
-    // Scroll spy IntersectionObserver modifying state to bypass React re-render lag
-    let isChangingLang = false;
-    const sections = document.querySelectorAll('section[id]');
-    const observerOptions = {
-      root: null,
-      rootMargin: '-30% 0px -50% 0px',
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      if (isChangingLang || isScrollingClick) return; // Ignore observer triggers during language reflows or click scrolls
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const activeId = entry.target.getAttribute('id');
-          if (activeId) {
-            setActiveSection(activeId);
-          }
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach(section => observer.observe(section));
 
     // Handle language switch scroll shifts by re-aligning the active section
     const handleLangChange = () => {
@@ -160,11 +162,11 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      sections.forEach(section => observer.unobserve(section));
       i18n.off('languageChanged', handleLangChange);
       clickHandlers.forEach(({ anchor, handler }) => {
         anchor.removeEventListener('click', handler);
       });
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, [i18n.language]);
 
