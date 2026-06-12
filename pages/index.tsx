@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
+import Script from 'next/script';
 import Seo from '../components/Seo';
 import BentoSkills from '../components/BentoSkills';
 import ProjectCarousel from '../components/ProjectCarousel';
@@ -35,6 +36,9 @@ const Home = () => {
   const { t: tExp } = useTranslation('experience');
   const { t: tEdu } = useTranslation('education');
   const { t: tTrain } = useTranslation('training');
+
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
 
   // Fetch translation content
   const jobs = tExp('jobs', { returnObjects: true }) as Job[] || [];
@@ -77,6 +81,7 @@ const Home = () => {
       <Head>
         <title>{tCommon('header.title')}</title>
       </Head>
+      <Script src="https://web3forms.com/client/script.js" async defer />
 
       <div className="w-full">
         {/* Hero Section */}
@@ -273,40 +278,107 @@ const Home = () => {
                   {tCommon('contact.intro', 'Currently accepting selected consulting roles and software engineering opportunities.')}
                 </p>
               </div>
-              <form className="grid md:grid-cols-2 gap-8" onSubmit={(e) => e.preventDefault()}>
+              <form 
+                className="grid md:grid-cols-2 gap-8" 
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setFormStatus('sending');
+                  setStatusMessage('');
+
+                  const formElement = e.currentTarget;
+
+                  // Client-side hCaptcha validation
+                  const hCaptcha = formElement.querySelector('textarea[name=h-captcha-response]') as HTMLTextAreaElement | null;
+                  if (!hCaptcha || !hCaptcha.value) {
+                    setFormStatus('error');
+                    setStatusMessage(tCommon('contact.captchaError', 'Please fill out the captcha field.'));
+                    return;
+                  }
+
+                  const formData = new FormData(formElement);
+                  formData.append("access_key", "b57b2b40-aad5-42b9-b25d-6c29b3d06cf1");
+
+                  try {
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                      method: "POST",
+                      body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                      setFormStatus('success');
+                      setStatusMessage(tCommon('contact.successMessage', 'Success! Your message has been sent.'));
+                      formElement.reset();
+                      // Reset hCaptcha widget if window.hcaptcha exists
+                      if (typeof window !== 'undefined' && (window as any).hcaptcha) {
+                        (window as any).hcaptcha.reset();
+                      }
+                    } else {
+                      setFormStatus('error');
+                      setStatusMessage(data.message || tCommon('contact.errorMessage', 'Something went wrong. Please try again.'));
+                    }
+                  } catch (error) {
+                    setFormStatus('error');
+                    setStatusMessage(tCommon('contact.errorMessage', 'Something went wrong. Please try again.'));
+                  }
+                }}
+              >
                 <div className="space-y-6">
                   <div>
                     <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.name', 'Your Name')}</label>
                     <input
+                      name="name"
+                      required
+                      type="text"
                       className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
                       placeholder={tCommon('contact.namePlaceholder', 'John Doe')}
-                      type="text"
                     />
                   </div>
                   <div>
                     <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.emailLabel', 'Email Address')}</label>
                     <input
+                      name="email"
+                      required
+                      type="email"
                       className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
                       placeholder={tCommon('contact.emailPlaceholder', 'john@example.com')}
-                      type="email"
                     />
                   </div>
                 </div>
                 <div className="flex flex-col h-full">
                   <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.message', 'Message')}</label>
                   <textarea
+                    name="message"
+                    required
                     className="w-full flex-grow bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg resize-none placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface min-h-[140px]"
                     placeholder={tCommon('contact.messagePlaceholder', 'Tell me about your project...')}
                   ></textarea>
                 </div>
+
+                {/* hCaptcha widget */}
+                <div className="md:col-span-2 flex justify-center mt-2">
+                  <div className="h-captcha" data-captcha="true" data-theme="dark" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
+                </div>
+
                 <div className="md:col-span-2 mt-4">
                   <button
-                    className="w-full py-4 bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg hover:shadow-primary/30 hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
+                    type="submit"
+                    disabled={formStatus === 'sending'}
+                    className="w-full py-4 bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg hover:shadow-primary/30 hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {tCommon('contact.send', 'Send Message')}
+                    {formStatus === 'sending' ? tCommon('contact.sending', 'Sending...') : tCommon('contact.send', 'Send Message')}
                     <span className="material-symbols-outlined">send</span>
                   </button>
                 </div>
+
+                {statusMessage && (
+                  <div className={`md:col-span-2 mt-4 p-4 rounded-xl text-center text-sm font-semibold ${
+                    formStatus === 'success' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'
+                  }`}>
+                    {statusMessage}
+                  </div>
+                )}
               </form>
             </div>
           </div>
