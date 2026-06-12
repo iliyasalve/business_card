@@ -1,6 +1,6 @@
 {
   "title": "Degrees and Education",
-  "intro": "My studies have built a strong foundation in computer science, covering a wide range of fields such as artificial intelligence, cryptography, and web application development. The academic projects I completed allowed me to apply this knowledge in real-world contexts. Here you'll find a detailed presentation of my degrees, institutions, and acquired skills.",
+  "intro": "My academic background in Computer Science from Université Paris-Saclay (Orsay, France) provided a rigorous foundation in algorithms, AI, distributed systems and cryptography — which I have since built upon through applied projects and professional certifications.",
   "keyProjects": "Key Projects",
   "degrees": [
     {
@@ -8,7 +8,7 @@
       "institution": "Université Paris-Saclay",
       "location": "Orsay, France",
       "period": "09/2020 – 10/2022",
-      "description": "During my Master's program, I studied a wide range of subjects such as networking and routing, advanced algorithms, artificial intelligence, cryptography, and database management. I also deepened my knowledge in machine learning and various data analysis methods, including natural language processing (NLP). This enabled me to understand both theoretical and practical aspects of big data processing and security.",
+      "description": "Advanced curriculum covering networking & routing, algorithm design, artificial intelligence, cryptography, database management and applied machine learning (NLP, deep learning). Graduated with strong theoretical foundations and practical project experience in P2P systems, blockchain and image classification.",
       "projects": [
         "Blockchain project implementing block creation, consensus algorithms, and data security.",
         "Secure peer-to-peer routing solution developed during internship.",
@@ -42,8 +42,8 @@
   ],
   "meta": {
     "title": "Degrees and Education – Iliya Glazunov",
-    "description": "Explore Iliya Glazunov's academic background, including Master's, Bachelor's, and DUT degrees in computer science with a focus on AI, cryptography, blockchain, and software development projects.",
-    "keywords": "education, computer science, AI, cryptography, blockchain, software development, Iliya Glazunov",
+    "description": "Academic background of Iliya Glazunov: Master's, Bachelor's and DUT in Computer Science from Université Paris-Saclay, with projects in AI, cryptography, blockchain and software development.",
+    "keywords": "education, computer science, Master Paris-Saclay, AI, cryptography, blockchain, software development, Iliya Glazunov",
     "image": "/images/photo.jpg"
   }
 }

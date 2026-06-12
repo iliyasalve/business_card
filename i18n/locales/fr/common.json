@@ -1,26 +1,26 @@
 {
   "home": {
     "meta": {
-      "title": "Iliya Glazunov | Développeur, Expert Data & IA",
-      "description": "Je suis un développeur Python passionné à la recherche de ma première opportunité professionnelle. Avec plus de 5 ans d'expérience non commerciale, j'ai acquis de solides compétences en développement d'applications web et en création de bots Telegram. Je maîtrise également la blockchain et le traitement du langage naturel.",
-      "keywords": "portfolio, frontend, Python, bots Telegram, NLP, blockchain, développeur, carte de visite",
+      "title": "Iliya Glazunov | Développeur Mobile, Full-Stack & Data",
+      "description": "Développeur spécialisé en Mobile (Swift, React Native), Back-End (Python/Django) et Data & IA. Projets en production, applications mobiles commerciales et modèles ML. Basé à Paris.",
+      "keywords": "portfolio, développeur mobile, Swift, React Native, Python, Django, analyste data, IA, LLM, développeur, Paris",
       "image": "/images/photo.jpg"
     },
     "title": "Bonjour, je suis Iliya Glazunov",
-    "description": "Je suis un développeur Python passionné à la recherche de ma première opportunité professionnelle. Avec plus de 5 ans d'expérience non commerciale, j'ai acquis des compétences solides dans le développement d'applications web et la création de bots Telegram. Je suis également familiarisé avec la blockchain et le traitement du langage naturel.\n\nMon objectif est de créer des solutions conviviales et efficaces pour aider les utilisateurs à atteindre leurs objectifs. Je m'engage à continuer d'apprendre et à me développer pour rester à jour sur les dernières technologies et tendances du secteur.",
+    "description": "Je conçois et développe des logiciels de niveau production à travers toute la stack — des applications iOS natives en Swift et des expériences mobiles multiplateformes avec React Native & Expo, jusqu'aux systèmes back-end robustes pilotés par Python, Django et PostgreSQL.\n\nDepuis 2022, j'ai livré des produits réels : une plateforme web Django/PostgreSQL en production (eurasieanalyse.fr), deux applications mobiles commerciales et une suite d'outils d'automatisation. Je suis certifié en Generative AI Engineering, Développement Full-Stack et Data Analytics par IBM et Google, et j'intègre activement les API LLM (Gemini, GPT) dans mes projets.",
     "image": "/images/photo.jpg",
     "explore": "Explorer mon expérience",
     "viewProjects": "Voir les projets",
     "statusTag": "Disponible pour de nouvelles opportunités",
-    "subtitle": "Développeur Full-Stack / Mobile & Analyste de données passionné par le génie logiciel, la science des données et les solutions hautes performances."
+    "subtitle": "Mobile (Swift · React Native) · Back-End (Python · Django) · Data & IA — logiciels en production depuis 2022."
   },
   "about": {
     "headline": "Au-delà du code.",
-    "p1": "Je suis un ingénieur logiciel adaptable avec des bases solides en informatique et une passion pour l'analyse de données et le développement de logiciels.",
-    "p2": "Avec plusieurs années d'expérience pratique et bénévole dans la création de système allant des plateformes Django/PostgreSQL aux visualisateurs peer-to-peer et aux moteurs de jeu, je m'épanouis dans la résolution de défis multidisciplinaires.",
+    "p1": "Ingénieur logiciel polyvalent, titulaire d'un Master en Informatique de l'Université Paris-Saclay, avec une expérience concrète couvrant le développement mobile, l'ingénierie back-end web et le machine learning appliqué.",
+    "p2": "Du lancement d'une plateforme Django/PostgreSQL en production à la création d'applications iOS natives en Swift et l'intégration d'API LLM dans des applications React Native multiplateformes, j'excelle dans la résolution de défis multidisciplinaires de bout en bout — de l'architecture au déploiement.",
     "stat1_val": "5+",
     "stat1_lbl": "Ans d'expérience dev",
-    "stat2_val": "15+",
+    "stat2_val": "20+",
     "stat2_lbl": "Projets réalisés"
   },
   "contact": {
@@ -47,11 +47,11 @@
     "contact": "Contact"
   },
   "skills": {
-    "backendTitle": "Développement Backend",
-    "aiTitle": "Data Science & IA",
-    "gamesTitle": "Développement de Jeux",
-    "frontendTitle": "Frontend & Style",
-    "toolsTitle": "QA & Infrastructure"
+    "mobileTitle": "Développement Mobile",
+    "backendTitle": "Back-End & APIs",
+    "aiTitle": "Data & IA",
+    "frontendTitle": "Frontend & Web",
+    "toolsTitle": "Outils & Infrastructure"
   },
   "footer": {
     "email": "iliyasalve@gmail.com",

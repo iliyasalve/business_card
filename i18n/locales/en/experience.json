@@ -3,15 +3,15 @@
   "intro": "My professional experiences have allowed me to explore different facets of Python development. I've had the opportunity to participate in various projects, where I not only developed strong technical skills but also learned the importance of listening and collaboration. My user-oriented approach pushes me to always look for ways to improve the products I develop, ensuring they are both functional and enjoyable to use.",
   "jobs": [
     {
-      "position": "Full Stack Developer",
+      "position": "Full-Stack Developer",
       "company": "Eurasie en Analyse",
       "dates": "04/2024 – present, eurasieanalyse.fr",
       "description": [
-        "Created a website for publishing articles and collecting feedback contributing to the initiative to share knowledge about Eurasian issues.",
-        "Full application development including backend with Django and PostgreSQL database, frontend technologies like HTML5, CSS, Bootstrap, JavaScript, and HTMX for a modern, responsive UI.",
-        "Key features include user registration, commenting on articles, personalized notifications, user profiles, contact form, and dynamic content display based on user interactions.",
-        "Deployment and maintenance ensuring high availability and optimal performance through continuous monitoring, regular updates, and optimizations.",
-        "Positive feedback on user experience and aesthetics, highlighting intuitive navigation, responsive design, and visual appeal, enhancing platform impact and reach."
+        "Independently designed, built and deployed a full geopolitical web platform from scratch — live in production at eurasieanalyse.fr with real active users.",
+        "Full-cycle back-end development using Django and PostgreSQL: user registration & authentication, personalised notifications, user profiles, dynamic article feeds, and a contact system.",
+        "Modern, responsive front-end built with HTML5, CSS3, Bootstrap, JavaScript and HTMX for seamless partial-page updates without full reloads.",
+        "Ongoing maintenance and feature iterations: regular content deployments, performance tuning, and direct collaboration with the editorial team on UX improvements.",
+        "Consistently positive user feedback on navigation clarity, visual design and overall responsiveness across devices."
       ]
     },
     {

@@ -1,20 +1,35 @@
 {
   "title": "Skills",
-  "intro": "As a developer specializing in Python, AI, and Data Science, my technical expertise spans web development, machine learning, and blockchain. Strong collaborative and problem-solving skills allow me to quickly adapt and deliver innovative, scalable solutions.",
+  "intro": "As a versatile developer specialising in Mobile (Swift, React Native), Back-End (Python/Django) and Data & AI, my technical expertise spans native iOS engineering, full-stack web development, machine learning and LLM integration.",
   "titleHard": "Hard Skills",
   "titleSoft": "Soft Skills",
-  "introHard": "The hard skills listed here were developed through years of training and practice. My expertise covers a variety of programming languages, frameworks, and tools used in software development and data analysis. I actively apply my knowledge to create innovative solutions, ensuring efficiency and reliability of projects, while achieving high results.",
-  "introSoft": "Soft skills play a crucial role in my professional competence, enabling me to interact effectively with colleagues and adapt to changing conditions. I know how to organize my work, show initiative, and collaborate in teams. These qualities help me find optimal solutions in complex situations and contribute to team success.",
+  "introHard": "The hard skills below reflect technologies I have applied across real production projects — from a live Django/PostgreSQL web platform and commercial mobile applications to ML models and generative AI integrations.",
+  "introSoft": "Soft skills play a crucial role in my professional competence, enabling me to interact effectively with colleagues and adapt to changing conditions. I know how to organise my work, show initiative, and collaborate in teams. These qualities help me find optimal solutions in complex situations and contribute to team success.",
   "hardSkills": [
     {
+        "name": "Swift & iOS Development",
+        "description": "Native iOS development using Swift, SwiftUI and UIKit. Experience building commercial-grade applications with game logic, multi-language localisation (10 languages), offline multiplayer, achievements systems and Google AdMob monetisation.",
+        "example": "Independently built a full commercial Tic-Tac-Toe mobile game in Swift — 3 difficulty levels, offline multiplayer, 10 localisations and AdMob integration, currently in final polishing before App Store release."
+    },
+    {
+        "name": "React Native & Expo",
+        "description": "Cross-platform mobile development for iOS and Android with React Native and Expo. Integration of Firebase (authentication, Firestore, user profiles, session history) and LLM APIs for AI-driven features.",
+        "example": "Built an AI Interview Prep application — users select a role and experience level, the app conducts a voice/text interview via Gemini/GPT API and generates a detailed performance report with strengths, weaknesses and recommendations."
+    },
+    {
+        "name": "LLM & Generative AI Integration",
+        "description": "Integration of large language model APIs (Gemini, GPT) into production applications. Prompt engineering, RAG pipeline concepts (LangChain), fine-tuning awareness, and building AI agents. Certified in IBM Generative AI Engineering and IBM AI Engineering.",
+        "example": "Integrated Gemini API into the AI Interview Prep mobile app for dynamic question generation and detailed answer evaluation, including voice analysis and personalised feedback."
+    },
+    {
         "name": "Python",
-        "description": "Over 5 years of experience developing scripts and web applications using Python. This includes working with libraries for data analysis, machine learning, and artificial intelligence: Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch. Experienced in applying these tools for big data analysis and AI model development.",
-        "example": "In projects, I used Pandas and NumPy for data processing, and created machine learning models with Scikit-learn and TensorFlow for data classification and forecasting."
+        "description": "Over 5 years of experience developing scripts and web applications using Python. Since 2022 I have used Python professionally for freelance projects — web platforms, automation scripts, Telegram bots, data scrapers and ML model development.",
+        "example": "Built automation scripts for task scheduling, server/email verification and data scraping. Developed Telegram bots and used Pandas, NumPy and Scikit-learn for ML pipelines."
     },
     {
         "name": "Django and PostgreSQL",
-        "description": "Developed web applications using Django, integrated with PostgreSQL for user data management and complex queries. Configured server-side for optimal data processing.",
-        "example": "I developed a responsive website for Eurasie en Analyse with user registration and feedback capability."
+        "description": "Production web application development with Django and PostgreSQL. Full-cycle delivery from architecture and back-end logic to deployment and maintenance. Currently running a live platform at eurasieanalyse.fr.",
+        "example": "Independently designed, built and deployed eurasieanalyse.fr — a full geopolitical publishing platform with user auth, personalised notifications, profiles, dynamic content and HTMX-powered interactions."
     },
     {
         "name": "Data Science",

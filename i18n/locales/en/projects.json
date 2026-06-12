@@ -1,6 +1,6 @@
 {
   "title": "My Projects",
-  "intro": "Discover my key projects, demonstrating the practical application of ant colony optimization, blockchain mechanics, machine learning models, and multilingual Python/JavaScript web development.",
+  "intro": "A selection of key projects spanning native iOS development in Swift, cross-platform mobile apps with React Native, production Django/PostgreSQL web platforms, generative AI integrations, and algorithmic simulations.",
   "links": {
     "githubRepo": "GitHub Repository",
     "liveWebsite": "Live Website",
@@ -13,7 +13,7 @@
   },
   "eurasie": {
     "title": "Eurasie en Analyse",
-    "description": "Geopolitical and economic analysis web resource focused on the Eurasian region, developed with Django and PostgreSQL. Features a multilingual interface, admin posting panel, and feedback forms.",
+    "description": "Full geopolitical web platform independently built and deployed to production at eurasieanalyse.fr. Django & PostgreSQL backend with user auth, personalised notifications, profiles, dynamic article feeds and HTMX-powered UI interactions.",
     "link": "https://eurasieanalyse.fr"
   },
   "aco": {
@@ -43,8 +43,8 @@
   },
   "meta": {
     "title": "Projects – Iliya Glazunov",
-    "description": "Explore Iliya Glazunov's project portfolio, showing his expertise in Python engineering, interactive simulations, and predictive data modeling.",
-    "keywords": "projects, Python development, Telegram bots, machine learning, web apps, Godot, Iliya Glazunov",
+    "description": "Portfolio of Iliya Glazunov: native iOS apps in Swift, cross-platform React Native apps with LLM integration, Django/PostgreSQL web platforms, ML models and algorithmic simulations.",
+    "keywords": "projects, Swift, React Native, Django, Python, machine learning, generative AI, LLM, Telegram bot, Iliya Glazunov",
     "image": "/images/photo.jpg"
   }
 }

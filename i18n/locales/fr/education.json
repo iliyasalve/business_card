@@ -1,6 +1,6 @@
 {
   "title": "Diplômes et Formations",
-  "intro": "Mes études ont forgé une solide base en informatique, couvrant des domaines variés tels que l'intelligence artificielle, la cryptographie et le développement d'applications web. Les projets académiques que j'ai réalisés m'ont permis d'appliquer ces connaissances dans des contextes réels. Vous trouverez ici une présentation détaillée de mes diplômes, des institutions et des compétences acquises.",
+  "intro": "Ma formation en Informatique à l'Université Paris-Saclay (Orsay, France) m'a fourni une base rigoureuse en algorithmes, IA, systèmes distribués et cryptographie — que j'ai depuis enrichie par des projets appliqués et des certifications professionnelles.",
   "keyProjects": "Projets clés",
   "degrees": [
     {
@@ -8,7 +8,7 @@
       "institution": "Université Paris-Saclay",
       "location": "Orsay, France",
       "period": "09/2020 – 10/2022",
-      "description": "Pendant mon master, j'ai étudié un large éventail de disciplines telles que les réseaux et la routage, les algorithmes avancés, l'intelligence artificielle, la cryptographie et la gestion des bases de données. J'ai également approfondi l'apprentissage automatique et différentes méthodes d'analyse de données, y compris le traitement du langage naturel (NLP). Cela m'a permis de comprendre à la fois les aspects théoriques et pratiques du traitement des big data et de leur sécurité.",
+      "description": "Cursus avancé couvrant réseaux & routage, conception d'algorithmes, IA, cryptographie, gestion de bases de données et machine learning appliqué (NLP, deep learning). Diplômé avec de solides bases théoriques et une expérience pratique de projets en systèmes P2P, blockchain et classification d'images.",
       "projects": [
         "Projet blockchain avec création de blocs, algorithmes de consensus et sécurité des données.",
         "Solution de routage peer-to-peer sécurisée développée en stage.",

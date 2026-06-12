@@ -6,14 +6,29 @@ const BentoSkills = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* Backend & Core Architecture */}
+      {/* Mobile Development — col-span-2 */}
       <div className="glass-card p-8 rounded-xl md:col-span-2">
+        <span className="material-symbols-outlined text-primary mb-4 text-4xl">phone_iphone</span>
+        <h3 className="font-display text-headline-md mb-4">
+          {t('skills.mobileTitle', 'Mobile Development')}
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {['Swift', 'SwiftUI / UIKit', 'React Native', 'Expo', 'AdMob', 'iOS', 'Android'].map((skill) => (
+            <span key={skill} className="px-3 py-1 bg-surface-variant rounded-full text-on-surface font-label-sm">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Back-End & APIs */}
+      <div className="glass-card p-8 rounded-xl">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">dns</span>
         <h3 className="font-display text-headline-md mb-4">
-          {t('skills.backendTitle', 'Core Architecture & Backend')}
+          {t('skills.backendTitle', 'Back-End & APIs')}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {['Python', 'Django', 'Flask', 'PostgreSQL', 'SQLite', 'REST APIs', 'Node.js', 'Go / Golang'].map((skill) => (
+          {['Python', 'Django', 'Flask', 'PostgreSQL', 'SQLite', 'Firebase', 'REST APIs'].map((skill) => (
             <span key={skill} className="px-3 py-1 bg-surface-variant rounded-full text-on-surface font-label-sm">
               {skill}
             </span>
@@ -21,14 +36,14 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Cloud & QA */}
+      {/* Data & AI */}
       <div className="glass-card p-8 rounded-xl">
-        <span className="material-symbols-outlined text-primary mb-4 text-4xl">cloud</span>
+        <span className="material-symbols-outlined text-primary mb-4 text-4xl">psychology</span>
         <h3 className="font-display text-headline-md mb-4">
-          {t('skills.toolsTitle', 'QA & Infrastructure')}
+          {t('skills.aiTitle', 'Data & AI')}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {['Git / GitHub', 'GitHub Actions', 'Docker', 'Linux', 'REST Testing / Postman', 'Bash Scripting'].map((skill) => (
+          {['Pandas', 'NumPy', 'Scikit-learn', 'PyTorch', 'TensorFlow', 'LLM APIs', 'Prompt Engineering'].map((skill) => (
             <span key={skill} className="px-3 py-1 bg-surface-variant rounded-full text-on-surface font-label-sm">
               {skill}
             </span>
@@ -36,14 +51,14 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Frontend */}
-      <div className="glass-card p-8 rounded-xl">
+      {/* Frontend & Web — col-span-2 */}
+      <div className="glass-card p-8 rounded-xl md:col-span-2">
         <span className="material-symbols-outlined text-primary mb-4 text-4xl">palette</span>
         <h3 className="font-display text-headline-md mb-4">
-          {t('skills.frontendTitle', 'Frontend & Style')}
+          {t('skills.frontendTitle', 'Frontend & Web')}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'CSS Grid / Flexbox', 'Framer Motion'].map((skill) => (
+          {['React', 'Next.js', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'HTMX', 'Bootstrap'].map((skill) => (
             <span key={skill} className="px-3 py-1 bg-surface-variant rounded-full text-on-surface font-label-sm">
               {skill}
             </span>
@@ -51,14 +66,14 @@ const BentoSkills = () => {
         </div>
       </div>
 
-      {/* Game & Interactive Dev */}
-      <div className="glass-card p-8 rounded-xl md:col-span-2">
-        <span className="material-symbols-outlined text-primary mb-4 text-4xl">bolt</span>
+      {/* Tools & Infrastructure */}
+      <div className="glass-card p-8 rounded-xl">
+        <span className="material-symbols-outlined text-primary mb-4 text-4xl">build</span>
         <h3 className="font-display text-headline-md mb-4">
-          {t('skills.gamesTitle', 'Game & Interactive Engineering')}
+          {t('skills.toolsTitle', 'Tools & Infrastructure')}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {['Godot Engine 4.4', 'GDScript', 'Pygame', 'HTML5 Game Dev', 'Data Visualization', 'Interactive UI'].map((skill) => (
+          {['Git', 'Node.js', 'Postman', 'Linux / Bash', 'Godot', 'GDScript', 'Go'].map((skill) => (
             <span key={skill} className="px-3 py-1 bg-surface-variant rounded-full text-on-surface font-label-sm">
               {skill}
             </span>
