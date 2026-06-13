@@ -370,6 +370,36 @@ const Home = () => {
                     {formStatus === 'sending' ? tCommon('contact.sending', 'Sending...') : tCommon('contact.send', 'Send Message')}
                     <span className="material-symbols-outlined">send</span>
                   </button>
+                  
+                  {/* Disclaimer сноска */}
+                  <p className="mt-4 text-xs text-on-surface-variant/70 text-center leading-relaxed">
+                    {tCommon('contact.disclaimer') ? (
+                      (() => {
+                        const disclaimer = tCommon('contact.disclaimer');
+                        // Simple parser for markdown links: [text](url)
+                        const parts = disclaimer.split(/(\[[^\]]+\]\([^)]+\))/g);
+                        return parts.map((part: string, index: number) => {
+                          const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+                          if (match) {
+                            return (
+                              <a
+                                key={index}
+                                href={match[2]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline hover:text-primary transition-colors font-medium"
+                              >
+                                {match[1]}
+                              </a>
+                            );
+                          }
+                          return part;
+                        });
+                      })()
+                    ) : (
+                      "By submitting this form, you agree that your input and technical data will be processed by Web3Forms and hCaptcha."
+                    )}
+                  </p>
                 </div>
 
                 {statusMessage && (

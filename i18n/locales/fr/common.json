@@ -73,8 +73,23 @@
     "copyright": "© {{year}} Iliya Glazunov. Tous droits réservés."
   },
   "privacy": {
-    "message": "Ce site ne collecte aucune donnée personnelle. Cependant, GitHub Pages peut utiliser des cookies ou collecter certaines informations. Pour plus de détails, visitez leur site officiel.",
-    "linkText": "politique de confidentialité de GitHub",
+    "message": "Ce site ne collecte pas de données personnelles en arrière-plan, à l'exception des journaux techniques de GitHub Pages. Pour le formulaire de contact, Web3Forms et hCaptcha sont utilisés. Veuillez consulter leurs politiques de confidentialité : [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
     "accept": "OK"
+  },
+  "contact": {
+    "title": "Bâtissons l'avenir.",
+    "intro": "Actuellement ouvert aux missions de conseil et aux opportunités en ingénierie logicielle.",
+    "name": "Votre nom",
+    "namePlaceholder": "Jean Dupont",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "jean.dupont@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Parlez-moi de votre projet...",
+    "send": "Envoyer le message",
+    "successMessage": "Succès ! Votre message a été envoyé.",
+    "captchaError": "Veuillez remplir le champ captcha.",
+    "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
+    "sending": "Envoi en cours...",
+    "disclaimer": "En envoyant ce formulaire, vous acceptez que les données saisies et les informations techniques soient traitées par [Web3Forms](https://web3forms.com/privacy) (pour l'envoi des e-mails) et [hCaptcha](https://www.hcaptcha.com/privacy) (pour la protection contre le spam)."
   }
 }

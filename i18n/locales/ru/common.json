@@ -73,8 +73,23 @@
     "copyright": "© {{year}} Илия Глазунов. Все права защищены."
   },
   "privacy": {
-    "message": "Этот сайт не собирает личные данные. Однако GitHub Pages может использовать cookies или собирать некоторые данные. Для получения дополнительной информации посетите их официальный сайт.",
-    "linkText": "Политику конфиденциальности GitHub",
+    "message": "Этот сайт не собирает личные данные в фоновом режиме, кроме технических логов GitHub Pages. Для работы формы обратной связи используются Web3Forms и hCaptcha. Ознакомьтесь с их политиками конфиденциальности: [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
     "accept": "OK"
+  },
+  "contact": {
+    "title": "Давайте строить будущее.",
+    "intro": "В настоящее время принимаю предложения по консалтингу и разработке программного обеспечения.",
+    "name": "Ваше имя",
+    "namePlaceholder": "Иван Иванов",
+    "emailLabel": "Электронная почта",
+    "emailPlaceholder": "ivan@example.com",
+    "message": "Сообщение",
+    "messagePlaceholder": "Расскажите мне о вашем проекте...",
+    "send": "Отправить сообщение",
+    "successMessage": "Успешно! Ваше сообщение отправлено.",
+    "captchaError": "Пожалуйста, пройдите проверку капчи.",
+    "errorMessage": "Что-то пошло не так. Пожалуйста, попробуйте еще раз.",
+    "sending": "Отправка...",
+    "disclaimer": "Отправляя эту форму, вы соглашаетесь с тем, что введённые данные и техническая информация будут обрабатываться [Web3Forms](https://web3forms.com/privacy) (для отправки почты) и [hCaptcha](https://www.hcaptcha.com/privacy) (для защиты от спама)."
   }
 }

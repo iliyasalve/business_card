@@ -26,16 +26,28 @@ const PrivacyNotice: React.FC = () => {
       flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6"
     >
       <p className="flex-1 text-center sm:text-left leading-relaxed">
-        {t('privacy.message')}{' '}
-        <a
-          href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline font-semibold hover:text-primary transition-colors"
-        >
-          {t('privacy.linkText', 'GitHub Privacy Policy')}
-        </a>
-        .
+        {(() => {
+          const message = t('privacy.message');
+          // Simple parser for markdown links: [text](url)
+          const parts = message.split(/(\[[^\]]+\]\([^)]+\))/g);
+          return parts.map((part: string, index: number) => {
+            const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+            if (match) {
+              return (
+                <a
+                  key={index}
+                  href={match[2]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-semibold hover:text-primary transition-colors"
+                >
+                  {match[1]}
+                </a>
+              );
+            }
+            return part;
+          });
+        })()}
       </p>
       <button
         onClick={acceptPrivacy}

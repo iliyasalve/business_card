@@ -73,8 +73,23 @@
     "copyright": "© {{year}} Iliya Glazunov. All rights reserved."
   },
   "privacy": {
-    "message": "This site does not collect any personal data. However, GitHub Pages may use cookies or collect some information. For more details, visit their official site.",
-    "linkText": "GitHub Privacy Policy",
+    "message": "This website does not actively collect personal data, except for technical logs by GitHub Pages. For the contact form, Web3Forms and hCaptcha are used. Please review their privacy policies: [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
     "accept": "OK"
+  },
+  "contact": {
+    "title": "Let's build the future.",
+    "intro": "Currently accepting selected consulting roles and software engineering opportunities.",
+    "name": "Your Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "john@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "send": "Send Message",
+    "successMessage": "Success! Your message has been sent.",
+    "captchaError": "Please fill out the captcha field.",
+    "errorMessage": "Something went wrong. Please try again.",
+    "sending": "Sending...",
+    "disclaimer": "By submitting this form, you agree that your input and technical data will be processed by [Web3Forms](https://web3forms.com/privacy) (for mail delivery) and [hCaptcha](https://www.hcaptcha.com/privacy) (for spam protection)."
   }
 }
