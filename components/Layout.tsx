@@ -422,8 +422,10 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                       </svg>
                     </span>
                   ) : (
-                    <span className="material-symbols-outlined text-lg w-5 h-5 flex items-center justify-center shrink-0">
-                      {link.icon}
+                    <span className="w-5 h-5 flex items-center justify-center shrink-0">
+                      <span className="material-symbols-outlined text-[16px] leading-none">
+                        {link.icon}
+                      </span>
                     </span>
                   )}
                   {t(link.labelKey, link.fallback)}
@@ -447,8 +449,10 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                       </svg>
                     </span>
                   ) : (
-                    <span className="material-symbols-outlined text-lg w-5 h-5 flex items-center justify-center shrink-0">
-                      {link.icon}
+                    <span className="w-5 h-5 flex items-center justify-center shrink-0">
+                      <span className="material-symbols-outlined text-[16px] leading-none">
+                        {link.icon}
+                      </span>
                     </span>
                   )}
                   {t(link.labelKey, link.fallback)}
