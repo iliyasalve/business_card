@@ -48,6 +48,16 @@ const ProjectCarousel = () => {
       image: '/images/base_aco.png',
     },
     {
+      id: 'cvbuilder',
+      titleKey: 'cvbuilder.title',
+      descKey: 'cvbuilder.description',
+      techs: ['React', 'TypeScript', 'TailwindCSS'],
+      links: [
+        { url: 'https://cv-builder.iliyaglazunov.com', type: 'website', label: 'Website' }
+      ],
+      image: '/images/project_cvbuilder.png',
+    },
+    {
       id: 'blockchain',
       titleKey: 'blockchain.title',
       descKey: 'blockchain.description',

@@ -21,6 +21,11 @@
     "description": "Interactive JS/Python simulation of the Ant Colony Optimization algorithm for dynamic shortest-path routing in networks. Demonstrates pheromone strength and evaporation effects in real time.",
     "link": "https://github.com/iliyasalve/aco-routing"
   },
+  "cvbuilder": {
+    "title": "CV Constructor Studio",
+    "description": "An interactive web-based resume builder that allows users to customize resume layouts, typography, color palettes, and sections in real time, with instant export options to print-ready PDF or raw HTML.",
+    "link": "https://cv-builder.iliyaglazunov.com"
+  },
   "blockchain": {
     "title": "Mini-Blockchain Implementation",
     "description": "A lightweight blockchain prototype in Python/Flask. Implements SHA-256 block hashing, Merkle trees for transaction verification, Proof-of-Work consensus, and REST APIs for nodes.",

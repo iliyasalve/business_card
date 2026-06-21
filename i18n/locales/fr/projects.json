@@ -21,6 +21,11 @@
     "description": "Simulation interactive JS/Python de l'algorithme d'optimisation des colonies de fourmis (ACO) pour le routage dynamique dans les réseaux. Illustre l'influence des phéromones en temps réel.",
     "link": "https://github.com/iliyasalve/aco-routing"
   },
+  "cvbuilder": {
+    "title": "CV Constructor Studio",
+    "description": "Un constructeur de CV interactif en ligne qui permet aux utilisateurs de personnaliser la mise en page, la typographie, les palettes de couleurs et les sections du CV en temps réel, avec des options d'exportation instantanée en PDF ou HTML.",
+    "link": "https://cv-builder.iliyaglazunov.com"
+  },
   "blockchain": {
     "title": "Mini-Blockchain Implementation",
     "description": "Prototype de blockchain en Python/Flask. Implémente le hachage SHA-256, les arbres de Merkle pour valider les transactions, le consensus de Preuve de Travail (PoW) et des API REST.",
