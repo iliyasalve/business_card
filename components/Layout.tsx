@@ -423,7 +423,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                     </span>
                   ) : (
                     <span className="w-5 h-5 flex items-center justify-center shrink-0">
-                      <span className="material-symbols-outlined text-[16px] leading-none">
+                      <span className="material-symbols-outlined leading-none" style={{ fontSize: '16px' }}>
                         {link.icon}
                       </span>
                     </span>
@@ -450,7 +450,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
                     </span>
                   ) : (
                     <span className="w-5 h-5 flex items-center justify-center shrink-0">
-                      <span className="material-symbols-outlined text-[16px] leading-none">
+                      <span className="material-symbols-outlined leading-none" style={{ fontSize: '16px' }}>
                         {link.icon}
                       </span>
                     </span>

@@ -32,16 +32,29 @@ function MyApp({ Component, pageProps }: AppProps) {
     setTheme(initialTheme);
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
 
+    const hideLoader = () => {
+      const loader = document.getElementById('global-loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+        setTimeout(() => {
+          loader.remove();
+        }, 300);
+      }
+    };
+
     // Load language from localStorage and apply to i18n
     const savedLng = localStorage.getItem('i18nextLng') || i18n.language || 'en';
     if (i18n.language !== savedLng) {
       i18n.changeLanguage(savedLng).then(() => {
         setCurrentLanguage(savedLng);
         document.documentElement.setAttribute('lang', savedLng);
+        hideLoader();
       });
     } else {
       setCurrentLanguage(savedLng);
       document.documentElement.setAttribute('lang', savedLng);
+      hideLoader();
     }
 
     // Subscribe to language updates to force re-render
