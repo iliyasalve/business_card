@@ -391,7 +391,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
       {/* Footer matching template exactly */}
       <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
-        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-12 px-margin-mobile md:px-gutter">
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto pt-12 pb-28 md:py-12 px-margin-mobile md:px-gutter">
           <div className="mb-8 md:mb-0 w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 text-left">
             <a href={isHomePage ? "#home" : "/"} className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
               <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
@@ -468,7 +468,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       {/* Scroll to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-[42px] right-6 md:right-12 lg:right-20 z-40 w-12 h-12 rounded-full bg-primary text-on-primary shadow-lg shadow-primary/20 flex items-center justify-center hover:-translate-y-1 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background ${
+        className={`fixed bottom-[42px] right-6 md:right-12 lg:right-20 z-40 w-12 h-12 rounded-full bg-primary text-on-primary shadow-lg shadow-primary/20 flex items-center justify-center hover:-translate-y-1 active:scale-95 transition-all duration-300 focus:outline-none ${
           showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
         aria-label="Scroll to top"
