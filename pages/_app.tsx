@@ -8,8 +8,7 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-  const [isReady, setIsReady] = useState(false); // track client hydration
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en');
+  const [currentLanguage, setCurrentLanguage] = useState('en');
 
   useEffect(() => {
     // Suppress non-fatal React Fiber / Permission denied errors from browser extensions or third-party scripts
@@ -34,16 +33,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
 
     // Load language from localStorage and apply to i18n
-    const savedLng = localStorage.getItem('i18nextLng');
-    if (savedLng && i18n.language !== savedLng) {
+    const savedLng = localStorage.getItem('i18nextLng') || i18n.language || 'en';
+    if (i18n.language !== savedLng) {
       i18n.changeLanguage(savedLng).then(() => {
         setCurrentLanguage(savedLng);
         document.documentElement.setAttribute('lang', savedLng);
-        setIsReady(true);
       });
     } else {
-      document.documentElement.setAttribute('lang', i18n.language || 'en');
-      setIsReady(true);
+      setCurrentLanguage(savedLng);
+      document.documentElement.setAttribute('lang', savedLng);
     }
 
     // Subscribe to language updates to force re-render
@@ -82,10 +80,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isPrivacyRoute = router.pathname.startsWith('/privacy');
 
-  if (!isReady) {
-    // Avoid rendering UI until language (and theme) synced
-    return null; // or a spinner/loading indicator if хочешь
-  }
+
 
   if (isPrivacyRoute) {
     return <Component {...pageProps} key={currentLanguage} />;
