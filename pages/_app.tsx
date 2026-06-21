@@ -62,9 +62,21 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
+    
+    // 1. Блокируем анимации переходов перед сменой классов темы
+    document.documentElement.classList.add('no-transitions');
+
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
+
+    // 2. Принудительно вызываем перерисовку (reflow) для мгновенного применения стилей
+    document.documentElement.offsetHeight;
+
+    // 3. На следующем кадре возвращаем анимации обратно
+    window.requestAnimationFrame(() => {
+      document.documentElement.classList.remove('no-transitions');
+    });
   };
 
   const router = useRouter();

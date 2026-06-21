@@ -160,3 +160,11 @@ a {
 .text-glow-subtle {
   text-shadow: 0 0 30px rgba(var(--primary), 0.2);
 }
+
+/* Prevent transition flash on theme change */
+.no-transitions,
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
+}
