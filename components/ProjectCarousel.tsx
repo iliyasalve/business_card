@@ -51,9 +51,10 @@ const ProjectCarousel = () => {
       id: 'cvbuilder',
       titleKey: 'cvbuilder.title',
       descKey: 'cvbuilder.description',
-      techs: ['React', 'TypeScript', 'TailwindCSS'],
+      techs: ['JavaScript', 'TailwindCSS', 'DOM Manipulation'],
       links: [
-        { url: 'https://cv-builder.iliyaglazunov.com', type: 'website', label: 'Website' }
+        { url: 'https://cv-builder.iliyaglazunov.com', type: 'website', label: 'Website' },
+        { url: 'https://github.com/iliyasalve/cv-constructor', type: 'github', label: 'GitHub' }
       ],
       image: '/images/project_cvbuilder.png',
     },
