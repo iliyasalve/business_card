@@ -26,8 +26,6 @@ import frTraining from './locales/fr/training.json';
 import frProjects from './locales/fr/projects.json';
 import fr404 from './locales/fr/404.json';
 
-const storedLng = typeof window !== 'undefined' ? localStorage.getItem('i18nextLng') : null;
-
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -37,7 +35,6 @@ i18n
       ru: { common: ruCommon, experience: ruExperience, skills: ruSkills, education: ruEducation, training: ruTraining, projects: ruProjects, '404': ru404 },
       fr: { common: frCommon, experience: frExperience, skills: frSkills, education: frEducation, training: frTraining, projects: frProjects, '404': fr404 },
     },
-    //lng: storedLng || 'fr',
     fallbackLng: 'en',
     ns: ['common', 'experience', 'skills', 'education', 'training', 'projects', '404'], // namespaces
     defaultNS: 'common',

@@ -97,7 +97,6 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     let isChangingLang = false;
     let scrollTimeout: any = null;
     const isHomePage = router.pathname === '/';
-    const sections = document.querySelectorAll('section[id]');
 
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -115,10 +114,13 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       // Scroll Spy
       if (isChangingLang || isScrollingClick) return;
 
+      const sections = document.querySelectorAll('section[id]');
       const scrollPosition = window.scrollY + window.innerHeight * 0.45; // 45% of viewport height
       let currentSection = 'home';
 
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+      if (window.scrollY < 50) {
+        currentSection = 'home';
+      } else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
         currentSection = 'contact';
       } else {
         sections.forEach(section => {

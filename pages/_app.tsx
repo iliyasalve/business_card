@@ -43,19 +43,28 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     };
 
-    // Load language from localStorage and apply to i18n
-    const savedLng = localStorage.getItem('i18nextLng') || i18n.language || 'en';
-    if (i18n.language !== savedLng) {
-      i18n.changeLanguage(savedLng).then(() => {
-        setCurrentLanguage(savedLng);
-        document.documentElement.setAttribute('lang', savedLng);
-        hideLoader();
-      });
+    // Load language from localStorage or fallback to browser language
+    let detectedLng = 'en';
+    const saved = localStorage.getItem('i18nextLng');
+    if (saved) {
+      detectedLng = saved;
     } else {
-      setCurrentLanguage(savedLng);
-      document.documentElement.setAttribute('lang', savedLng);
-      hideLoader();
+      const browserLng = navigator.language || 'en';
+      const shortLng = browserLng.split('-')[0];
+      if (['en', 'ru', 'fr'].includes(shortLng)) {
+        detectedLng = shortLng;
+      }
     }
+
+    i18n.changeLanguage(detectedLng).then(() => {
+      setCurrentLanguage(detectedLng);
+      document.documentElement.setAttribute('lang', detectedLng);
+      // Wait for React to apply language changes to DOM before hiding loader,
+      // preventing any English flash on reload!
+      requestAnimationFrame(() => {
+        setTimeout(hideLoader, 100);
+      });
+    });
 
     // Subscribe to language updates to force re-render
     const handleLanguageChange = (lng: string) => {
