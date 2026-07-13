@@ -19,12 +19,12 @@
   "aco": {
     "title": "ACO Routing Exploration",
     "description": "Интерактивная JS/Python-визуализация работы алгоритма муравьиной колонии (Ant Colony Optimization) для нахождения кратчайшего пути в динамических сетях. Демонстрирует влияние параметров испарения и силы феромонов в реальном времени.",
-    "link": "https://github.com/iliyasalve/aco-routing"
+    "link": "https://aco-algorithm.labig.dev"
   },
   "cvbuilder": {
     "title": "CV Constructor Studio",
     "description": "Интерактивный веб-конструктор резюме, позволяющий пользователям настраивать разметку, типографику, цветовую схему и разделы резюме в реальном времени с мгновенным экспортом в готовый к печати PDF или чистый HTML.",
-    "link": "https://cv-builder.iliyaglazunov.com"
+    "link": "https://cv-builder.labig.dev"
   },
   "blockchain": {
     "title": "Mini-Blockchain Implementation",
@@ -44,7 +44,7 @@
   "chicken": {
     "title": "Chicken Strike",
     "description": "Аркадная кликер-игра на чистом HTML5 Canvas и JavaScript с плавными анимациями, таблицей рекордов и адаптивным интерфейсом для браузеров.",
-    "link": "https://github.com/iliyasalve/Clicker_Game"
+    "link": "https://chicken-strike.labig.dev"
   },
   "meta": {
     "title": "Проекты – Илия Глазунов",

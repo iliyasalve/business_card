@@ -42,7 +42,7 @@ const ProjectCarousel = () => {
       descKey: 'aco.description',
       techs: ['JavaScript', 'Python', 'Algorithms'],
       links: [
-        { url: 'https://iliyasalve.github.io/aco-routing-exploration/', type: 'website', label: 'Demo' },
+        { url: 'https://aco-algorithm.labig.dev', type: 'website', label: 'Demo' },
         { url: 'https://github.com/iliyasalve/aco-routing-exploration', type: 'github', label: 'GitHub' }
       ],
       image: '/images/base_aco.png',
@@ -53,7 +53,7 @@ const ProjectCarousel = () => {
       descKey: 'cvbuilder.description',
       techs: ['JavaScript', 'TailwindCSS', 'DOM Manipulation'],
       links: [
-        { url: 'https://cv-builder.iliyaglazunov.com', type: 'website', label: 'Website' },
+        { url: 'https://cv-builder.labig.dev', type: 'website', label: 'Website' },
         { url: 'https://github.com/iliyasalve/cv-constructor', type: 'github', label: 'GitHub' }
       ],
       image: '/images/project_cvbuilder.png',
@@ -85,7 +85,7 @@ const ProjectCarousel = () => {
       descKey: 'chicken.description',
       techs: ['HTML5', 'JavaScript', 'Canvas'],
       links: [
-        { url: 'https://iliyasalve.github.io/chicken-strike/', type: 'website', label: 'Play Game' },
+        { url: 'https://chicken-strike.labig.dev', type: 'website', label: 'Play Game' },
         { url: 'https://github.com/iliyasalve/chicken-strike', type: 'github', label: 'GitHub' }
       ],
       image: '/images/project_aura.png',

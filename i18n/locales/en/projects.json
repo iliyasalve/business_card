@@ -19,12 +19,12 @@
   "aco": {
     "title": "ACO Routing Exploration",
     "description": "Interactive JS/Python simulation of the Ant Colony Optimization algorithm for dynamic shortest-path routing in networks. Demonstrates pheromone strength and evaporation effects in real time.",
-    "link": "https://github.com/iliyasalve/aco-routing"
+    "link": "https://aco-algorithm.labig.dev"
   },
   "cvbuilder": {
     "title": "CV Constructor Studio",
     "description": "An interactive web-based resume builder that allows users to customize resume layouts, typography, color palettes, and sections in real time, with instant export options to print-ready PDF or raw HTML.",
-    "link": "https://cv-builder.iliyaglazunov.com"
+    "link": "https://cv-builder.labig.dev"
   },
   "blockchain": {
     "title": "Mini-Blockchain Implementation",
@@ -44,7 +44,7 @@
   "chicken": {
     "title": "Chicken Strike",
     "description": "Arcade browser clicker game developed on raw HTML5 Canvas and JavaScript with fluid animations, scoreboard mechanics, and fully responsive viewports.",
-    "link": "https://github.com/iliyasalve/Clicker_Game"
+    "link": "https://chicken-strike.labig.dev"
   },
   "meta": {
     "title": "Projects – Iliya Glazunov",
