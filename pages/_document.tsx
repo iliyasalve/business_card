@@ -4,15 +4,25 @@ export default function Document() {
   return (
     <Html lang="en" className="dark">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Шрифты самохостятся из public/fonts, объявлены в styles/globals.css.
+            Подрезанный набор Material Symbols собран под эти 20 иконок:
+            arrow_forward, arrow_upward, build, call, chevron_left, chevron_right,
+            close, cloud_done, dark_mode, dns, language, light_mode, mail, menu,
+            palette, phone_iphone, psychology, send, terminal, verified_user.
+            Новая иконка требует пересборки файла — иначе отрисуется словом. */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/inter-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/material-symbols-subset.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
       </Head>
       <body className="font-body-md bg-background text-on-background">
