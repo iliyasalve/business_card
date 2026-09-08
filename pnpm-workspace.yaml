@@ -1,2 +1,6 @@
 allowBuilds:
   unrs-resolver: true
+  # wrangler тянет их как бинарные зависимости: esbuild — сборщик,
+  # workerd — сам рантайм Workers (нужен для `wrangler dev`).
+  esbuild: true
+  workerd: true
