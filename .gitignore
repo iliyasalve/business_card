@@ -46,3 +46,6 @@ yarn-error.log*
 
 # Agentic security
 .agentic-security/
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
