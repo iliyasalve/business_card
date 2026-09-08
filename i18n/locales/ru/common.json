@@ -70,11 +70,14 @@
     "githubName": "iliyasalve",
     "connectLabel": "Контакты",
     "networkLabel": "Соцсети",
-    "copyright": "© {{year}} Илия Глазунов. Все права защищены."
+    "copyright": "© {{year}} Илия Глазунов. Все права защищены.",
+    "privacy": "Конфиденциальность"
   },
   "privacy": {
-    "message": "Этот сайт не собирает личные данные в фоновом режиме, кроме технических логов Cloudflare. Для работы формы обратной связи используются Web3Forms и hCaptcha. Ознакомьтесь с их политиками конфиденциальности: [Cloudflare](https://www.cloudflare.com/privacypolicy/), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
-    "accept": "OK"
+    "message": "Этот сайт не собирает личные данные в фоновом режиме, кроме технических логов и обезличенной статистики посещений через Cloudflare Web Analytics. Для работы формы обратной связи используются Web3Forms и hCaptcha. Ознакомьтесь с их политиками конфиденциальности: [Cloudflare](https://www.cloudflare.com/privacypolicy/), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
+    "accept": "OK",
+    "optOut": "Отказаться от измерения",
+    "optIn": "Разрешить измерение"
   },
   "contact": {
     "title": "Давайте строить будущее.",

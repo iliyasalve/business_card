@@ -70,11 +70,14 @@
     "githubName": "iliyasalve",
     "connectLabel": "Connect",
     "networkLabel": "Network",
-    "copyright": "© {{year}} Iliya Glazunov. All rights reserved."
+    "copyright": "© {{year}} Iliya Glazunov. All rights reserved.",
+    "privacy": "Privacy"
   },
   "privacy": {
-    "message": "This website does not actively collect personal data, except for technical logs by Cloudflare. For the contact form, Web3Forms and hCaptcha are used. Please review their privacy policies: [Cloudflare](https://www.cloudflare.com/privacypolicy/), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
-    "accept": "OK"
+    "message": "This website does not actively collect personal data, except for technical logs and cookieless traffic statistics by Cloudflare Web Analytics. For the contact form, Web3Forms and hCaptcha are used. Please review their privacy policies: [Cloudflare](https://www.cloudflare.com/privacypolicy/), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
+    "accept": "OK",
+    "optOut": "Opt out of analytics",
+    "optIn": "Allow analytics"
   },
   "contact": {
     "title": "Let's build the future.",

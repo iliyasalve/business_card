@@ -70,11 +70,14 @@
     "githubName": "iliyasalve",
     "connectLabel": "Contact",
     "networkLabel": "Réseau",
-    "copyright": "© {{year}} Iliya Glazunov. Tous droits réservés."
+    "copyright": "© {{year}} Iliya Glazunov. Tous droits réservés.",
+    "privacy": "Confidentialité"
   },
   "privacy": {
-    "message": "Ce site ne collecte pas de données personnelles en arrière-plan, à l'exception des journaux techniques de Cloudflare. Pour le formulaire de contact, Web3Forms et hCaptcha sont utilisés. Veuillez consulter leurs politiques de confidentialité : [Cloudflare](https://www.cloudflare.com/privacypolicy/), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
-    "accept": "OK"
+    "message": "Ce site ne collecte pas de données personnelles en arrière-plan, à l'exception des journaux techniques et de statistiques de fréquentation sans cookies via Cloudflare Web Analytics. Pour le formulaire de contact, Web3Forms et hCaptcha sont utilisés. Veuillez consulter leurs politiques de confidentialité : [Cloudflare](https://www.cloudflare.com/privacypolicy/), [Web3Forms](https://web3forms.com/privacy), [hCaptcha](https://www.hcaptcha.com/privacy).",
+    "accept": "OK",
+    "optOut": "Refuser la mesure d'audience",
+    "optIn": "Autoriser la mesure d'audience"
   },
   "contact": {
     "title": "Bâtissons l'avenir.",

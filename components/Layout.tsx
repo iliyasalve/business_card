@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
-import PrivacyNotice from './PrivacyNotice';
+import PrivacyNotice, { PRIVACY_OPEN_EVENT } from './PrivacyNotice';
 
 interface LayoutProps {
   children: ReactNode;
@@ -405,6 +405,15 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             <p className="font-body-md text-on-secondary-container dark:text-on-secondary-container/70 max-w-md text-left">
               {t('footer.copyright', { year: new Date().getFullYear() })}
             </p>
+            {/* Возражать против измерения аудитории нужно уметь всегда, а не
+                только до первого закрытия панели, — отсюда эта ссылка. */}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(PRIVACY_OPEN_EVENT))}
+              className="mt-2 font-body-md text-on-secondary-container/70 dark:text-on-secondary-container/50 underline underline-offset-2 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-left"
+            >
+              {t('footer.privacy', 'Privacy')}
+            </button>
           </div>
           <div className="flex justify-between w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 md:justify-start md:gap-12 lg:gap-24 shrink-0">
             <div className="flex flex-col gap-3">
