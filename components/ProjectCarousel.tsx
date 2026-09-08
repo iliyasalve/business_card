@@ -34,7 +34,7 @@ const ProjectCarousel = () => {
       links: [
         { url: 'https://eurasieanalyse.fr', type: 'website', label: 'Website' }
       ],
-      image: '/images/project_eurasie.png',
+      image: '/images/project_eurasie.webp',
     },
     {
       id: 'aco',
@@ -45,7 +45,7 @@ const ProjectCarousel = () => {
         { url: 'https://aco-algorithm.labig.dev', type: 'website', label: 'Demo' },
         { url: 'https://github.com/iliyasalve/aco-routing-exploration', type: 'github', label: 'GitHub' }
       ],
-      image: '/images/base_aco.png',
+      image: '/images/base_aco.webp',
     },
     {
       id: 'cvbuilder',
@@ -56,7 +56,7 @@ const ProjectCarousel = () => {
         { url: 'https://cv-builder.labig.dev', type: 'website', label: 'Website' },
         { url: 'https://github.com/iliyasalve/cv-constructor', type: 'github', label: 'GitHub' }
       ],
-      image: '/images/project_cvbuilder.png',
+      image: '/images/project_cvbuilder.webp',
     },
     {
       id: 'blockchain',
@@ -66,7 +66,7 @@ const ProjectCarousel = () => {
       links: [
         { url: 'https://github.com/iliyasalve/Mini-Blockchain', type: 'github', label: 'GitHub' }
       ],
-      image: '/images/project_blockchain.png',
+      image: '/images/project_blockchain.webp',
     },
     {
       id: 'ml',
@@ -77,7 +77,7 @@ const ProjectCarousel = () => {
         { url: 'https://github.com/iliyasalve/salifort_motors_hr_analytics', type: 'github', label: 'Salifort Motors HR' },
         { url: 'https://github.com/iliyasalve/tiktok_claim_classification_model', type: 'github', label: 'TikTok Classifier' }
       ],
-      image: '/images/project_nebula.png',
+      image: '/images/project_nebula.webp',
     },
     {
       id: 'chicken',
@@ -88,7 +88,7 @@ const ProjectCarousel = () => {
         { url: 'https://chicken-strike.labig.dev', type: 'website', label: 'Play Game' },
         { url: 'https://github.com/iliyasalve/chicken-strike', type: 'github', label: 'GitHub' }
       ],
-      image: '/images/project_aura.png',
+      image: '/images/project_aura.webp',
     },
   ];
 
