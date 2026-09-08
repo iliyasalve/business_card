@@ -51,7 +51,9 @@ function injectBeacon(): void {
   if (document.querySelector(`script[src="${BEACON}"]`)) return;
 
   const s = document.createElement('script');
-  s.defer = true;
+  // type=module повторяет сниппет, который Cloudflare выдаёт в панели.
+  // Модуль отложен по умолчанию, отдельный defer ему не нужен.
+  s.type = 'module';
   s.src = BEACON;
   s.setAttribute('data-cf-beacon', JSON.stringify({ token }));
   document.head.appendChild(s);
