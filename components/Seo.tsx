@@ -8,7 +8,7 @@ interface SeoProps {
   pageSlug?: string;
 }
 
-const BASE_URL = 'https://iliyasalve.github.io/business_card';
+const BASE_URL = 'https://iliyaglazunov.com';
 
 const Seo: React.FC<SeoProps> = ({ title, description, keywords, image = '/images/photo.jpg', pageSlug }) => {
   const fullImageUrl = `${BASE_URL}${image.startsWith('/') ? '' : '/'}${image}`;
