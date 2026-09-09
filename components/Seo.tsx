@@ -24,6 +24,10 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image = '/image
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
 
+      {/* Один адрес страницы на случай, когда до редиректа дело не доходит:
+          ссылки с ?utm_source= и прочими метками ведут на тот же документ. */}
+      <link rel="canonical" href={fullUrl} />
+
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
