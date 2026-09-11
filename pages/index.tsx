@@ -95,7 +95,7 @@ const Home = () => {
           
           <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter relative z-10 w-full">
             <div className="max-w-3xl">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm uppercase mb-6">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary-text font-label-sm uppercase mb-6">
                 {tCommon('home.statusTag', 'Available for new opportunities')}
               </span>
               <h1 className="font-display text-display text-gradient mb-6 leading-tight">
@@ -186,8 +186,8 @@ const Home = () => {
                     <div className="w-4 h-4 rounded-full bg-primary border-4 border-background z-10"></div>
                   </div>
                   <div className={`${idx === jobs.length - 1 ? 'pb-0' : 'pb-12'} flex-grow`}>
-                    <h4 className="font-display text-headline-md mb-1">{job.position}</h4>
-                    <div className="text-primary font-medium mb-4">{job.company} <span className="md:hidden text-xs text-on-surface-variant ml-2">({job.dates})</span></div>
+                    <h3 className="font-display text-headline-md mb-1">{job.position}</h3>
+                    <div className="text-primary-text font-medium mb-4">{job.company} <span className="md:hidden text-xs text-on-surface-variant ml-2">({job.dates})</span></div>
                     <ul className="text-on-surface-variant max-w-3xl list-disc pl-5 space-y-2 leading-relaxed font-body-md text-sm sm:text-base">
                       {job.description.map((bullet, i) => (
                         <li key={i}>{bullet}</li>
@@ -220,13 +220,13 @@ const Home = () => {
                       key={idx}
                       className="p-6 rounded-2xl border border-surface-variant hover:border-primary/40 transition-colors"
                     >
-                      <h4 className="font-display text-headline-md mb-1">{deg.title}</h4>
-                      <p className="text-primary font-medium mb-1">{deg.institution}</p>
+                      <h3 className="font-display text-headline-md mb-1">{deg.title}</h3>
+                      <p className="text-primary-text font-medium mb-1">{deg.institution}</p>
                       <p className="text-on-surface-variant text-xs mb-3">{deg.location} · {deg.period}</p>
                       <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4">{deg.description}</p>
                       {deg.projects && (
                         <div className="mt-2 text-xs text-on-surface-variant">
-                          <span className="font-bold text-primary block uppercase tracking-wide mb-1">{tEdu('keyProjects', 'Key Projects')}</span>
+                          <span className="font-bold text-primary-text block uppercase tracking-wide mb-1">{tEdu('keyProjects', 'Key Projects')}</span>
                           <ul className="list-disc pl-4 space-y-1">
                             {deg.projects.map((proj: string, i: number) => (
                               <li key={i}>{proj}</li>
@@ -252,7 +252,7 @@ const Home = () => {
                           </span>
                         </div>
                         <div>
-                          <h5 className="font-bold text-on-surface">{train.title.replace(/\s*(Professional Certificate|Certificate)$/i, '')}</h5>
+                          <h3 className="font-bold text-on-surface">{train.title.replace(/\s*(Professional Certificate|Certificate)$/i, '')}</h3>
                           <p className="text-on-surface-variant text-label-sm mb-1">{train.institution} · {train.period}</p>
                           {train.badgeId && (
                             <a 

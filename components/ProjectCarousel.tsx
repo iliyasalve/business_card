@@ -228,7 +228,7 @@ const ProjectCarousel = () => {
                 <div>
                   <div className="flex gap-2 mb-4 flex-wrap h-14 overflow-hidden content-start">
                     {project.techs.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm uppercase font-bold mb-1">
+                      <span key={tech} className="px-3 py-1 bg-primary/10 text-primary-text rounded-full text-label-sm uppercase font-bold mb-1">
                         {tech}
                       </span>
                     ))}

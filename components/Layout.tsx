@@ -417,7 +417,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           </div>
           <div className="flex justify-between w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 md:justify-start md:gap-12 lg:gap-24 shrink-0">
             <div className="flex flex-col gap-3">
-              <h5 className="font-label-sm uppercase text-primary font-bold">{t('footer.networkLabel', 'Network')}</h5>
+              <h2 className="font-label-sm uppercase text-primary-text font-bold">{t('footer.networkLabel', 'Network')}</h2>
               {networkLinks.map((link) => (
                 <a 
                   key={link.labelKey}
@@ -444,7 +444,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              <h5 className="font-label-sm uppercase text-primary font-bold">{t('footer.connectLabel', 'Connect')}</h5>
+              <h2 className="font-label-sm uppercase text-primary-text font-bold">{t('footer.connectLabel', 'Connect')}</h2>
               {connectLinks.map((link) => (
                 <a 
                   key={link.labelKey}

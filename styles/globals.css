@@ -107,6 +107,9 @@
   --on-surface-variant: 107, 90, 94;
   --outline: 213, 200, 203;
   --primary: 179, 57, 93;
+  /* Акцент для мелкого текста. На светлом фоне это сам primary, на тёмном —
+     его светлый тон: #b3395d там даёт ~3:1, а мелкому тексту нужно 4.5:1. */
+  --primary-text: 179, 57, 93;
   --on-primary: 255, 255, 255;
   --surface-variant: 232, 223, 226;
   --gradient-start: 36, 24, 27;
@@ -129,6 +132,7 @@
   --on-surface-variant: 221, 191, 195;
   --outline: 137, 113, 116;
   --primary: 179, 57, 93;
+  --primary-text: 219, 99, 134; /* #db6386: 5.0–5.9:1 на всех тёмных фонах сайта */
   --on-primary: 255, 255, 255;
   --surface-variant: 45, 31, 36;
   --gradient-start: 245, 241, 242;
@@ -216,7 +220,7 @@ html {
 }
 
 a {
-  @apply text-primary hover:opacity-80 transition-opacity;
+  @apply text-primary-text hover:opacity-80 transition-opacity;
   text-decoration: none;
 }
 
