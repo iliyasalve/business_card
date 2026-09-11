@@ -141,8 +141,8 @@ const Home = () => {
       <div className="w-full">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" id="home">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-primary/10 blur-[120px] -z-10 rounded-full" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 blur-[120px] -z-10 rounded-full" />
+          <div className="glow absolute top-20 left-10 w-96 h-96 text-primary/10" />
+          <div className="glow absolute bottom-20 right-10 w-96 h-96 text-purple-500/10" />
           
           <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter relative z-10 w-full">
             <div className="max-w-3xl">

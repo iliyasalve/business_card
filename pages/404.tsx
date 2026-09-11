@@ -35,10 +35,6 @@ const Custom404 = () => {
       
       {/* 404 Main Canvas responding to light/dark themes natively */}
       <div className="relative min-h-screen w-full flex flex-col items-center justify-center pt-20 px-margin-mobile bg-background text-on-background overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 blur-[120px] -z-10 rounded-full" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 blur-[120px] -z-10 rounded-full" />
-
         <div className="max-w-[1200px] w-full text-center relative z-10">
           {/* Massive Background Typography */}
           <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none select-none">

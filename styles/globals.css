@@ -175,6 +175,35 @@ body {
   box-shadow: var(--glass-shadow-hover);
 }
 
+/* Мягкое свечение. Раньше это был круг w-96 с filter: blur(120px), и в Safari
+   из-за него прокрутка с первого экрана стартовала с задержкой в ~2 с:
+   убрали два таких круга из hero — задержка пропала.
+
+   Градиент повторяет профиль размытого круга, каким его рисовал Safari:
+   замер на пустой странице показал, что тот же blur(120px) у него вдвое туже
+   и ярче, чем у Chrome (в центре 0.092 против 0.073, гаснет к 300px против
+   480px). То есть это диск 192px, размытый с σ≈60px. Ориентир — Safari:
+   так свечение выглядело у автора сайта. В Chrome оно теперь чуть плотнее,
+   чем было.
+
+   Геометрию задаёт сам элемент (w-96 h-96 + позиция), цвет — text-* утилита:
+   слой ниже вылезает за элемент на 128px, до радиуса 320px, где свечение
+   сходит на нет. */
+.glow::before {
+  content: '';
+  position: absolute;
+  inset: -128px;
+  background: radial-gradient(
+    closest-side,
+    currentColor,
+    color-mix(in srgb, currentColor 95%, transparent) 25%,
+    color-mix(in srgb, currentColor 64%, transparent) 50%,
+    color-mix(in srgb, currentColor 17%, transparent) 75%,
+    color-mix(in srgb, currentColor 6%, transparent) 87.5%,
+    transparent
+  );
+}
+
 .project-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(36, 24, 27, 0.03);
