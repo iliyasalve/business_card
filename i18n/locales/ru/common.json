@@ -8,7 +8,7 @@
     },
     "title": "Привет, я Илия Глазунов",
     "description": "Я проектирую и разрабатываю продакшн-программное обеспечение на всем стеке — от нативных iOS-приложений на Swift и кроссплатформенных приложений на React Native & Expo до мощных backend-систем на Python, Django и PostgreSQL.\n\nС 2022 года я выпускаю реальные продукты: живая веб-платформа на Django/PostgreSQL (eurasieanalyse.fr), два коммерческих мобильных приложения и набор инструментов автоматизации. Имею профессиональные сертификации по Generative AI Engineering, Full-Stack Development и Data Analytics от IBM и Google, активно интегрирую LLM API (Gemini, GPT) в свои проекты.",
-    "image": "/images/photo.jpg",
+    "image": "/images/photo.webp",
     "explore": "Смотреть опыт",
     "viewProjects": "Перейти к проектам",
     "statusTag": "Открыт для новых предложений",

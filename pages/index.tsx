@@ -125,10 +125,14 @@ const Home = () => {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <div className="aspect-square rounded-3xl overflow-hidden glass-card relative">
-                  <img 
-                    alt="Iliya Glazunov" 
+                  <img
+                    alt="Iliya Glazunov"
                     className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-2xl"
-                    src={tCommon('home.image', '/images/photo.jpg')}
+                    src={tCommon('home.image', '/images/photo.webp')}
+                    width={960}
+                    height={960}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>

@@ -215,6 +215,10 @@ const ProjectCarousel = () => {
                   alt={t(project.titleKey)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   src={project.image}
+                  width={896}
+                  height={504}
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}

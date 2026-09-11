@@ -8,7 +8,7 @@
     },
     "title": "Hello, I'm Iliya Glazunov",
     "description": "I design and build production-grade software across the full stack — from native iOS apps in Swift and cross-platform mobile experiences with React Native & Expo, to robust back-end systems powered by Python, Django and PostgreSQL.\n\nSince 2022 I have shipped real-world products: a live Django/PostgreSQL web platform (eurasieanalyse.fr), two commercial mobile applications and a suite of automation tools. I hold professional certifications in Generative AI Engineering, Full-Stack Development and Data Analytics from IBM and Google, and actively integrate LLM APIs (Gemini, GPT) into my projects.",
-    "image": "/images/photo.jpg",
+    "image": "/images/photo.webp",
     "explore": "Explore My Experience",
     "viewProjects": "View Projects",
     "statusTag": "Available for new opportunities",
