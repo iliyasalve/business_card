@@ -168,6 +168,21 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* На телефоне экран сам себе карточка: рамка со скруглением и её отступы
+   отнимают по 18px с каждой стороны и рисуют вторую границу внутри первой.
+   На широком экране карточка остаётся — там она собирает форму в объект. */
+@media (max-width: 767px) {
+  .glass-card.plain-sm {
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
 .glass-card:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);

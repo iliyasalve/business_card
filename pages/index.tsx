@@ -331,19 +331,21 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-section-gap-lg bg-surface-container-low" id="contact">
-          <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
-            <div className="max-w-4xl mx-auto glass-card rounded-[2rem] p-6 sm:p-10 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
-              <div className="text-center mb-16">
-                <h2 className="font-display text-display mb-6 leading-tight">{tCommon('contact.title', "Let's build the future.")}</h2>
-                <p className="text-on-surface-variant font-body-lg">
+        {/* Ровно один экран: секция занимает высоту окна за вычетом шапки, а
+            содержимое стоит по центру. Отступы и кегли — на clamp по высоте
+            окна, иначе русский заголовок в две строки выносит форму за экран. */}
+        <section className="py-[clamp(20px,2.2vh,48px)] scroll-mt-20 bg-surface-container-low min-h-[calc(100vh-5rem)] flex flex-col justify-center" id="contact">
+          <div className="w-full max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
+            <div className="max-w-4xl mx-auto glass-card plain-sm isolate rounded-[2rem] p-[clamp(20px,2.6vw,44px)] relative overflow-hidden">
+              <div className="text-left md:text-center mb-[clamp(20px,3vh,34px)]">
+                <h2 className="font-display text-headline-lg md:text-[clamp(44px,4.4vw,64px)] leading-tight mb-3">{tCommon('contact.title', "Let's build the future.")}</h2>
+                <p className="text-on-surface-variant font-body-md md:font-body-lg">
                   {tCommon('contact.intro', 'Currently accepting selected consulting roles and software engineering opportunities.')}
                 </p>
               </div>
               <form
                 ref={formRef}
-                className="grid md:grid-cols-2 gap-8"
+                className="grid md:grid-cols-2 gap-[clamp(14px,2vw,28px)]"
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setFormStatus('sending');
@@ -385,45 +387,45 @@ const Home = () => {
                   }
                 }}
               >
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div>
-                    <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.name', 'Your Name')}</label>
+                    <label className="block uppercase tracking-[0.14em] text-[11px] md:text-[12px] mb-1 text-on-surface-variant px-1">{tCommon('contact.name', 'Your Name')}</label>
                     <input
                       name="name"
                       required
                       type="text"
-                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
+                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-3.5 md:py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
                       placeholder={tCommon('contact.namePlaceholder', 'John Doe')}
                     />
                   </div>
                   <div>
-                    <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.emailLabel', 'Email Address')}</label>
+                    <label className="block uppercase tracking-[0.14em] text-[11px] md:text-[12px] mb-1 text-on-surface-variant px-1">{tCommon('contact.emailLabel', 'Email Address')}</label>
                     <input
                       name="email"
                       required
                       type="email"
-                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
+                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-3.5 md:py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
                       placeholder={tCommon('contact.emailPlaceholder', 'john@example.com')}
                     />
                   </div>
                 </div>
                 <div className="flex flex-col h-full">
-                  <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.message', 'Message')}</label>
+                  <label className="block uppercase tracking-[0.14em] text-[11px] md:text-[12px] mb-1 text-on-surface-variant px-1">{tCommon('contact.message', 'Message')}</label>
                   <textarea
                     name="message"
                     required
-                    className="w-full flex-grow bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg resize-none placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface min-h-[140px]"
+                    className="w-full flex-grow bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-3.5 md:py-4 px-4 rounded-lg resize-none placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface min-h-[88px] md:min-h-[clamp(104px,15vh,140px)]"
                     placeholder={tCommon('contact.messagePlaceholder', 'Tell me about your project...')}
                   ></textarea>
                 </div>
 
                 {/* hCaptcha widget */}
                 {/* min-h — высота виджета: капча грузится позже формы, место под неё держим заранее */}
-                <div className="md:col-span-2 flex justify-center items-center w-full mt-2 overflow-hidden min-h-[78px]">
+                <div className="md:col-span-2 flex justify-center items-center w-full overflow-hidden min-h-[78px]">
                   <div className="h-captcha mx-auto" data-captcha="true" data-theme="dark" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
                 </div>
 
-                <div className="md:col-span-2 mt-4">
+                <div className="md:col-span-2">
                   <button
                     type="submit"
                     disabled={formStatus === 'sending'}
@@ -434,7 +436,7 @@ const Home = () => {
                   </button>
                   
                   {/* Disclaimer сноска */}
-                  <p className="mt-4 text-xs text-on-surface-variant/70 text-center leading-relaxed">
+                  <p className="mt-2.5 text-[11px] md:text-xs text-on-surface-variant/70 text-center leading-[1.5]">
                     {tCommon('contact.disclaimer') ? (
                       (() => {
                         const disclaimer = tCommon('contact.disclaimer');
