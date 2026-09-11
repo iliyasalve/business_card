@@ -46,6 +46,8 @@ const Home = () => {
   const trainings = tTrain('trainings', { returnObjects: true }) as Training[] || [];
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const observerOptions = {
       threshold: 0.1
     };
@@ -59,7 +61,9 @@ const Home = () => {
       });
     }, observerOptions);
 
-    const sections = document.querySelectorAll('section');
+    // Hero уже нарисован из статического HTML — спрятать его здесь значит
+    // заново показать через секунду и привязать LCP к загрузке JS.
+    const sections = document.querySelectorAll('section:not(#home)');
     sections.forEach(section => {
       section.classList.add('transition-[opacity,transform]', 'duration-1000', 'opacity-0', 'translate-y-10');
       observer.observe(section);
