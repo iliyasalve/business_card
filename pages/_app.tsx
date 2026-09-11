@@ -6,6 +6,15 @@ import '../i18n/config';
 import i18n from '../i18n/config';
 import '../styles/globals.css';
 
+/** localStorage бросает исключение, когда хранилище сайта заблокировано. */
+function readStorage(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [currentLanguage, setCurrentLanguage] = useState('en');
@@ -27,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     window.addEventListener('unhandledrejection', handleError);
 
     // Load theme from localStorage, default to dark
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const savedTheme = readStorage('theme') as 'light' | 'dark' | null;
     const initialTheme = savedTheme || 'dark';
     setTheme(initialTheme);
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
@@ -45,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Load language from localStorage or fallback to browser language
     let detectedLng = 'en';
-    const saved = localStorage.getItem('i18nextLng');
+    const saved = readStorage('i18nextLng');
     if (saved) {
       detectedLng = saved;
     } else {
@@ -87,7 +96,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.documentElement.classList.add('no-transitions');
 
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    try {
+      localStorage.setItem('theme', newTheme);
+    } catch {
+      /* Тема переключится, но не запомнится. */
+    }
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
 
     // 2. Принудительно вызываем перерисовку (reflow) для мгновенного применения стилей
