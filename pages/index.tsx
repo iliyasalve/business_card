@@ -88,17 +88,21 @@ const Home = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          entry.target.classList.remove('opacity-0', 'translate-y-10');
+          entry.target.classList.add('opacity-100');
+          entry.target.classList.remove('opacity-0');
         }
       });
     }, observerOptions);
 
     // Hero уже нарисован из статического HTML — спрятать его здесь значит
     // заново показать через секунду и привязать LCP к загрузке JS.
+    // Появление только по прозрачности: сдвиг (translate-y-10) менял высоту
+    // до которой доскроллит браузер — клик по разделу целился в сдвинутую
+    // секцию, она потом уезжала на свои 40px вверх, и раздел оказывался выше
+    // нужного. Со второго раза секция уже проявлена, и попадание точное.
     const sections = document.querySelectorAll('section:not(#home)');
     sections.forEach(section => {
-      section.classList.add('transition-[opacity,transform]', 'duration-1000', 'opacity-0', 'translate-y-10');
+      section.classList.add('transition-opacity', 'duration-1000', 'opacity-0');
       observer.observe(section);
     });
 
