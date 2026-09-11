@@ -35,6 +35,10 @@ export default function Document() {
         />
       </Head>
       <body className="font-body-md bg-background text-on-background">
+        {/* Статический HTML английский. Лоадер нужен только тем, кому _app
+            сейчас переключит язык, — остальным он прячет готовую страницу до
+            конца загрузки JS. Выбор языка повторяет _app.tsx: сохранённый,
+            иначе язык браузера. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -43,6 +47,11 @@ export default function Document() {
                   var savedTheme = localStorage.getItem('theme') || 'dark';
                   document.documentElement.classList.toggle('dark', savedTheme === 'dark');
                 } catch (e) {}
+                var lng = navigator.language || 'en';
+                try { lng = localStorage.getItem('i18nextLng') || lng; } catch (e) {}
+                if (/^(ru|fr)\\b/.test(lng)) {
+                  document.documentElement.classList.add('i18n-pending');
+                }
               })();
             `,
           }}
@@ -55,12 +64,15 @@ export default function Document() {
             #global-loader {
               position: fixed;
               inset: 0;
-              display: flex;
+              display: none;
               align-items: center;
               justify-content: center;
               background-color: #0f0a0c;
               z-index: 9999;
               transition: opacity 0.25s ease, visibility 0.25s ease;
+            }
+            html.i18n-pending #global-loader {
+              display: flex;
             }
             html:not(.dark) #global-loader {
               background-color: #fbf9fa;
