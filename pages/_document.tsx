@@ -17,6 +17,15 @@ export default function Document() {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        {/* Шрифт h1 в hero — то есть шрифт LCP. Без preload браузер узнаёт
+            о нём только после разбора CSS и раскладки. */}
+        <link
+          rel="preload"
+          href="/fonts/hanken-grotesk-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <link
           rel="preload"
           href="/fonts/material-symbols-subset.woff2"
