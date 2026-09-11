@@ -1,10 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
-import Script from 'next/script';
 import Seo from '../components/Seo';
 import BentoSkills from '../components/BentoSkills';
 import ProjectCarousel from '../components/ProjectCarousel';
+
+// Тот же URL, который раньше вставлял клиентский скрипт web3forms, — сам по
+// себе тот скрипт больше ничего для этой формы не делал.
+const HCAPTCHA_SRC = 'https://js.hcaptcha.com/1/api.js?recaptchacompat=off';
+
+declare global {
+  interface Window {
+    hcaptcha?: {
+      render(container: HTMLElement, params: { sitekey: string; theme?: string }): string;
+      reset(widgetId?: string): void;
+    };
+  }
+}
+
+/**
+ * Загружает hCaptcha один раз; по загрузке она сама отрисует все div.h-captcha.
+ * Если скрипт уже загружен, пустые контейнеры отрисовываются вручную: смена
+ * языка пересоздаёт страницу (key в _app), и новый div иначе остаётся пустым.
+ */
+function loadCaptcha(): void {
+  const hcaptcha = window.hcaptcha;
+  if (hcaptcha) {
+    document.querySelectorAll<HTMLElement>('.h-captcha:empty').forEach((el) => {
+      hcaptcha.render(el, { sitekey: el.dataset.sitekey!, theme: el.dataset.theme });
+    });
+    return;
+  }
+  if (document.querySelector(`script[src="${HCAPTCHA_SRC}"]`)) return; // уже грузится
+
+  const script = document.createElement('script');
+  script.src = HCAPTCHA_SRC;
+  script.async = true;
+  document.body.appendChild(script);
+}
 
 interface Degree {
   title: string;
@@ -74,6 +107,25 @@ const Home = () => {
     };
   }, []);
 
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+
+    // Капча грузится, когда до формы остаётся экран: пока человек
+    // доскролливает, она успевает загрузиться и собрать сигналы, а кто до
+    // формы не дошёл, её не грузит вовсе.
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+      loadCaptcha();
+    }, { rootMargin: '100% 0px' });
+
+    observer.observe(form);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Seo
@@ -85,7 +137,6 @@ const Home = () => {
       <Head>
         <title>{tCommon('header.title')}</title>
       </Head>
-      <Script src="https://web3forms.com/client/script.js" async defer />
 
       <div className="w-full">
         {/* Hero Section */}
@@ -286,8 +337,9 @@ const Home = () => {
                   {tCommon('contact.intro', 'Currently accepting selected consulting roles and software engineering opportunities.')}
                 </p>
               </div>
-              <form 
-                className="grid md:grid-cols-2 gap-8" 
+              <form
+                ref={formRef}
+                className="grid md:grid-cols-2 gap-8"
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setFormStatus('sending');
@@ -318,10 +370,7 @@ const Home = () => {
                       setFormStatus('success');
                       setStatusMessage(tCommon('contact.successMessage', 'Success! Your message has been sent.'));
                       formElement.reset();
-                      // Reset hCaptcha widget if window.hcaptcha exists
-                      if (typeof window !== 'undefined' && (window as any).hcaptcha) {
-                        (window as any).hcaptcha.reset();
-                      }
+                      window.hcaptcha?.reset();
                     } else {
                       setFormStatus('error');
                       setStatusMessage(data.message || tCommon('contact.errorMessage', 'Something went wrong. Please try again.'));
@@ -365,7 +414,8 @@ const Home = () => {
                 </div>
 
                 {/* hCaptcha widget */}
-                <div className="md:col-span-2 flex justify-center items-center w-full mt-2 overflow-hidden">
+                {/* min-h — высота виджета: капча грузится позже формы, место под неё держим заранее */}
+                <div className="md:col-span-2 flex justify-center items-center w-full mt-2 overflow-hidden min-h-[78px]">
                   <div className="h-captcha mx-auto" data-captcha="true" data-theme="dark" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
                 </div>
 
