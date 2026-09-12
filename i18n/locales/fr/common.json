@@ -15,7 +15,7 @@
     "subtitle": "Mobile (Swift · React Native) · Back-End (Python · Django) · Data & IA — logiciels en production depuis 2022."
   },
   "about": {
-    "headline": "Au-delà du code.",
+    "headline": "Au-delà du code",
     "p1": "Ingénieur logiciel polyvalent, titulaire d'un Master en Informatique de l'Université Paris-Saclay, avec une expérience concrète couvrant le développement mobile, l'ingénierie back-end web et le machine learning appliqué.",
     "p2": "Du lancement d'une plateforme Django/PostgreSQL en production à la création d'applications iOS natives en Swift et l'intégration d'API LLM dans des applications React Native multiplateformes, j'excelle dans la résolution de défis multidisciplinaires de bout en bout — de l'architecture au déploiement.",
     "stat1_val": "5+",
@@ -24,7 +24,7 @@
     "stat2_lbl": "Projets réalisés"
   },
   "contact": {
-    "title": "Bâtissons l'avenir.",
+    "title": "Bâtissons l'avenir",
     "intro": "Actuellement ouvert aux missions de conseil et aux opportunités en ingénierie logicielle.",
     "name": "Votre nom",
     "namePlaceholder": "Jean Dupont",
@@ -80,7 +80,7 @@
     "optIn": "Autoriser la mesure d'audience"
   },
   "contact": {
-    "title": "Bâtissons l'avenir.",
+    "title": "Bâtissons l'avenir",
     "intro": "Actuellement ouvert aux missions de conseil et aux opportunités en ingénierie logicielle.",
     "name": "Votre nom",
     "namePlaceholder": "Jean Dupont",

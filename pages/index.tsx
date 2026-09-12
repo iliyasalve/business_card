@@ -202,7 +202,7 @@ const Home = () => {
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
               </div>
               <div>
-                <h2 className="font-display text-headline-lg mb-6">{tCommon('about.headline', 'Beyond the Code.')}</h2>
+                <h2 className="font-display text-headline-lg mb-6">{tCommon('about.headline', 'Beyond the Code')}</h2>
                 <div className="text-on-surface-variant font-body-lg space-y-4 leading-relaxed">
                   <p>{tCommon('about.p1', 'I am an adaptable software engineer with a strong foundation in computer science and a passion for data analysis and software development.')}</p>
                   <p>{tCommon('about.p2', 'With multiple years of practical and volunteer experience building systems ranging from Django/PostgreSQL platforms to peer-to-peer visualizers and game engines, I thrive on solving multi-disciplinary challenges.')}</p>
@@ -345,7 +345,7 @@ const Home = () => {
           <div className="w-full max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
             <div className="max-w-4xl mx-auto glass-card plain-sm isolate rounded-[2rem] p-[clamp(20px,2.6vw,44px)] relative overflow-hidden">
               <div className="text-left md:text-center mb-[clamp(20px,3vh,34px)]">
-                <h2 className="font-display text-headline-lg md:text-[clamp(44px,4.4vw,64px)] leading-tight mb-3">{tCommon('contact.title', "Let's build the future.")}</h2>
+                <h2 className="font-display text-headline-lg md:text-[clamp(44px,4.4vw,64px)] leading-tight mb-3">{tCommon('contact.title', "Let's build the future")}</h2>
                 <p className="text-on-surface-variant font-body-md md:font-body-lg">
                   {tCommon('contact.intro', 'Currently accepting selected consulting roles and software engineering opportunities.')}
                 </p>
