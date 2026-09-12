@@ -149,7 +149,12 @@ const Home = () => {
           <div className="glow absolute bottom-20 right-10 w-96 h-96 text-purple-500/10" />
           
           <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter relative z-10 w-full">
-            <div className="max-w-3xl">
+            {/* 4xl, а не 3xl: заголовок набран фиксированными 64px, и в 3xl
+                (768px) он не помещается в строку — русскому нужно 773px,
+                французскому 821px. Разница в пять пикселей ломала строку
+                пополам при пустой правой половине экрана. Абзац ниже держит
+                свой max-w-2xl, кнопки и метка меряются по содержимому. */}
+            <div className="max-w-4xl">
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary-text font-label-sm uppercase mb-6">
                 {tCommon('home.statusTag', 'Available for new opportunities')}
               </span>
