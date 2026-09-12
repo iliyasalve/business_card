@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 import enCommon from './locales/en/common.json';
 import enExperience from './locales/en/experience.json';
@@ -27,7 +26,6 @@ import frProjects from './locales/fr/projects.json';
 import fr404 from './locales/fr/404.json';
 
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
@@ -35,6 +33,13 @@ i18n
       ru: { common: ruCommon, experience: ruExperience, skills: ruSkills, education: ruEducation, training: ruTraining, projects: ruProjects, '404': ru404 },
       fr: { common: frCommon, experience: frExperience, skills: frSkills, education: frEducation, training: frTraining, projects: frProjects, '404': fr404 },
     },
+    // Детектора здесь нет намеренно. Он срабатывал при импорте модуля, то
+    // есть до гидратации: статический HTML собран по-английски, а первый
+    // клиентский рендер выходил уже русским — React отбрасывал пререндер
+    // целиком (ошибки #418/#423/#425). Стартуем на языке пререндера, а
+    // выбор языка делает _app.tsx после монтирования — там он уже
+    // обычный ре-рендер, а не провал гидратации.
+    lng: 'en',
     fallbackLng: 'en',
     ns: ['common', 'experience', 'skills', 'education', 'training', 'projects', '404'], // namespaces
     defaultNS: 'common',

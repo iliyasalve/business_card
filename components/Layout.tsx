@@ -37,6 +37,14 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    // Раньше ключ писал i18next-browser-languagedetector. Его больше нет,
+    // а читают ключ двое: _document.tsx (ставит лоадер до первой отрисовки)
+    // и _app.tsx (выбирает язык после монтирования).
+    try {
+      localStorage.setItem('i18nextLng', lng);
+    } catch {
+      /* Язык переключится, но не запомнится — как и тема. */
+    }
   };
 
   const scrollToHome = (e: React.MouseEvent) => {

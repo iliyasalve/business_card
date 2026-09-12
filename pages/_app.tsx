@@ -65,15 +65,25 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
 
-    i18n.changeLanguage(detectedLng).then(() => {
+    // Смену языка откладываем на отдельную задачу. В продовой сборке React 18
+    // на момент выполнения эффекта ещё не закончил гидратацию, и смена текста
+    // прямо здесь рвёт её — те самые #418/#423/#425. setTimeout уводит смену
+    // в следующий макротаск, когда гидратация уже закоммичена.
+    const applyLanguage = () => {
+      // Промис changeLanguage не ждём: словари лежат в бандле (resources в
+      // i18n/config.ts), загружать нечего, смена языка происходит сразу.
+      // Снятие лоадера на него не вешаем — единственный экран, который видит
+      // пользователь до конца переключения, не должен зависеть от промиса.
+      i18n.changeLanguage(detectedLng);
       setCurrentLanguage(detectedLng);
       document.documentElement.setAttribute('lang', detectedLng);
-      // Wait for React to apply language changes to DOM before hiding loader,
-      // preventing any English flash on reload!
+      // Даём React отрисовать новый язык до снятия лоадера, иначе мелькнёт
+      // английский.
       requestAnimationFrame(() => {
         setTimeout(hideLoader, 100);
       });
-    });
+    };
+    const languageTimer = setTimeout(applyLanguage, 0);
 
     // Subscribe to language updates to force re-render
     const handleLanguageChange = (lng: string) => {
@@ -83,6 +93,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     i18n.on('languageChanged', handleLanguageChange);
 
     return () => {
+      clearTimeout(languageTimer);
       window.removeEventListener('error', handleError);
       window.removeEventListener('unhandledrejection', handleError);
       i18n.off('languageChanged', handleLanguageChange);
