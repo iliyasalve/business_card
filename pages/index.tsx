@@ -1,10 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Head from 'next/head';
-import Script from 'next/script';
 import Seo from '../components/Seo';
 import BentoSkills from '../components/BentoSkills';
 import ProjectCarousel from '../components/ProjectCarousel';
+
+// Тот же URL, который раньше вставлял клиентский скрипт web3forms, — сам по
+// себе тот скрипт больше ничего для этой формы не делал.
+const HCAPTCHA_SRC = 'https://js.hcaptcha.com/1/api.js?recaptchacompat=off';
+
+declare global {
+  interface Window {
+    hcaptcha?: {
+      render(container: HTMLElement, params: { sitekey: string; theme?: string }): string;
+      reset(widgetId?: string): void;
+    };
+  }
+}
+
+/**
+ * Загружает hCaptcha один раз; по загрузке она сама отрисует все div.h-captcha.
+ * Если скрипт уже загружен, пустые контейнеры отрисовываются вручную: смена
+ * языка пересоздаёт страницу (key в _app), и новый div иначе остаётся пустым.
+ */
+function loadCaptcha(): void {
+  const hcaptcha = window.hcaptcha;
+  if (hcaptcha) {
+    document.querySelectorAll<HTMLElement>('.h-captcha:empty').forEach((el) => {
+      hcaptcha.render(el, { sitekey: el.dataset.sitekey!, theme: el.dataset.theme });
+    });
+    return;
+  }
+  if (document.querySelector(`script[src="${HCAPTCHA_SRC}"]`)) return; // уже грузится
+
+  const script = document.createElement('script');
+  script.src = HCAPTCHA_SRC;
+  script.async = true;
+  document.body.appendChild(script);
+}
 
 interface Degree {
   title: string;
@@ -46,6 +79,8 @@ const Home = () => {
   const trainings = tTrain('trainings', { returnObjects: true }) as Training[] || [];
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const observerOptions = {
       threshold: 0.1
     };
@@ -53,21 +88,53 @@ const Home = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          entry.target.classList.remove('opacity-0', 'translate-y-10');
+          const inner = entry.target.firstElementChild;
+          if (!inner) return;
+          inner.classList.add('opacity-100', 'translate-y-0');
+          inner.classList.remove('opacity-0', 'translate-y-10');
         }
       });
     }, observerOptions);
 
-    const sections = document.querySelectorAll('section');
+    // Hero уже нарисован из статического HTML — спрятать его здесь значит
+    // заново показать через секунду и привязать LCP к загрузке JS.
+    // Появление висит на внутренней обёртке, а не на самой <section>. transform
+    // не трогает layout, но scrollIntoView меряет именно трансформированный
+    // бокс: пока сдвиг был на секции, клик по разделу целился в сдвинутое
+    // место, секция потом уезжала на свои 40px вверх, и раздел оказывался выше
+    // нужного на те же 40px. Двигается обёртка, бокс секции стоит — выезд на
+    // месте, попадание точное. Наблюдаем по-прежнему саму секцию, чтобы момент
+    // срабатывания не изменился.
+    const sections = document.querySelectorAll('section:not(#home)');
     sections.forEach(section => {
-      section.classList.add('transition-[opacity,transform]', 'duration-1000', 'opacity-0', 'translate-y-10');
+      section.firstElementChild?.classList.add(
+        'transition-[opacity,transform]', 'duration-1000', 'opacity-0', 'translate-y-10'
+      );
       observer.observe(section);
     });
 
     return () => {
       sections.forEach(section => observer.unobserve(section));
     };
+  }, []);
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+
+    // Капча грузится, когда до формы остаётся экран: пока человек
+    // доскролливает, она успевает загрузиться и собрать сигналы, а кто до
+    // формы не дошёл, её не грузит вовсе.
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+      loadCaptcha();
+    }, { rootMargin: '100% 0px' });
+
+    observer.observe(form);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -81,17 +148,21 @@ const Home = () => {
       <Head>
         <title>{tCommon('header.title')}</title>
       </Head>
-      <Script src="https://web3forms.com/client/script.js" async defer />
 
       <div className="w-full">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" id="home">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-primary/10 blur-[120px] -z-10 rounded-full" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 blur-[120px] -z-10 rounded-full" />
+          <div className="glow absolute top-20 left-10 w-96 h-96 text-primary/10" />
+          <div className="glow absolute bottom-20 right-10 w-96 h-96 text-purple-500/10" />
           
           <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter relative z-10 w-full">
-            <div className="max-w-3xl">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm uppercase mb-6">
+            {/* 4xl, а не 3xl: заголовок набран фиксированными 64px, и в 3xl
+                (768px) он не помещается в строку — русскому нужно 773px,
+                французскому 821px. Разница в пять пикселей ломала строку
+                пополам при пустой правой половине экрана. Абзац ниже держит
+                свой max-w-2xl, кнопки и метка меряются по содержимому. */}
+            <div className="max-w-4xl">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary-text font-label-sm uppercase mb-6">
                 {tCommon('home.statusTag', 'Available for new opportunities')}
               </span>
               <h1 className="font-display text-display text-gradient mb-6 leading-tight">
@@ -125,16 +196,20 @@ const Home = () => {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <div className="aspect-square rounded-3xl overflow-hidden glass-card relative">
-                  <img 
-                    alt="Iliya Glazunov" 
+                  <img
+                    alt="Iliya Glazunov"
                     className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-2xl"
-                    src={tCommon('home.image', '/images/photo.jpg')}
+                    src={tCommon('home.image', '/images/photo.webp')}
+                    width={960}
+                    height={960}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
               </div>
               <div>
-                <h2 className="font-display text-headline-lg mb-6">{tCommon('about.headline', 'Beyond the Code.')}</h2>
+                <h2 className="font-display text-headline-lg mb-6">{tCommon('about.headline', 'Beyond the Code')}</h2>
                 <div className="text-on-surface-variant font-body-lg space-y-4 leading-relaxed">
                   <p>{tCommon('about.p1', 'I am an adaptable software engineer with a strong foundation in computer science and a passion for data analysis and software development.')}</p>
                   <p>{tCommon('about.p2', 'With multiple years of practical and volunteer experience building systems ranging from Django/PostgreSQL platforms to peer-to-peer visualizers and game engines, I thrive on solving multi-disciplinary challenges.')}</p>
@@ -178,8 +253,8 @@ const Home = () => {
                     <div className="w-4 h-4 rounded-full bg-primary border-4 border-background z-10"></div>
                   </div>
                   <div className={`${idx === jobs.length - 1 ? 'pb-0' : 'pb-12'} flex-grow`}>
-                    <h4 className="font-display text-headline-md mb-1">{job.position}</h4>
-                    <div className="text-primary font-medium mb-4">{job.company} <span className="md:hidden text-xs text-on-surface-variant ml-2">({job.dates})</span></div>
+                    <h3 className="font-display text-headline-md mb-1">{job.position}</h3>
+                    <div className="text-primary-text font-medium mb-4">{job.company} <span className="md:hidden text-xs text-on-surface-variant ml-2">({job.dates})</span></div>
                     <ul className="text-on-surface-variant max-w-3xl list-disc pl-5 space-y-2 leading-relaxed font-body-md text-sm sm:text-base">
                       {job.description.map((bullet, i) => (
                         <li key={i}>{bullet}</li>
@@ -212,13 +287,13 @@ const Home = () => {
                       key={idx}
                       className="p-6 rounded-2xl border border-surface-variant hover:border-primary/40 transition-colors"
                     >
-                      <h4 className="font-display text-headline-md mb-1">{deg.title}</h4>
-                      <p className="text-primary font-medium mb-1">{deg.institution}</p>
+                      <h3 className="font-display text-headline-md mb-1">{deg.title}</h3>
+                      <p className="text-primary-text font-medium mb-1">{deg.institution}</p>
                       <p className="text-on-surface-variant text-xs mb-3">{deg.location} · {deg.period}</p>
                       <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4">{deg.description}</p>
                       {deg.projects && (
                         <div className="mt-2 text-xs text-on-surface-variant">
-                          <span className="font-bold text-primary block uppercase tracking-wide mb-1">{tEdu('keyProjects', 'Key Projects')}</span>
+                          <span className="font-bold text-primary-text block uppercase tracking-wide mb-1">{tEdu('keyProjects', 'Key Projects')}</span>
                           <ul className="list-disc pl-4 space-y-1">
                             {deg.projects.map((proj: string, i: number) => (
                               <li key={i}>{proj}</li>
@@ -244,7 +319,7 @@ const Home = () => {
                           </span>
                         </div>
                         <div>
-                          <h5 className="font-bold text-on-surface">{train.title.replace(/\s*(Professional Certificate|Certificate)$/i, '')}</h5>
+                          <h3 className="font-bold text-on-surface">{train.title.replace(/\s*(Professional Certificate|Certificate)$/i, '')}</h3>
                           <p className="text-on-surface-variant text-label-sm mb-1">{train.institution} · {train.period}</p>
                           {train.badgeId && (
                             <a 
@@ -268,18 +343,23 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
+        {/* Набор классов ровно как у #skills и #projects. Ни min-h с
+            центрированием, ни scroll-mt тут быть не должно: первое растягивало
+            секцию на весь экран и отодвигало карточку вниз, второе добавляло
+            ещё 80px при переходе по «Контакты» — в сумме пустота, которой нет
+            ни у одной другой секции. */}
         <section className="py-section-gap-lg bg-surface-container-low" id="contact">
-          <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
-            <div className="max-w-4xl mx-auto glass-card rounded-[2rem] p-6 sm:p-10 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
-              <div className="text-center mb-16">
-                <h2 className="font-display text-display mb-6 leading-tight">{tCommon('contact.title', "Let's build the future.")}</h2>
-                <p className="text-on-surface-variant font-body-lg">
+          <div className="w-full max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
+            <div className="max-w-4xl mx-auto glass-card plain-sm isolate rounded-[2rem] p-[clamp(20px,2.6vw,44px)] relative overflow-hidden">
+              <div className="text-left md:text-center mb-[clamp(20px,3vh,34px)]">
+                <h2 className="font-display text-headline-lg md:text-[clamp(44px,4.4vw,64px)] leading-tight mb-3">{tCommon('contact.title', "Let's build the future")}</h2>
+                <p className="text-on-surface-variant font-body-md md:font-body-lg">
                   {tCommon('contact.intro', 'Currently accepting selected consulting roles and software engineering opportunities.')}
                 </p>
               </div>
-              <form 
-                className="grid md:grid-cols-2 gap-8" 
+              <form
+                ref={formRef}
+                className="grid md:grid-cols-2 gap-[clamp(14px,2vw,28px)]"
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setFormStatus('sending');
@@ -310,10 +390,7 @@ const Home = () => {
                       setFormStatus('success');
                       setStatusMessage(tCommon('contact.successMessage', 'Success! Your message has been sent.'));
                       formElement.reset();
-                      // Reset hCaptcha widget if window.hcaptcha exists
-                      if (typeof window !== 'undefined' && (window as any).hcaptcha) {
-                        (window as any).hcaptcha.reset();
-                      }
+                      window.hcaptcha?.reset();
                     } else {
                       setFormStatus('error');
                       setStatusMessage(data.message || tCommon('contact.errorMessage', 'Something went wrong. Please try again.'));
@@ -324,44 +401,45 @@ const Home = () => {
                   }
                 }}
               >
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div>
-                    <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.name', 'Your Name')}</label>
+                    <label className="block uppercase tracking-[0.14em] text-[11px] md:text-[12px] mb-1 text-on-surface-variant px-1">{tCommon('contact.name', 'Your Name')}</label>
                     <input
                       name="name"
                       required
                       type="text"
-                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
+                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-3.5 md:py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
                       placeholder={tCommon('contact.namePlaceholder', 'John Doe')}
                     />
                   </div>
                   <div>
-                    <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.emailLabel', 'Email Address')}</label>
+                    <label className="block uppercase tracking-[0.14em] text-[11px] md:text-[12px] mb-1 text-on-surface-variant px-1">{tCommon('contact.emailLabel', 'Email Address')}</label>
                     <input
                       name="email"
                       required
                       type="email"
-                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
+                      className="w-full bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-3.5 md:py-4 px-4 rounded-lg placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface"
                       placeholder={tCommon('contact.emailPlaceholder', 'john@example.com')}
                     />
                   </div>
                 </div>
                 <div className="flex flex-col h-full">
-                  <label className="block font-label-sm uppercase mb-2 text-on-surface-variant px-1">{tCommon('contact.message', 'Message')}</label>
+                  <label className="block uppercase tracking-[0.14em] text-[11px] md:text-[12px] mb-1 text-on-surface-variant px-1">{tCommon('contact.message', 'Message')}</label>
                   <textarea
                     name="message"
                     required
-                    className="w-full flex-grow bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-4 px-4 rounded-lg resize-none placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface min-h-[140px]"
+                    className="w-full flex-grow bg-surface-variant/60 dark:bg-surface-variant/30 border-b-2 border-outline/50 dark:border-outline/20 focus:border-primary focus:ring-0 transition-all py-3.5 md:py-4 px-4 rounded-lg resize-none placeholder:text-on-surface-variant/70 dark:placeholder:text-on-surface-variant/40 font-body-md text-on-surface min-h-[88px] md:min-h-[clamp(104px,15vh,140px)]"
                     placeholder={tCommon('contact.messagePlaceholder', 'Tell me about your project...')}
                   ></textarea>
                 </div>
 
                 {/* hCaptcha widget */}
-                <div className="md:col-span-2 flex justify-center items-center w-full mt-2 overflow-hidden">
+                {/* min-h — высота виджета: капча грузится позже формы, место под неё держим заранее */}
+                <div className="md:col-span-2 flex justify-center items-center w-full overflow-hidden min-h-[78px]">
                   <div className="h-captcha mx-auto" data-captcha="true" data-theme="dark" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"></div>
                 </div>
 
-                <div className="md:col-span-2 mt-4">
+                <div className="md:col-span-2">
                   <button
                     type="submit"
                     disabled={formStatus === 'sending'}
@@ -372,7 +450,7 @@ const Home = () => {
                   </button>
                   
                   {/* Disclaimer сноска */}
-                  <p className="mt-4 text-xs text-on-surface-variant/70 text-center leading-relaxed">
+                  <p className="mt-2.5 text-[11px] md:text-xs text-on-surface-variant/70 text-center leading-[1.5]">
                     {tCommon('contact.disclaimer') ? (
                       (() => {
                         const disclaimer = tCommon('contact.disclaimer');

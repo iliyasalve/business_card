@@ -8,35 +8,20 @@
     },
     "title": "Bonjour, je suis Iliya Glazunov",
     "description": "Je conçois et développe des logiciels de niveau production à travers toute la stack — des applications iOS natives en Swift et des expériences mobiles multiplateformes avec React Native & Expo, jusqu'aux systèmes back-end robustes pilotés par Python, Django et PostgreSQL.\n\nDepuis 2022, j'ai livré des produits réels : une plateforme web Django/PostgreSQL en production (eurasieanalyse.fr), deux applications mobiles commerciales et une suite d'outils d'automatisation. Je suis certifié en Generative AI Engineering, Développement Full-Stack et Data Analytics par IBM et Google, et j'intègre activement les API LLM (Gemini, GPT) dans mes projets.",
-    "image": "/images/photo.jpg",
+    "image": "/images/photo.webp",
     "explore": "Explorer mon expérience",
     "viewProjects": "Voir les projets",
     "statusTag": "Disponible pour de nouvelles opportunités",
     "subtitle": "Mobile (Swift · React Native) · Back-End (Python · Django) · Data & IA — logiciels en production depuis 2022."
   },
   "about": {
-    "headline": "Au-delà du code.",
+    "headline": "Au-delà du code",
     "p1": "Ingénieur logiciel polyvalent, titulaire d'un Master en Informatique de l'Université Paris-Saclay, avec une expérience concrète couvrant le développement mobile, l'ingénierie back-end web et le machine learning appliqué.",
     "p2": "Du lancement d'une plateforme Django/PostgreSQL en production à la création d'applications iOS natives en Swift et l'intégration d'API LLM dans des applications React Native multiplateformes, j'excelle dans la résolution de défis multidisciplinaires de bout en bout — de l'architecture au déploiement.",
     "stat1_val": "5+",
     "stat1_lbl": "Ans d'expérience dev",
     "stat2_val": "20+",
     "stat2_lbl": "Projets réalisés"
-  },
-  "contact": {
-    "title": "Bâtissons l'avenir.",
-    "intro": "Actuellement ouvert aux missions de conseil et aux opportunités en ingénierie logicielle.",
-    "name": "Votre nom",
-    "namePlaceholder": "Jean Dupont",
-    "emailLabel": "Adresse e-mail",
-    "emailPlaceholder": "jean.dupont@example.com",
-    "message": "Message",
-    "messagePlaceholder": "Parlez-moi de votre projet...",
-    "send": "Envoyer le message",
-    "successMessage": "Succès ! Votre message a été envoyé.",
-    "captchaError": "Veuillez remplir le champ captcha.",
-    "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
-    "sending": "Envoi en cours..."
   },
   "header": {
     "title": "Iliya Glazunov",
@@ -80,7 +65,7 @@
     "optIn": "Autoriser la mesure d'audience"
   },
   "contact": {
-    "title": "Bâtissons l'avenir.",
+    "title": "Bâtissons l'avenir",
     "intro": "Actuellement ouvert aux missions de conseil et aux opportunités en ingénierie logicielle.",
     "name": "Votre nom",
     "namePlaceholder": "Jean Dupont",

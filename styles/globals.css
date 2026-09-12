@@ -107,6 +107,9 @@
   --on-surface-variant: 107, 90, 94;
   --outline: 213, 200, 203;
   --primary: 179, 57, 93;
+  /* Акцент для мелкого текста. На светлом фоне это сам primary, на тёмном —
+     его светлый тон: #b3395d там даёт ~3:1, а мелкому тексту нужно 4.5:1. */
+  --primary-text: 179, 57, 93;
   --on-primary: 255, 255, 255;
   --surface-variant: 232, 223, 226;
   --gradient-start: 36, 24, 27;
@@ -129,6 +132,7 @@
   --on-surface-variant: 221, 191, 195;
   --outline: 137, 113, 116;
   --primary: 179, 57, 93;
+  --primary-text: 219, 99, 134; /* #db6386: 5.0–5.9:1 на всех тёмных фонах сайта */
   --on-primary: 255, 255, 255;
   --surface-variant: 45, 31, 36;
   --gradient-start: 245, 241, 242;
@@ -164,11 +168,55 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* На телефоне экран сам себе карточка: рамка со скруглением и её отступы
+   отнимают по 18px с каждой стороны и рисуют вторую границу внутри первой.
+   На широком экране карточка остаётся — там она собирает форму в объект. */
+@media (max-width: 767px) {
+  .glass-card.plain-sm {
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
 .glass-card:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
   transform: translateY(-4px);
   box-shadow: var(--glass-shadow-hover);
+}
+
+/* Мягкое свечение. Раньше это был круг w-96 с filter: blur(120px), и в Safari
+   из-за него прокрутка с первого экрана стартовала с задержкой в ~2 с:
+   убрали два таких круга из hero — задержка пропала.
+
+   Градиент повторяет профиль размытого круга, каким его рисовал Safari:
+   замер на пустой странице показал, что тот же blur(120px) у него вдвое туже
+   и ярче, чем у Chrome (в центре 0.092 против 0.073, гаснет к 300px против
+   480px). То есть это диск 192px, размытый с σ≈60px. Ориентир — Safari:
+   так свечение выглядело у автора сайта. В Chrome оно теперь чуть плотнее,
+   чем было.
+
+   Геометрию задаёт сам элемент (w-96 h-96 + позиция), цвет — text-* утилита:
+   слой ниже вылезает за элемент на 128px, до радиуса 320px, где свечение
+   сходит на нет. */
+.glow::before {
+  content: '';
+  position: absolute;
+  inset: -128px;
+  background: radial-gradient(
+    closest-side,
+    currentColor,
+    color-mix(in srgb, currentColor 95%, transparent) 25%,
+    color-mix(in srgb, currentColor 64%, transparent) 50%,
+    color-mix(in srgb, currentColor 17%, transparent) 75%,
+    color-mix(in srgb, currentColor 6%, transparent) 87.5%,
+    transparent
+  );
 }
 
 .project-card:hover {
@@ -216,7 +264,7 @@ html {
 }
 
 a {
-  @apply text-primary hover:opacity-80 transition-opacity;
+  @apply text-primary-text hover:opacity-80 transition-opacity;
   text-decoration: none;
 }
 

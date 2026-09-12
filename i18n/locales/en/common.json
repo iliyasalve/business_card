@@ -8,35 +8,20 @@
     },
     "title": "Hello, I'm Iliya Glazunov",
     "description": "I design and build production-grade software across the full stack — from native iOS apps in Swift and cross-platform mobile experiences with React Native & Expo, to robust back-end systems powered by Python, Django and PostgreSQL.\n\nSince 2022 I have shipped real-world products: a live Django/PostgreSQL web platform (eurasieanalyse.fr), two commercial mobile applications and a suite of automation tools. I hold professional certifications in Generative AI Engineering, Full-Stack Development and Data Analytics from IBM and Google, and actively integrate LLM APIs (Gemini, GPT) into my projects.",
-    "image": "/images/photo.jpg",
+    "image": "/images/photo.webp",
     "explore": "Explore My Experience",
     "viewProjects": "View Projects",
     "statusTag": "Available for new opportunities",
     "subtitle": "Mobile (Swift · React Native) · Back-End (Python · Django) · Data & AI — building production software since 2022."
   },
   "about": {
-    "headline": "Beyond the Code.",
+    "headline": "Beyond the Code",
     "p1": "I am a versatile software engineer with a Master's degree in Computer Science from Université Paris-Saclay and hands-on experience spanning mobile development, web back-end engineering, and applied machine learning.",
     "p2": "From shipping a live Django/PostgreSQL platform to building native iOS apps in Swift and integrating LLM APIs into cross-platform React Native applications, I thrive on solving multi-disciplinary challenges end-to-end — from architecture to deployment.",
     "stat1_val": "5+",
     "stat1_lbl": "Years Dev Experience",
     "stat2_val": "20+",
     "stat2_lbl": "Completed Projects"
-  },
-  "contact": {
-    "title": "Let's build the future.",
-    "intro": "Currently accepting selected consulting roles and software engineering opportunities.",
-    "name": "Your Name",
-    "namePlaceholder": "John Doe",
-    "emailLabel": "Email Address",
-    "emailPlaceholder": "john@example.com",
-    "message": "Message",
-    "messagePlaceholder": "Tell me about your project...",
-    "send": "Send Message",
-    "successMessage": "Success! Your message has been sent.",
-    "captchaError": "Please fill out the captcha field.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "sending": "Sending..."
   },
   "header": {
     "title": "Iliya Glazunov",
@@ -80,7 +65,7 @@
     "optIn": "Allow analytics"
   },
   "contact": {
-    "title": "Let's build the future.",
+    "title": "Let's build the future",
     "intro": "Currently accepting selected consulting roles and software engineering opportunities.",
     "name": "Your Name",
     "namePlaceholder": "John Doe",

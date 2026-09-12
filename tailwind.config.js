@@ -25,6 +25,7 @@ module.exports = {
         "tertiary-fixed-dim": "#8dd79f",
         "surface-tint": "#a73453",
         primary: "rgba(var(--primary), <alpha-value>)",
+        "primary-text": "rgba(var(--primary-text), <alpha-value>)",
         "surface-variant": "rgba(var(--surface-variant), <alpha-value>)",
         "inverse-primary": "#ffb2bf",
         "on-surface-variant": "rgba(var(--on-surface-variant), <alpha-value>)",

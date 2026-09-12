@@ -1,8 +1,20 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import PrivacyNotice, { PRIVACY_OPEN_EVENT } from './PrivacyNotice';
+
+// Кнопка «наверх». Пока футер не доехал, кнопка висит над экраном на
+// SCROLL_TOP_BOTTOM. На узком экране она не поднимается над футером, а
+// вкладывается в него под строку копирайта: подъём пробовали в labig.dev и
+// отказались — кнопка зависала посреди экрана.
+const SCROLL_TOP_BOTTOM = 42;
+const SCROLL_TOP_SIZE = 48;
+const SCROLL_TOP_DOCK_RIGHT = 24; // ровно right-6 у плавающей — иначе при стыковке кнопка дёргается вбок
+const SCROLL_TOP_MOBILE_MAX = 820;
+// Сдвиг вниз от якоря — строки «Конфиденциальность». Кнопка должна стоять под
+// ней, но не прижиматься к строке разделов.
+const SCROLL_TOP_DOCK_NUDGE = 10;
 
 interface LayoutProps {
   children: ReactNode;
@@ -32,11 +44,23 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  // null — кнопка висит над экраном; число — она уже в футере, на этом top.
+  const [scrollTopDock, setScrollTopDock] = useState<number | null>(null);
+  const footerRef = useRef<HTMLElement>(null);
+  const dockAnchorRef = useRef<HTMLButtonElement>(null);
 
   const [activeSection, setActiveSection] = useState('home');
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    // Раньше ключ писал i18next-browser-languagedetector. Его больше нет,
+    // а читают ключ двое: _document.tsx (ставит лоадер до первой отрисовки)
+    // и _app.tsx (выбирает язык после монтирования).
+    try {
+      localStorage.setItem('i18nextLng', lng);
+    } catch {
+      /* Язык переключится, но не запомнится — как и тема. */
+    }
   };
 
   const scrollToHome = (e: React.MouseEvent) => {
@@ -111,6 +135,27 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
         setShowScrollTop(false);
       }
 
+      // Док в футер — только на узком экране. Якорь — строка под копирайтом: и
+      // порог, и позиция считаются от неё одной, поэтому в момент стыковки
+      // плавающая и пристыкованная позиции совпадают, и подмена fixed на
+      // absolute не видна глазу.
+      const anchor = dockAnchorRef.current;
+      if (anchor) {
+        const box = anchor.getBoundingClientRect();
+        const buttonCenter = window.innerHeight - SCROLL_TOP_BOTTOM - SCROLL_TOP_SIZE / 2;
+        // Сдвиг входит и в порог, и в позицию: иначе они разъезжаются и
+        // стыковка становится заметным прыжком.
+        const dockedCenter = box.top + box.height / 2 + SCROLL_TOP_DOCK_NUDGE;
+        const docked = window.innerWidth <= SCROLL_TOP_MOBILE_MAX && dockedCenter <= buttonCenter;
+        setScrollTopDock(
+          docked
+            ? Math.round(
+                anchor.offsetTop + anchor.offsetHeight / 2 + SCROLL_TOP_DOCK_NUDGE - SCROLL_TOP_SIZE / 2
+              )
+            : null
+        );
+      }
+
       // Scroll Spy
       if (isChangingLang || isScrollingClick) return;
 
@@ -136,6 +181,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
     handleScroll();
 
     // Smooth scroll implementation to avoid router latency in Safari
@@ -206,6 +252,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
       i18n.off('languageChanged', handleLangChange);
       clickHandlers.forEach(({ anchor, handler }) => {
         anchor.removeEventListener('click', handler);
@@ -392,8 +439,8 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
       <main className="flex-grow w-full">{children}</main>
 
       {/* Footer matching template exactly */}
-      <footer className="w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
-        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto pt-12 pb-28 md:py-12 px-margin-mobile md:px-gutter">
+      <footer ref={footerRef} className="relative w-full bg-surface-container dark:bg-surface-container-lowest border-t border-on-surface/5">
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto py-12 px-margin-mobile md:px-gutter">
           <div className="mb-8 md:mb-0 w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 text-left">
             <a href={isHomePage ? "#home" : "/"} className="font-display text-headline-md font-bold tracking-tight inline-flex items-center mb-2 cursor-pointer select-none no-underline text-on-surface dark:text-white hover:text-on-surface dark:hover:text-white hover:opacity-100 group transition-none">
               <span className="opacity-40 group-hover:opacity-80 transition-opacity font-light">{'{'}</span>
@@ -408,6 +455,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             {/* Возражать против измерения аудитории нужно уметь всегда, а не
                 только до первого закрытия панели, — отсюда эта ссылка. */}
             <button
+              ref={dockAnchorRef}
               type="button"
               onClick={() => window.dispatchEvent(new Event(PRIVACY_OPEN_EVENT))}
               className="mt-2 font-body-md text-on-secondary-container/70 dark:text-on-secondary-container/50 underline underline-offset-2 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-left"
@@ -417,7 +465,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
           </div>
           <div className="flex justify-between w-full md:w-auto max-w-[345px] md:max-w-none mx-auto md:mx-0 md:justify-start md:gap-12 lg:gap-24 shrink-0">
             <div className="flex flex-col gap-3">
-              <h5 className="font-label-sm uppercase text-primary font-bold">{t('footer.networkLabel', 'Network')}</h5>
+              <h2 className="font-label-sm uppercase text-primary-text font-bold">{t('footer.networkLabel', 'Network')}</h2>
               {networkLinks.map((link) => (
                 <a 
                   key={link.labelKey}
@@ -444,7 +492,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              <h5 className="font-label-sm uppercase text-primary font-bold">{t('footer.connectLabel', 'Connect')}</h5>
+              <h2 className="font-label-sm uppercase text-primary-text font-bold">{t('footer.connectLabel', 'Connect')}</h2>
               {connectLinks.map((link) => (
                 <a 
                   key={link.labelKey}
@@ -472,20 +520,29 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
             </div>
           </div>
         </div>
+
+        {/* Кнопка «наверх» живёт внутри футера: в доке ей нужен
+            позиционируемый предок, а fixed работает от вьюпорта одинаково,
+            где бы она ни лежала в разметке. */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          style={
+            scrollTopDock === null
+              ? { bottom: `${SCROLL_TOP_BOTTOM}px` }
+              : { top: `${scrollTopDock}px`, right: `${SCROLL_TOP_DOCK_RIGHT}px` }
+          }
+          className={`${
+            scrollTopDock === null ? 'fixed right-6 md:right-12 lg:right-20' : 'absolute'
+          } z-40 w-12 h-12 rounded-full bg-primary text-on-primary shadow-lg shadow-primary/20 flex items-center justify-center hover:-translate-y-1 active:scale-95 transition-[opacity,transform] duration-300 focus:outline-none ${
+            showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
+          }`}
+          aria-label="Scroll to top"
+        >
+          <span className="material-symbols-outlined text-2xl font-bold">arrow_upward</span>
+        </button>
       </footer>
 
       <PrivacyNotice />
-
-      {/* Scroll to Top Button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-[42px] right-6 md:right-12 lg:right-20 z-40 w-12 h-12 rounded-full bg-primary text-on-primary shadow-lg shadow-primary/20 flex items-center justify-center hover:-translate-y-1 active:scale-95 transition-all duration-300 focus:outline-none ${
-          showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
-        }`}
-        aria-label="Scroll to top"
-      >
-        <span className="material-symbols-outlined text-2xl font-bold">arrow_upward</span>
-      </button>
     </div>
   );
 };
