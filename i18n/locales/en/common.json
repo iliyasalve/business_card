@@ -23,21 +23,6 @@
     "stat2_val": "20+",
     "stat2_lbl": "Completed Projects"
   },
-  "contact": {
-    "title": "Let's build the future",
-    "intro": "Currently accepting selected consulting roles and software engineering opportunities.",
-    "name": "Your Name",
-    "namePlaceholder": "John Doe",
-    "emailLabel": "Email Address",
-    "emailPlaceholder": "john@example.com",
-    "message": "Message",
-    "messagePlaceholder": "Tell me about your project...",
-    "send": "Send Message",
-    "successMessage": "Success! Your message has been sent.",
-    "captchaError": "Please fill out the captcha field.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "sending": "Sending..."
-  },
   "header": {
     "title": "Iliya Glazunov",
     "home": "Home",
