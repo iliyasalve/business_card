@@ -331,10 +331,12 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        {/* Ровно один экран: секция занимает высоту окна за вычетом шапки, а
-            содержимое стоит по центру. Отступы и кегли — на clamp по высоте
-            окна, иначе русский заголовок в две строки выносит форму за экран. */}
-        <section className="py-[clamp(20px,2.2vh,48px)] scroll-mt-20 bg-surface-container-low min-h-[calc(100vh-5rem)] flex flex-col justify-center" id="contact">
+        {/* Набор классов ровно как у #skills и #projects. Ни min-h с
+            центрированием, ни scroll-mt тут быть не должно: первое растягивало
+            секцию на весь экран и отодвигало карточку вниз, второе добавляло
+            ещё 80px при переходе по «Контакты» — в сумме пустота, которой нет
+            ни у одной другой секции. */}
+        <section className="py-section-gap-lg bg-surface-container-low" id="contact">
           <div className="w-full max-w-[1200px] mx-auto px-margin-mobile md:px-gutter">
             <div className="max-w-4xl mx-auto glass-card plain-sm isolate rounded-[2rem] p-[clamp(20px,2.6vw,44px)] relative overflow-hidden">
               <div className="text-left md:text-center mb-[clamp(20px,3vh,34px)]">
