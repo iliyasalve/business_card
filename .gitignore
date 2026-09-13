@@ -49,3 +49,6 @@ yarn-error.log*
 
 # TypeScript incremental build cache
 tsconfig.tsbuildinfo
+
+# Local design specs and implementation plans
+/docs/superpowers/

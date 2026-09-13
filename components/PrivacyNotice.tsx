@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { useTranslation } from 'react-i18next';
 
 /**
@@ -59,14 +59,18 @@ function injectBeacon(): void {
   document.head.appendChild(s);
 }
 
+// Отказ меняется только через перезагрузку (toggleAnalytics), поэтому подписка
+// не нужна: React читает флаг после гидратации, а статический экспорт видит false.
+const subscribeNever = () => () => {};
+const notRefusedOnServer = () => false;
+
 const PrivacyNotice: React.FC = () => {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
-  const [refused, setRefused] = useState(false);
+  const refused = useSyncExternalStore(subscribeNever, optedOut, notRefusedOnServer);
 
   useEffect(() => {
     injectBeacon();
-    setRefused(optedOut());
 
     if (!dismissed()) {
       setTimeout(() => setVisible(true), 300);
