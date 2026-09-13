@@ -4,3 +4,17 @@ allowBuilds:
   # workerd — сам рантайм Workers (нужен для `wrangler dev`).
   esbuild: true
   workerd: true
+
+# Версии, уже лежащие в хранилище pnpm у соседних проектов: без них pnpm 12
+# при обновлении берёт новейшие из сети и хранилище снова растёт.
+# Убрать блок при следующем осознанном онлайн-обновлении.
+overrides:
+  autoprefixer: 10.5.0
+  tailwindcss: 3.4.19
+  unrs-resolver: 1.12.2
+  browserslist: 4.28.9
+  caniuse-lite: 1.0.30001810
+  electron-to-chromium: 1.5.427
+  axe-core: 4.13.0
+  update-browserslist-db: 1.3.3
+  node-releases: 2.0.55
