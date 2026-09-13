@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
@@ -15,8 +15,27 @@ function readStorage(key: string): string | null {
   }
 }
 
+type Theme = 'light' | 'dark';
+
+// Тема живёт в localStorage, а не в состоянии React: статический экспорт
+// рендерится там, где localStorage нет, поэтому React читает её как внешнее
+// хранилище и после гидратации меняет серверное значение на сохранённое.
+const themeListeners = new Set<() => void>();
+
+function subscribeTheme(onChange: () => void) {
+  themeListeners.add(onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    themeListeners.delete(onChange);
+    window.removeEventListener('storage', onChange);
+  };
+}
+
+const readTheme = (): Theme => (readStorage('theme') === 'light' ? 'light' : 'dark');
+const serverTheme = (): Theme => 'dark';
+
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const theme = useSyncExternalStore(subscribeTheme, readTheme, serverTheme);
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
   useEffect(() => {
@@ -34,12 +53,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     window.addEventListener('error', handleError);
     window.addEventListener('unhandledrejection', handleError);
-
-    // Load theme from localStorage, default to dark
-    const savedTheme = readStorage('theme') as 'light' | 'dark' | null;
-    const initialTheme = savedTheme || 'dark';
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
 
     const hideLoader = () => {
       const loader = document.getElementById('global-loader');
@@ -100,18 +113,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     
     // 1. Блокируем анимации переходов перед сменой классов темы
     document.documentElement.classList.add('no-transitions');
 
-    setTheme(newTheme);
     try {
       localStorage.setItem('theme', newTheme);
     } catch {
-      /* Тема переключится, но не запомнится. */
+      /* Тема не запомнится и откатится при следующем чтении хранилища. */
     }
+    themeListeners.forEach((listener) => listener());
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
 
     // 2. Принудительно вызываем перерисовку (reflow) для мгновенного применения стилей

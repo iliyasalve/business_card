@@ -119,7 +119,7 @@ const Layout: React.FC<LayoutProps> = ({ children, theme, toggleTheme }) => {
   useEffect(() => {
     let isScrollingClick = false;
     let isChangingLang = false;
-    let scrollTimeout: any = null;
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
     const isHomePage = router.pathname === '/';
 
     const handleScroll = () => {

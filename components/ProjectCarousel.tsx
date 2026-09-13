@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useSyncExternalStore } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface ProjectLink {
@@ -16,12 +16,21 @@ interface Project {
   image: string;
 }
 
+// Ширина окна — внешнее состояние: статический экспорт рендерит мобильную
+// раскладку, а после гидратации React переключается на реальную.
+const subscribeResize = (onChange: () => void) => {
+  window.addEventListener('resize', onChange);
+  return () => window.removeEventListener('resize', onChange);
+};
+const readIsDesktop = () => window.innerWidth >= 768;
+const serverIsDesktop = () => false;
+
 const ProjectCarousel = () => {
   const { t } = useTranslation('projects');
   const trackRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const isDesktop = useSyncExternalStore(subscribeResize, readIsDesktop, serverIsDesktop);
   const [animate, setAnimate] = useState(true);
   const [cardWidth, setCardWidth] = useState(0);
 
@@ -97,26 +106,19 @@ const ProjectCarousel = () => {
     ? [...projects, ...projects.slice(0, 3)] 
     : projects.slice(0, 2);
 
-  const updateDimensions = () => {
-    const desktop = window.innerWidth >= 768;
-    setIsDesktop(desktop);
-    if (firstCardRef.current) {
-      setCardWidth(firstCardRef.current.offsetWidth);
-    }
-  };
-
   useEffect(() => {
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    // Extra timeout to ensure DOM layout has finalized
-    const timer = setTimeout(() => {
+    const measureCard = () => {
       if (firstCardRef.current) {
         setCardWidth(firstCardRef.current.offsetWidth);
       }
-    }, 100);
+    };
+
+    window.addEventListener('resize', measureCard);
+    // Extra timeout to ensure DOM layout has finalized
+    const timer = setTimeout(measureCard, 100);
 
     return () => {
-      window.removeEventListener('resize', updateDimensions);
+      window.removeEventListener('resize', measureCard);
       clearTimeout(timer);
     };
   }, []);
